@@ -1,9 +1,9 @@
 import Themeprovider from "@/components/Themeprovider";
-import "./globals.css";
+import "../globals.css";
 
 export const metadata = {
-  title: "Get started || WDS",
-  description: "Welcome to WDS...",
+  title: "create-an-event || WDS",
+  description: "",
 };
 
 export default function RootLayout({ children }) {
