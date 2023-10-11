@@ -26,29 +26,15 @@ export default function Themeswitch() {
   };
 
   return (
-    <div className=" flex flex-col gap-y-2">
-      {theme === "dark" ? (
-        <h1 className=" font-medium text-xl">Dark theme</h1>
-      ) : (
-        <h1 className=" font-medium text-xl">Light theme</h1>
-      )}
-      <Button
-        isIconOnly
-        onClick={toggleTheme}
-        className=" flex justify-center cursor-default md:cursor-pointer w-[120px] rounded-none items-center text-xl"
-      >
-        {theme === "dark" ? (
-          <span className="active:rotate-[360deg] duration-500">
-            <IoIosSunny />
-            <span className=" sr-only">Dark Theme</span>
-          </span>
-        ) : (
-          <span className="active:rotate-[360deg] duration-500">
-            <PiMoonLight />
-            <span className=" sr-only">Light Theme</span>
-          </span>
-        )}
-      </Button>
-    </div>
+    <Button
+      isIconOnly
+      startContent={theme === "dark" ? <PiMoonLight /> : <IoIosSunny />}
+      onClick={toggleTheme}
+      className="flex justify-start px-3 bg-transparent  cursor-default md:cursor-pointer w-[100%] rounded-none items-center text-xl"
+    >
+      <span className=" pl-3 text-sm">
+        {theme === "dark" ? "Dark theme" : "Light theme"}
+      </span>
+    </Button>
   );
 }
