@@ -53,7 +53,7 @@ export default function TopNavbar() {
   const router = useRouter();
   return (
     <>
-      <div className=" flex justify-between fixed top-0 w-full items-center dark:bg-darkSlate mb-7 bg-white">
+      <div className=" flex justify-between fixed top-0 w-full items-center dark:bg-darkSlate mb-7 bg-white z-40">
         <div className=" flex justify-normal gap-x-[0.20rem] py-3 items-center">
           <Tooltip
             placement="bottom"

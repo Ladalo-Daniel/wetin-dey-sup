@@ -1,9 +1,11 @@
-import Authentication from "@/components/Authentication";
+//import Authentication from "@/components/Authentication";
+import Mainlayout from "@/components/Mainlayout";
 
 export default function Home() {
   return (
     <>
-      <Authentication />
+    <Mainlayout />
+      {/* <Authentication /> */}
     </>
   );
 }
