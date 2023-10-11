@@ -42,7 +42,7 @@ export default function BottomNavbar() {
   const router = useRouter();
   return (
     <>
-      <nav className="flex items-center bg-white dark:bg-darkSlate justify-around z-[99] md:hidden gap-x-4 w-full py-3 fixed bottom-0 shadow-lg">
+      <nav className="flex items-center bg-white dark:bg-darkSlate justify-around z-[999] md:hidden gap-x-4 w-full py-4 fixed bottom-0 shadow-xl">
         {Navigation.map((items, index) => (
           <Tooltip
             key={index}
