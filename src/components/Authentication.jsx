@@ -11,7 +11,7 @@ export default function Authentication() {
 
   return (
     <main className="w-full h-screen  bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
-      <div className="max-w-md rounded-xl shadow-xl py-2 w-full relative bg-white text-slate px-1 sm:px-3 space-y-8">
+      <div className=" w-[95%] sm:max-w-md rounded-xl shadow-xl py-2  relative bg-white text-slate px-2 sm:px-3 space-y-8">
         <div className="text-center mt-9">
           <div className="mt-5 space-y-2">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">

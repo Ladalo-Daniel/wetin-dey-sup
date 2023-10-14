@@ -1,7 +1,6 @@
 "use client";
 import {
   Button,
-  Navbar,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -16,6 +15,7 @@ import { RiArrowLeftLine } from "react-icons/ri";
 import { SlSettings } from "react-icons/sl";
 import { GrLogout } from "react-icons/gr";
 import Themeswitch from "./Themeswitcher";
+import Headroom from "react-headroom";
 
 export default function TopNavbar() {
   const Navigation = [
@@ -55,8 +55,8 @@ export default function TopNavbar() {
   const paths = usePathname();
   const router = useRouter();
   return (
-    <>
-      <nav  className=" flex justify-between static  w-full items-center dark:bg-darkSlate  bg-white">
+    <Headroom>
+      <nav className=" flex justify-between static  w-full items-center dark:bg-darkSlate  bg-white">
         <div className=" flex justify-normal gap-x-[0.20rem] py-3 items-center">
           <Tooltip
             placement="bottom"
@@ -142,6 +142,6 @@ export default function TopNavbar() {
           </PopoverContent>
         </Popover>
       </nav>
-    </>
+    </Headroom>
   );
 }
