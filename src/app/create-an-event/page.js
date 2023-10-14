@@ -3,7 +3,8 @@ import Mainlayout from "@/components/Mainlayout";
 
 export default function EventPage() {
   return (
-    <Mainlayout>
+    <Mainlayout>      
+      <CreateEvent />
       <CreateEvent />
     </Mainlayout>
   );
