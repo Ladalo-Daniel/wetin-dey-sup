@@ -2,7 +2,7 @@ import Themeprovider from "@/components/Themeprovider";
 import "../globals.css";
 
 export const metadata = {
-  title: "create-an-event || WDS",
+  title: "Comments || WDS",
   description: "",
 };
 

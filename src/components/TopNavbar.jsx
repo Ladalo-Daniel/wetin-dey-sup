@@ -1,6 +1,7 @@
 "use client";
 import {
   Button,
+  Navbar,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -13,6 +14,8 @@ import { LuCalendarDays } from "react-icons/lu";
 import { PiUsersThree, PiUsersThreeFill } from "react-icons/pi";
 import { RiArrowLeftLine } from "react-icons/ri";
 import { SlSettings } from "react-icons/sl";
+import { GrLogout } from "react-icons/gr";
+import Themeswitch from "./Themeswitcher";
 
 export default function TopNavbar() {
   const Navigation = [
@@ -48,12 +51,17 @@ export default function TopNavbar() {
       Link: "/create-an-event",
       navigateupName: "Create event",
     },
+    {
+      // for testing purpose
+      Link: "/comments",
+      navigateupName: "Comments",
+    },
   ];
   const paths = usePathname();
   const router = useRouter();
   return (
     <>
-      <div className=" flex justify-between fixed top-0 w-full items-center dark:bg-darkSlate mb-7 bg-white z-40">
+      <nav  className=" flex justify-between static  w-full items-center dark:bg-darkSlate  bg-white">
         <div className=" flex justify-normal gap-x-[0.20rem] py-3 items-center">
           <Tooltip
             placement="bottom"
@@ -107,7 +115,7 @@ export default function TopNavbar() {
           ))}
         </nav>
 
-        <Popover placement="bottom">
+        <Popover placement="bottom" className=" dark:border-white border">
           <PopoverTrigger>
             <Button
               isIconOnly
@@ -121,19 +129,24 @@ export default function TopNavbar() {
           "
           >
             <Button
+              startContent={<SlSettings />}
               onClick={() =>
                 router.push("/settings", { scroll: false, prefetch: false })
               }
-              className=" flex w-[100%] rounded-none items-center bg-transparent py-4 dark:text-white text-black"
+              className=" flex w-[100%]  rounded-none items-center justify-start bg-transparent py-4 dark:text-white text-black"
             >
               Settings
             </Button>
-            <Button className=" flex w-[100%] bg-lightRed  rounded-none items-center py-4 text-white">
+            <Button
+              startContent={<GrLogout />}
+              className=" flex w-[100%] bg-lightRed  rounded-none items-center justify-start py-4 dark:text-white text-white"
+            >
               Logout
             </Button>
+            <Themeswitch />
           </PopoverContent>
         </Popover>
-      </div>
+      </nav>
     </>
   );
 }
