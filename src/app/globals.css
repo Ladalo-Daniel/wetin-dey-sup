@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Inter:wght@400;500;600;700;800;900&family=MuseoModerno:wght@200;400;500&family=Poppins:wght@100;300;400;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body,
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    user-select: none;
+    user-zoom: fixed;
+}
+
+/* body background on dark theme */
+.dark body {
+    background-color: #0f172a;
+}
+
+/* default body  background color */
+body {
+    background-color: #e2e8f0;
+}
