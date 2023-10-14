@@ -11,22 +11,22 @@ module.exports = {
   theme: {
     colors: {
       orange: "#f97316",
-      //orange 500
       darkOrange: "#ea580c",
-      //orange 600
       lightOrange: "#fb923c",
-      //orange 400
       slate: "#0f172a",
-      //slate 800
       lightSlate: "#475569",
-      darkSlate:'#020617',
-      //slate 200
+      darkSlate: "#020617",
       white: "rgb(255, 255, 255)",
-      black:'rgb(0,0,0)'
+      black: "rgb(0,0,0)",
+      gray: "#1f2937",
+      formbackground: "#e2e8f0",
+      red: "#ff0000",
+      lightRed:"rgba(233,0,0,0.6)",
+      transparent: "rgba(0,0,0,0)",
+      indigo:"#4f46e5",
     },
     fontFamily: {
       poppins: ["poppins", "sans-serif"],
-      // this is the fontFamily we are using pls if you have any other let the team know before making any changes
     },
     extend: {
       screens: {
@@ -50,4 +50,3 @@ module.exports = {
   plugins: [nextui()],
 };
 
-//incase you have any changes to make let the team know before doing so pls....

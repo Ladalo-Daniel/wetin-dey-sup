@@ -1,9 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { IoIosSunny } from "react-icons/io";
 import { PiMoonLight } from "react-icons/pi";
-import { Button } from "@nextui-org/react";
 
 export default function Themeswitch() {
   const [mounted, setMounted] = useState(false);
@@ -22,28 +22,19 @@ export default function Themeswitch() {
     } else {
       setTheme("dark");
     }
+    navigator.vibrate([100, 30, 50]);
   };
 
   return (
-    <div className=" flex flex-col gap-y-2">
-      {theme === 'dark' ? <h1>Dark theme</h1> : <h1>Light theme</h1>}
-      <Button
-        isIconOnly
-        onClick={toggleTheme}
-        className=" flex justify-center items-center text-xl"
-      >
-        {theme === "dark" ? (
-          <span className="active:rotate-[360deg] duration-500">
-            <IoIosSunny />
-            <span className=" sr-only">Dark Theme</span>
-          </span>
-        ) : (
-          <span className="active:rotate-[360deg] duration-500">
-            <PiMoonLight />
-            <span className=" sr-only">Light Theme</span>
-          </span>
-        )}
-      </Button>
-    </div>
+    <Button
+      isIconOnly
+      startContent={theme === "dark" ? <PiMoonLight /> : <IoIosSunny />}
+      onClick={toggleTheme}
+      className="flex justify-start px-3 bg-transparent  cursor-default md:cursor-pointer w-[100%] rounded-none items-center text-xl"
+    >
+      <span className=" pl-3 text-sm">
+        {theme === "dark" ? "Dark theme" : "Light theme"}
+      </span>
+    </Button>
   );
 }
