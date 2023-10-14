@@ -1,9 +1,8 @@
 "use client"
 
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link, Tooltip} from "@nextui-org/react";
-import { BsMailbox } from "react-icons/bs";
 import { GrGallery } from "react-icons/gr";
-import { PiMicrophone, PiPlus } from "react-icons/pi";
+import { PiMicrophone } from "react-icons/pi";
 
 
 function CommentFormModal() {

@@ -1,9 +1,7 @@
 "use client"
 
-import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Image, Tooltip } from "@nextui-org/react"
-import { isAssetError } from "next/dist/client/route-loader"
+import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Image } from "@nextui-org/react"
 import { BsCalendar, BsClock, BsMap } from "react-icons/bs"
-import { GrLocation } from "react-icons/gr"
 import CommentFormModal from "./CommentFormModal"
 
 function EventCard() {
@@ -24,7 +22,7 @@ function EventCard() {
 }
 
   return (
-    <div className="overflow-auto relative">
+    <div className="overflow-auto sticky">
       <Card className="p-0 rounded-[5px] border-0 dark:bg-inherit ">
         <Image
           alt="Card background"
