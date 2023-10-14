@@ -1,9 +1,10 @@
 "use client"
 
-import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Image } from "@nextui-org/react"
+import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Image, Tooltip } from "@nextui-org/react"
 import { isAssetError } from "next/dist/client/route-loader"
-import { BsCalendar, BsClock } from "react-icons/bs"
+import { BsCalendar, BsClock, BsMap } from "react-icons/bs"
 import { GrLocation } from "react-icons/gr"
+import CommentFormModal from "./CommentFormModal"
 
 function EventCard() {
 
@@ -23,8 +24,8 @@ function EventCard() {
 }
 
   return (
-    <div>
-      <Card className="p-0 rounded-[5px] border-0 bg-inherit">
+    <div className="overflow-auto relative">
+      <Card className="p-0 rounded-[5px] border-0 dark:bg-inherit ">
         <Image
           alt="Card background"
           className="object-cover w-[100%] rounded-[5px] rounded-br-none rounded-bl-none "
@@ -37,8 +38,8 @@ function EventCard() {
               <span className="flex text-slate-500 items-center gap-2"><BsCalendar /> {eventData?.eventDate}</span>
               <span className="flex text-slate-500 items-center gap-2"><BsClock /> {eventData?.day}</span>
             </p>
-            <p className="items-center text-white tracking-tighter text-tiny flex gap-2">
-              <GrLocation className="text-inherit" />
+            <p className="items-center text-slate-500 tracking-tighter text-tiny flex gap-2">
+              <BsMap />
               {eventData?.location}
             </p>
         </CardBody>
@@ -46,10 +47,12 @@ function EventCard() {
           <Divider />
         </CardBody>
         <CardFooter className="overflow-visible justify-start flex items-start flex-col gap-2">
-          <Checkbox className="text-orange text-tiny text-slate-500">{`Check box to invite to ${<span className="text-orange">eventData?.group</span>}`}</Checkbox>
-          <Button className="w-[100%] bg-orange text-white font-bold ">
+          <Checkbox className="text-orange text-tiny text-slate-500">{`Check box to invite to ${eventData?.group}`}</Checkbox>
+          <Button className="w-[100%] bg-orange font-bold text-white">
             Share
           </Button>
+          
+          <CommentFormModal />
         </CardFooter>
         </Card>
     </div>
