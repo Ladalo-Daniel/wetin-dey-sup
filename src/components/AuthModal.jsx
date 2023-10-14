@@ -18,6 +18,7 @@ export default function AuthModal({ isOpen, onOpenChange }) {
   const [showpassword, setShowPassword] = useState(false);
 
   async function handleSubmit(data) {
+    data.preventDefault()
     try {
     } catch (error) {}
   }
@@ -38,7 +39,7 @@ export default function AuthModal({ isOpen, onOpenChange }) {
             </ModalHeader>
             <ModalBody>
               <form onSubmit={handleSubmit}>
-                <div className=" flex mb-1 flex-col">
+                <div className=" flex mb-3 flex-col">
                   <label
                     className=" font-medium text-gray text-sm"
                     htmlFor="Name"
@@ -47,18 +48,20 @@ export default function AuthModal({ isOpen, onOpenChange }) {
                   </label>
                   <div className=" relative">
                     <input
+                      required
                       type="text"
+                      placeholder="Your Name"
                       className=" border-[0.15rem] rounded focus:border-orange border-lightSlate  bg-white px-2 w-full py-2 outline-none text-black"
                     />
                     <span className="absolute right-2 text-xl text-black top-3">
                       <RiUserLine />
                     </span>
                   </div>
-                  <span className="text-sm  text-red ">
+                  {/* <span className="text-sm  text-red ">
                     fullname is a required field
-                  </span>
+                  </span> */}
                 </div>
-                <div className=" flex mb-1 flex-col">
+                <div className=" flex mb-3 flex-col">
                   <label
                     className=" font-medium text-gray text-sm"
                     htmlFor="Email"
@@ -67,18 +70,20 @@ export default function AuthModal({ isOpen, onOpenChange }) {
                   </label>
                   <div className="relative">
                     <input
+                      required
                       type="email"
-                      className=" border-[0.15rem] rounded border-lightSlate focus:border-orange  bg-white px-2 w-full py-2 outline-none text-black"
+                      placeholder="Your email"
+                      className=" border-[0.15rem] rounded border-lightSlate focus:border-orange dark:bg-white  bg-white px-2 w-full py-2 outline-none text-black"
                     />
                     <span className="absolute text-xl text-black  right-2 top-3">
                       <RiMailLine />
                     </span>
                   </div>
-                  <span className="text-sm  text-red ">
+                  {/* <span className="text-sm  text-red ">
                     email is a required field
-                  </span>
+                  </span> */}
                 </div>
-                <div className=" flex flex-col">
+                <div className=" flex mb-2 flex-col">
                   <label
                     className=" font-medium text-gray text-sm"
                     htmlFor="password"
@@ -87,6 +92,9 @@ export default function AuthModal({ isOpen, onOpenChange }) {
                   </label>
                   <div className=" relative">
                     <input
+                      required
+                      minLength={5}
+                      placeholder="Your password"
                       type={`${showpassword ? "text" : "password"}`}
                       className=" border-[0.15rem] border-lightSlate rounded focus:border-orange  bg-white px-2 w-full py-2 outline-none text-black"
                     />
@@ -97,12 +105,13 @@ export default function AuthModal({ isOpen, onOpenChange }) {
                       {showpassword ? <RiEyeLine /> : <RiEyeOffLine />}
                     </span>
                   </div>
-                  <span className="text-sm text-red">
+                  {/* <span className="text-sm text-red">
                     password is a required field
-                  </span>
+                  </span> */}
                 </div>
 
                 <Button
+                type="submit"
                   onClick={() => {
                     navigator.vibrate([100, 30, 50]);
                   }}

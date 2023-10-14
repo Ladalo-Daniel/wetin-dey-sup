@@ -24,6 +24,7 @@ module.exports = {
       red: "#ff0000",
       lightRed:"rgba(233,0,0,0.6)",
       transparent: "rgba(0,0,0,0)",
+      indigo:"#4f46e5",
     },
     fontFamily: {
       poppins: ["poppins", "sans-serif"],
