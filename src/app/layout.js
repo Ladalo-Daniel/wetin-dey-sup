@@ -2,11 +2,11 @@ import Themeprovider from "@/components/Themeprovider";
 import "./globals.css";
 
 export const metadata = {
-  title: "Get started || WDS",
+  title: "Wetin-dey-sup",
   description: "Welcome to WDS...",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout33({ children }) {
   return (
     <html lang="en">
       <body>
