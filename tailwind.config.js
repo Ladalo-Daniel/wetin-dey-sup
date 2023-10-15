@@ -15,7 +15,7 @@ module.exports = {
       lightOrange: "#fb923c",
       slate: "#0f172a",
       lightSlate: "#475569",
-      darkSlate: "#020617",
+      darkSlate: "#020617", 
       white: "rgb(255, 255, 255)",
       black: "rgb(0,0,0)",
       gray: "#1f2937",

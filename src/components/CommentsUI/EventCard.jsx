@@ -23,7 +23,7 @@ function EventCard() {
 
   return (
     <div className="overflow-auto sticky">
-      <Card className="p-0 rounded-[5px] border-0 dark:bg-inherit ">
+      <Card className="p-0 rounded-[5px] border-0 dark:bg-darkSlate ">
         <Image
           alt="Card background"
           className="object-cover w-[100%] rounded-[5px] rounded-br-none rounded-bl-none "

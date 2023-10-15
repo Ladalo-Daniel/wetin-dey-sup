@@ -8,7 +8,7 @@ export const UserFollowCard = ({fullName, username, profileImg, bio}) => {
   // "https://i.pravatar.cc/150?u=a04258114e29026702d"
 
   return (
-    <Card shadow="none" className="max-w-[300px] border-none bg-transparent">
+    <Card shadow="none" className="max-w-[300px] dark:bg-darkSlate border-none bg-transparent">
       <CardHeader className="justify-between">
         <div className="flex gap-3">
           <Avatar isBordered radius="full" size="md" src={profileImg} />
