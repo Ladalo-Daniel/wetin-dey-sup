@@ -5,8 +5,8 @@ import { PiMicrophone } from "react-icons/pi";
 import useAuthUser from "./useAuthUser";
 import { useContext, useState } from "react";
 import { FcGallery } from "react-icons/fc";
-import { CommentContext } from "./EventCard";
 import toast from "react-hot-toast";
+import { CommentContext } from "./CommentsWrapper";
 // import useComments from "./useComments";
 
 function CommentFormModal() {
@@ -20,13 +20,12 @@ function CommentFormModal() {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
-      console.log(selectedImage)
     }
   };
-  // const [comment, setComment] = useState({})
+  const [comment, setComment] = useState({})
   // const {comments, appendComment: updateList} = useComments()
 
-  const {comment, setComment, comments, appendComment: updateList} = useContext(CommentContext)
+  const {appendComment: updateList} = useContext(CommentContext)
 
   async function handleSubmit(e) {
     try {

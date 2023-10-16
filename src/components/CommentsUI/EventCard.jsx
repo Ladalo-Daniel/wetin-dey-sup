@@ -3,32 +3,25 @@
 import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Image } from "@nextui-org/react"
 import { BsCalendar, BsClock, BsMap } from "react-icons/bs"
 import CommentFormModal from "./CommentFormModal"
-import { createContext, useState } from "react";
-import useComments from "./useComments";
 
-
-export const CommentContext = createContext()
 
 function EventCard() {
 
   const eventData = {
-    img: "https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
-    authorLogo: "https://img.freepik.com/free-photo/portrait-cool-man-with-sunglasses-dancing_23-2148851011.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
-    authorName: "Gaza",
-    date: "Just now",
-    link: "javascript:void(0)",
-    eventDate: "Nov 3 2023",
-    day: "Friday 4 - 6pm",
-    location: "National Stadium Abuja",
-    tag:"Football Match",
-    group: "Sports"
-}
+      img: "https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
+      authorLogo: "https://img.freepik.com/free-photo/portrait-cool-man-with-sunglasses-dancing_23-2148851011.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
+      authorName: "Gaza",
+      date: "Just now",
+      link: "javascript:void(0)",
+      eventDate: "Nov 3 2023",
+      day: "Friday 4 - 6pm",
+      location: "National Stadium Abuja",
+      tag:"Football Match",
+      group: "Sports"
+  }
 
-  const [comment, setComment] = useState({})
-  const {comments, appendComment} = useComments()
-  console.log(comments)
   return (
-    <CommentContext.Provider value={{comment, setComment, comments, appendComment }}>
+    <>
     <div className="overflow-auto sticky">
       <Card className="p-0 rounded-[5px] border-0 dark:bg-darkSlate ">
         <Image
@@ -61,7 +54,7 @@ function EventCard() {
         </CardFooter>
         </Card>
     </div>
-    </CommentContext.Provider>
+    </>
   )
 }
 
