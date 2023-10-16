@@ -1,7 +1,9 @@
-//import Link from 'next/link'
+"use client"
+
+import formatTimeToAMPM from '@/utils/formatTimeToAMPM'
+import { Avatar, Card, Chip } from '@nextui-org/react'
+import Link from 'next/link'
 import React from 'react'
-import { BsCalendar2, BsClock } from 'react-icons/bs'
-import { SlLocationPin } from 'react-icons/sl'
 
 export default function UpcomingEventCard() {
     const events = [
@@ -54,13 +56,21 @@ export default function UpcomingEventCard() {
     
 
     return(
-        <div className=' flex flex-col gap-3 md:flex-row lg:flex-wrap  '>
+        <div className='flex flex-col gap-4 w-[400px] ml-4'>
+            <Chip className='text-lg font-bold p-4 text-inherit bg-darkOrange'>Upcoming Events</Chip>
             {events.map((item, index) => (
-                <article className=' bg-white rounded-sm p-2 w-[90vw]  '>
-                    <a to={item.link} key={index}>
-                        <img src={item.img}  loading="lazy" alt={item.title} className=" w-12 h-12 rounded-[50%] object-cover" />
-                    </a>
-                </article>
+                <Link href={item.link} key={index}>
+                    <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row items-start gap-3'>
+                        <div>
+                            <Avatar src={item.img} alt={item.title} size='lg' radius="sm"/>
+                        </div>
+                        <div className='-my-2'>
+                            <p>Lorem ipsum dolor, sit amet </p>
+                            <p>Consectetur adipisicing elit. Quae, beatae?</p>
+                            <p>{formatTimeToAMPM(new Date())}</p>
+                        </div>
+                    </Card>
+                </Link>
             ))}
         </div>
     )
