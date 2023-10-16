@@ -3,22 +3,23 @@
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Link, Tooltip, Textarea} from "@nextui-org/react";
 import { PiMicrophone } from "react-icons/pi";
 import useAuthUser from "./useAuthUser";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcGallery } from "react-icons/fc";
-import useComments from "./useComments";
-
+import { CommentContext } from "./EventCard";
+// import useComments from "./useComments";
 
 function CommentFormModal() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const {isAuthenticated, user} = useAuthUser()
-  const [comment, setComment] = useState({})
-  const {comments, setComments:updateList} = useComments()
+  // const [comment, setComment] = useState({})
+  // const {comments, appendComment: updateList} = useComments()
+
+  const {comment, setComment, comments, appendComment: updateList} = useContext(CommentContext)
 
   function handleSubmit(e) {
     e.preventDefault()
     setComment({...comment, name: user?.username, profile: user?.profile, images: [this?.image]})
-    updateList([...comments, comment])
-    // console.log(comments)
+    updateList(comment)
     onOpenChange(false)
     
   }

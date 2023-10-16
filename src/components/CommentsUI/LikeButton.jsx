@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '@nextui-org/react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
+import useComments from './useComments';
 
-const LikeButton = () => {
+const LikeButton = ({likes: numberOfLikes}) => {
   const [liked, setLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(numberOfLikes);
 
   const toggleLike = () => {
     setLiked(liked => !liked);

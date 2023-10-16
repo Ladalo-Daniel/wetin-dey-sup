@@ -3,6 +3,11 @@
 import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Image } from "@nextui-org/react"
 import { BsCalendar, BsClock, BsMap } from "react-icons/bs"
 import CommentFormModal from "./CommentFormModal"
+import useComments from "./useComments";
+import { createContext, useEffect, useState } from "react";
+
+
+export const CommentContext = createContext()
 
 function EventCard() {
 
@@ -21,7 +26,11 @@ function EventCard() {
     group: "Sports"
 }
 
+  const [comment, setComment] = useState({})
+  const {comments, appendComment} = useComments()
+
   return (
+    <CommentContext.Provider value={{comment, setComment, comments, appendComment }}>
     <div className="overflow-auto sticky">
       <Card className="p-0 rounded-[5px] border-0 dark:bg-darkSlate ">
         <Image
@@ -54,6 +63,7 @@ function EventCard() {
         </CardFooter>
         </Card>
     </div>
+    </CommentContext.Provider>
   )
 }
 
