@@ -5,12 +5,12 @@ import TodayWrapper from "@/components/TimelineUI/TodayWrapper";
 
 export default function TimelinePage() {
   return (
-     <Mainlayout>
-        <div className=" min-h-screen">
-         <SearchEvents />
-         <TagsButton />
-         <TodayWrapper />
-        </div>
-     </Mainlayout>
-  )
+    <Mainlayout>
+      <section className=" min-h-screen">
+        <SearchEvents />
+        <TagsButton />
+        <TodayWrapper />
+      </section>
+    </Mainlayout>
+  );
 }
