@@ -57,7 +57,7 @@ export default function TodayEventCard() {
       <div className=" flex w-max gap-4">
         {
           events.map((items, key) => (
-            <article className=" w-[90vw] h-[60vh]  md:w-[40vw] xl:w-[33vw] lg:h-[75vh] mx-auto mt-4 mb-4 shadow-2xl border-lightSlate border rounded-md duration-300 hover:shadow-sm text-darkSlate dark:text-white" key={key}>
+            <article className=" bg-white dark:bg-darkSlate w-[90vw] h-[60vh]  md:w-[40vw] xl:w-[33vw] lg:h-[75vh] mx-auto mt-4 mb-4 shadow-2xl border-lightSlate border rounded-md duration-300 hover:shadow-sm text-darkSlate dark:text-white" key={key}>
                 <a to={items.link}>
                     <img src={items.img} loading="lazy" alt={items.title}  className="w-full h-[35vh] lg:h-[45vh] rounded-t-md object-cover" />
                     <div className="flex items-center mt-2 pt-3 ml-4 mr-2">
