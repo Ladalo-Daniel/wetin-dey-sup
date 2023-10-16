@@ -1,4 +1,4 @@
-import CommentActionCard from "../TimelineUI/CommentActionCard";
+import CommentActionCard from "./CommentActionCard";
 
 import { Avatar, Card, CardBody, CardFooter, Image, Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 import { UserFollowCard } from "./UserFollowCard"
