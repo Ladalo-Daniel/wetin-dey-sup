@@ -2,16 +2,25 @@
 
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Textarea} from "@nextui-org/react";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import useAuthUser from "./useAuthUser";
 
 
 function UpdateComment({...props}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [comment, setComment] = useState(null)
+  const { user } = useAuthUser()
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    // if successful, close modal
-    onOpenChange(false)
+  async function handleSubmit(e) {
+    try {
+      e.preventDefault()
+      await setComment(comment => ({...comment, name: user?.username, profile: user?.profile, images: ['selectedImage']}))
+      // updateList(comment)
+      toast.success("Commented updated successfully.")
+      onOpenChange(false)
+    } catch(error) {
+      toast.error(error)
+    }
   }
 
   return (

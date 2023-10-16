@@ -5,7 +5,7 @@ export default function useAuthUser() {
     const user = {
         id: 1,
         username: "John Lada",
-        authenticated: "false",
+        authenticated: "true",
         profile: "https://img.freepik.com/free-psd/saturday-night-party-social-media-instagram-template_505751-3745.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=sph",
         images: [],
         image: '',

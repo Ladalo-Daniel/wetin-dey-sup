@@ -1,7 +1,7 @@
 "use client"
 
-import useComments from "./useComments";
 import CommentItem from "./CommentItem";
+import useComments from "./useComments";
 
 function CommentSection() {
   const {comments, appendComment} = useComments()

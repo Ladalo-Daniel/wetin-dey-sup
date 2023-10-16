@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@nextui-org/react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
-import useComments from './useComments';
 
 const LikeButton = ({likes: numberOfLikes}) => {
   const [liked, setLiked] = useState(false);

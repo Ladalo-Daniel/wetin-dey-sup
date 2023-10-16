@@ -3,15 +3,13 @@
 import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Image } from "@nextui-org/react"
 import { BsCalendar, BsClock, BsMap } from "react-icons/bs"
 import CommentFormModal from "./CommentFormModal"
+import { createContext, useState } from "react";
 import useComments from "./useComments";
-import { createContext, useEffect, useState } from "react";
 
 
 export const CommentContext = createContext()
 
 function EventCard() {
-
-  const IS_AUTHENTICATED = false
 
   const eventData = {
     img: "https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
@@ -28,7 +26,7 @@ function EventCard() {
 
   const [comment, setComment] = useState({})
   const {comments, appendComment} = useComments()
-
+  console.log(comments)
   return (
     <CommentContext.Provider value={{comment, setComment, comments, appendComment }}>
     <div className="overflow-auto sticky">
