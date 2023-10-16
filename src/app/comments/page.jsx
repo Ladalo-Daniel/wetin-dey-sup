@@ -1,6 +1,5 @@
 import CommentSection from "@/components/CommentsUI/CommentSection";
 import EventCard from "@/components/CommentsUI/EventCard";
-import LoadingUI from "@/components/CommentsUI/loading";
 import Mainlayout from "@/components/Mainlayout";
 
 export default function TimelinePage() {
