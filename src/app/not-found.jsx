@@ -11,7 +11,7 @@ export default function Notfound() {
         You&apos;v entered a url that does not exist, check for typo errors.
       </p>
 
-      <div className="flex justify-center rounded  items-center gap-x-4">
+      <div className="flex justify-center rounded items-center gap-x-4">
         <Button
         className=" bg-orange text-white"
           onClick={() => {
