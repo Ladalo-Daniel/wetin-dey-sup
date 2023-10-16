@@ -1,8 +1,6 @@
 "use client";
 import { Button } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { useEffect, useState } from "react";
 import { IoIosSunny } from "react-icons/io";
 import { PiMoonLight } from "react-icons/pi";
@@ -24,7 +22,6 @@ export default function Themeswitch() {
     } else {
       setTheme("dark");
     }
-    navigator.vibrate([100, 30, 50]);
     navigator.vibrate([100, 30, 50]);
   };
 
