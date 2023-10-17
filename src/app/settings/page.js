@@ -6,6 +6,14 @@ import Mainlayout from "@/components/Mainlayout";
 import SettingsComp from '@/components/Settings/settings';
 
 export default function Settings() {
+
+  const userProfile = [
+    {
+      userName: "Salome Adams",
+      userEmail: "salome357@gmail.com",
+      profileImage: "images/stefan-unsplash.jpg",
+    }
+  ]
   
   return (
     <Mainlayout>
@@ -14,7 +22,7 @@ export default function Settings() {
           <h1 className="font-bold">Settings</h1>
           <BiDotsVerticalRounded className="w-6 h-6 text-gray-500"/>
         </div>
-        <SettingsComp />
+        <SettingsComp userDetail={userProfile} />
         <div className="my-2 flex flex-wrap gap-4 justify-center w-full items-center">
           <Button color="primary" className="p-4 rounded-md hover:text-white" variant="light">
             <span className='text-[#f56d6df2]'>SIGN OUT</span>

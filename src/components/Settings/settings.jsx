@@ -17,7 +17,7 @@ import ThemeSwitcherModal from "@/components/ThemeModal";
 
 
 
-function SettingsComp() {
+function SettingsComp({ userDetail }) {
     const { theme, setTheme } = useTheme();
     const selectTheme = (newTheme) => {
         setTheme(newTheme);
@@ -26,25 +26,28 @@ function SettingsComp() {
 
   return (
     <div>
-        <div className="my-6">
-            <Card className="py-4 flex flex-col items-center dark:bg-slate shadow-md dark:border dark:border-lightSlate rounded-md">
-                <CardHeader className="w-full pb-0 pt-2 px-4 text-center flex justify-center">
-                    <Image
-                    alt="Card background"
-                    className="object-cover h-40 rounded-full"
-                    src="/images/stefan-unsplash.jpg"
-                    width={150}
-                    height={50}
-                    
-                    />
-                </CardHeader>
-                <CardBody className="text-center">
-                    <p className="text-tiny uppercase font-bold">Salome Adams</p>
-                    <small className="text-default-500">salome357@gmail.com</small>
-                    <Link href={'/profile'} className="font-bold text-large">Edit Profile</Link>
-                </CardBody>
-            </Card>
-        </div>
+        {userDetail.map((user) => (
+            <div key={user.id} className="my-6">
+                <Card className="py-4 flex flex-col items-center dark:bg-slate shadow-md dark:border dark:border-lightSlate rounded-md">
+                    <CardHeader className="w-full pb-0 pt-2 px-4 text-center flex justify-center">
+                        <Image
+                        alt="Card background"
+                        className="object-cover h-40 rounded-full"
+                        src={user.profileImage}
+                        width={150}
+                        height={50}
+                        
+                        />
+                    </CardHeader>
+                    <CardBody className="text-center">
+                        <p className="text-tiny uppercase font-bold">{user.userName}</p>
+                        <small className="text-default-500">{user.userEmail}</small>
+                        <Link href={'/profile'} className="font-bold text-large">Edit Profile</Link>
+                    </CardBody>
+                </Card>
+            </div>
+        ))}
+        
         <div className="py-4 my-3 flex flex-col items-center dark:border dark:bg-slate dark:border-lightSlate bg-white">
             <div className="w-full gap-y-8">
                 <Link className="hover:bg-lightSlate" href={'/'}>
