@@ -27,7 +27,7 @@ function SettingsComp({ userDetail }) {
   return (
     <div>
         {userDetail.map((user) => (
-            <div key={user.id} className="my-6">
+            <div key={user.id} className="my-6 relative z-0">
                 <Card className="py-4 flex flex-col items-center dark:bg-slate shadow-md dark:border dark:border-lightSlate rounded-md">
                     <CardHeader className="w-full pb-0 pt-2 px-4 text-center flex justify-center">
                         <Image

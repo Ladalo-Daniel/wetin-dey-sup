@@ -1,13 +1,13 @@
 'use client'
 
 import { useState, useRef } from "react";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import Calendar from "react-calendar";
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 import 'react-calendar/dist/Calendar.css';
 import CalenderEventsAccordion from "./CalenderEventAccordion";
-import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from "@nextui-org/react";
-import ModalComponent, { NoEventModal } from "./CalenderModal";
+import { useDisclosure } from "@nextui-org/react";
+import ModalComponent from "./CalenderModal";
 import NoEvent from "./NoEventModal";
 
 

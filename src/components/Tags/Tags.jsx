@@ -8,7 +8,7 @@ export default function TagsComp({ tags }) {
      return (
         <>
             {tags.map(({id, tagName, events, imageName}) => (
-                <div key={id} className="border dark:border-lightSlate rounded-md h-1/5 text-black md:h-2/5 flex flex-col my-10 bg-transparent">
+                <div key={id} className=" shadow-lg border dark:border-lightSlate rounded-md h-1/5 text-black md:h-2/5 flex flex-col my-10 bg-transparent">
                     <div key={id} className="w-full h-[150px] md:h-4/5">
                         <Image 
                             src={imageName}

@@ -18,10 +18,6 @@ export default function Settings() {
   return (
     <Mainlayout>
       <div className="p-4 bg-gray-100 h-full dark:bg-slate">
-        <div className="flex justify-between relative pb-4">
-          <h1 className="font-bold">Settings</h1>
-          <BiDotsVerticalRounded className="w-6 h-6 text-gray-500"/>
-        </div>
         <SettingsComp userDetail={userProfile} />
         <div className="my-2 flex flex-wrap gap-4 justify-center w-full items-center">
           <Button color="primary" className="p-4 rounded-md hover:text-white" variant="light">

@@ -9,7 +9,7 @@ export default function CalenderEventsAccordion({events}) {
     <>
       {events.map((event) => (
 
-        <div key={event.id} className="bg-white dark:border dark:bg-slate dark:border-[lightgrey] w-full flex rounded-md my-3">
+        <div key={event.id} className="bg-white dark:border my-5 dark:bg-slate dark:border-[lightgrey] w-full flex rounded-md">
             <div className="p-2 flex items-center">
                 {/* <image src="../../public/images/stefan-unsplash.jpg" alt='image' className="w-10 h-10" /> */}
                 <Image 
