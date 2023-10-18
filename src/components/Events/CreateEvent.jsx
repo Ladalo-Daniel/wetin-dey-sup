@@ -1,6 +1,6 @@
 "use client";
 import { Avatar, Button } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { BsSendCheck } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
