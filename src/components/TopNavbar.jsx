@@ -27,11 +27,11 @@ export default function TopNavbar() {
       navigateupName: "Timeline",
     },
     {
-      Link: "/my-people",
+      Link: "/tags",
       icon: <PiUsersThree />,
       activeIcon: <PiUsersThreeFill />,
-      tooltip: "My people",
-      navigateupName: "my people",
+      tooltip: "My Tags",
+      navigateupName: "my tags",
     },
     {
       Link: "/calender",
