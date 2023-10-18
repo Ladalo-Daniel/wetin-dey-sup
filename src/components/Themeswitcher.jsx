@@ -23,7 +23,6 @@ export default function Themeswitch() {
       setTheme("dark");
     }
     navigator.vibrate([100, 30, 50]);
-    navigator.vibrate([100, 30, 50]);
   };
 
   return (

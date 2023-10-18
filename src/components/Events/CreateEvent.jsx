@@ -30,7 +30,7 @@ export default function CreateEvent() {
 
   const Data = States;
   return (
-    <section className="  font-poppins mt-4  pb-28 flex items-center justify-center">
+    <section className="font-poppins mt-4  pb-28 flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
         className="  w-[95%] bg-white  dark:bg-darkSlate  py-5 rounded-md  px-5 sm:max-w-lg md:max-w-xl "
@@ -61,20 +61,14 @@ export default function CreateEvent() {
             </label>
             <select
               required
-              name="State"
+              name="states"
               onChange={(event) => setStates(event.target.value)}
               className="w-full mt-2  px-3 text-sm placeholder:text-sm  border-orange py-[0.6rem] text-gray dark:text-white bg-transparent outline-none border-[0.12rem]  shadow-sm rounded-sm"
             >
-              {Data.map((state) => (
-                <>
-                  <option
-                    className=" text-gray"
-                    key={state.id}
-                    value={state.states}
-                  >
-                    {state.states}
-                  </option>
-                </>
+              {Data.map((state, index) => (
+                <option className=" text-gray" key={index} value={state.states}>
+                  {state.states}
+                </option>
               ))}
             </select>
           </div>
