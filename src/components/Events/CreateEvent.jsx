@@ -61,7 +61,7 @@ export default function CreateEvent() {
             </label>
             <select
               required
-              name="State"
+              name="states"
               onChange={(event) => setStates(event.target.value)}
               className="w-full mt-2  px-3 text-sm placeholder:text-sm  border-orange py-[0.6rem] text-gray dark:text-white bg-transparent outline-none border-[0.12rem]  shadow-sm rounded-sm"
             >
