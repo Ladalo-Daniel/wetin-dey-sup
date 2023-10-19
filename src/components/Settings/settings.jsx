@@ -32,7 +32,7 @@ function SettingsComp({ userDetail }) {
                     <CardHeader className="w-full pb-0 pt-2 px-4 text-center flex justify-center">
                         <Image
                         alt="Card background"
-                        className="object-cover h-40 rounded-full"
+                        className="object-cover h-40 w-40 rounded-full"
                         src={user.profileImage}
                         width={150}
                         height={50}
@@ -42,7 +42,12 @@ function SettingsComp({ userDetail }) {
                     <CardBody className="text-center">
                         <p className="text-tiny uppercase font-bold">{user.userName}</p>
                         <small className="text-default-500">{user.userEmail}</small>
-                        <Link href={'/profile'} className="font-bold text-large">Edit Profile</Link>
+                        <Link 
+                            scroll={false}
+                            prefetch={false}
+                            href={'/profile'}
+                            className="font-bold text-large w-fit max-w-auto"
+                        >Edit Profile</Link>
                     </CardBody>
                 </Card>
             </div>
@@ -50,16 +55,24 @@ function SettingsComp({ userDetail }) {
         
         <div className="py-4 my-3 flex flex-col items-center dark:border dark:bg-slate dark:border-lightSlate bg-white">
             <div className="w-full gap-y-8">
-                <Link className="hover:bg-lightSlate" href={'/'}>
+                <Link 
+                    scroll={false}
+                    prefetch={false} 
+                    className="hover:bg-lightSlate" 
+                    href={'/'}
+                >
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate  hover:bg-[#d3d3d3]">
                         <div className="flex items-center text-gray-600">
                             <IoMdNotificationsOutline className="mx-2" size={24}/>
-                            Notification
+                            Notification 
                         </div>
                         <div><AiOutlineRight size={24}/></div>
                     </div>
                 </Link>
-                <Link href={'/'}>
+                <Link 
+                    scroll={false}
+                    prefetch={false} href={'/'}
+                >
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate  hover:bg-[#d3d3d3]">
                         <div className="flex items-center text-gray-600">
                             <MdOutlinePrivacyTip className="mx-2" size={24}/>
@@ -69,18 +82,21 @@ function SettingsComp({ userDetail }) {
                     </div>
                 </Link>
                 <di>
-                    <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate  hover:bg-[#d3d3d3]">
+                    <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate relative hover:bg-[#d3d3d3]">
                         <div className="flex items-center text-gray-600">
                             <RiApps2Line className="mx-2" size={24}/>
                             Appearance
                         </div>
-                        <div className="flex w-3/5 justify-end">
+                        <div className="flex w-[99%] justify-end absolute">
                             <ThemeSwitcherModal selectTheme={selectTheme} />
-                            {/* <AiOutlineRight size={24}/> */}
                         </div>
                     </div>
                 </di>
-                <Link href={'/'}>
+                <Link 
+                    scroll={false}
+                    prefetch={false} 
+                    href={'/'}
+                >
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate hover:bg-[#d3d3d3]">
                         <div className="flex items-center text-gray-600">
                             <IoLanguage className="mx-2" size={24}/>
@@ -89,7 +105,11 @@ function SettingsComp({ userDetail }) {
                         <div className="flex gap-3"> <span className="text-orange-500">EN</span> <AiOutlineRight  size={24}/></div>
                     </div>
                 </Link>
-                <Link href={'/'}>
+                <Link 
+                    scroll={false}
+                    prefetch={false} 
+                    href={'/'}
+                >
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate  hover:bg-[lightgrey]">
                         <div className="flex items-center text-gray-600">
                             <FaGlobeAfrica className="mx-2" size={24}/>
@@ -103,7 +123,9 @@ function SettingsComp({ userDetail }) {
         </div>
         <div className="py-4 my-3 flex flex-col items-center dark:bg-slate dark:border dark:border-lightSlate bg-white">
             <div className="w-full gap-y-8">
-                <Link href={'/'}>
+                <Link
+                    scroll={false}
+                    prefetch={false} href={'/'}>
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate  hover:bg-[lightgrey]">
                         <div className="flex items-center text-gray-600">
                             <FiHelpCircle className="mx-2" size={24}/>
@@ -112,7 +134,9 @@ function SettingsComp({ userDetail }) {
                         <div><AiOutlineRight size={24}/></div>
                     </div>
                 </Link>
-                <Link href={'/'}>
+                <Link
+                    scroll={false}
+                    prefetch={false} href={'/'}>
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate hover:bg-[lightgrey]">
                         <div className="flex items-center text-gray-600">
                             <FcAbout className="mx-2 text-gray-600" size={24}/>
