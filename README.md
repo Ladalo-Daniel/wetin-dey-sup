@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wetin dey sup social app
 
-## Getting Started
+# Features
+Functional social app where you can follow up friends, comment, create your own event and view other events and many more.
 
-First, run the development server:
+## Hero
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+It's is a fully functional event app built collaboratively with my friends/team using Next js, Mongo db and Tailwind css.
+
+## Steps to create the project
+
+### Clone the git repo
+```sh
+git clone https://github.com/Ladalo-Daniel/wetin-dey-sup.git
+```
+Install the project dependencies with npm
+
+```sh
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install the project dependencies with yarn
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```sh
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Start the development server by running
+```sh
+npm dev
+```
 
-## Learn More
+Start the development server by running
+```sh
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+See your changes live.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Join our team and collaborate
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Create new folders in the app directory and add the page file inside the folder, remmeber the name of that folder will be  the url of that page, so make it unique and the create all your neccesasy componenets inside a special folder in the componenets folder and let us review ...
