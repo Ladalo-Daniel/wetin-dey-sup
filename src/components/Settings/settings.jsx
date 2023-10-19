@@ -42,7 +42,7 @@ function SettingsComp({ userDetail }) {
                     <CardBody className="text-center">
                         <p className="text-tiny uppercase font-bold">{user.userName}</p>
                         <small className="text-default-500">{user.userEmail}</small>
-                        <Link href={'/profile'} className="font-bold text-large">Edit Profile</Link>
+                        <Link href={'/profile'} className="font-bold mx-auto text-large">Edit Profile</Link>
                     </CardBody>
                 </Card>
             </div>
