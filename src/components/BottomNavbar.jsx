@@ -17,11 +17,11 @@ export default function BottomNavbar() {
       tooltip: "Timeline",
     },
     {
-      name: "My people",
-      Link: "/my-people",
+      name: "My Tags",
+      Link: "/tags",
       icon: <PiUsersThree />,
       activeIcon: <PiUsersThreeFill />,
-      tooltip: "My people",
+      tooltip: "My Tags",
     },
     {
       name: "Calender",

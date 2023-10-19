@@ -13,6 +13,7 @@ export default function Notfound() {
 
       <div className="flex justify-center rounded-none items-center gap-x-4">
         <Button
+        
         className=" bg-orange text-white"
           onClick={() => {
             window.history.back();

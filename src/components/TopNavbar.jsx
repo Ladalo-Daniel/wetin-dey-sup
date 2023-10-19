@@ -1,5 +1,6 @@
 "use client";
 import {
+  Avatar,
   Button,
   Popover,
   PopoverContent,
@@ -17,7 +18,7 @@ import { GrLogout } from "react-icons/gr";
 import Themeswitch from "./Themeswitcher";
 import Headroom from "react-headroom";
 
-export default function TopNavbar() {
+export default function TopNavbar({el}) {
   const Navigation = [
     {
       Link: "/timeline",
@@ -27,11 +28,11 @@ export default function TopNavbar() {
       navigateupName: "Timeline",
     },
     {
-      Link: "/my-people",
+      Link: "/tags",
       icon: <PiUsersThree />,
       activeIcon: <PiUsersThreeFill />,
-      tooltip: "My people",
-      navigateupName: "my people",
+      tooltip: "My Tags",
+      navigateupName: "my tags",
     },
     {
       Link: "/calender",
@@ -55,6 +56,17 @@ export default function TopNavbar() {
       // for testing purpose
       Link: "/comments",
       navigateupName: "Comments",
+    },
+    {
+      // for testing purpose
+      Link: "/tags",
+      navigateupName: <div className="flex gap-2 items-center">
+        <Avatar src="https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais" />
+        <div>
+          <h2 className="font-bold font-poppins light:text-slate">Techies</h2>
+          <p className="font-thin dark:text-lightSlate text-gray-300 text-tiny">12 members</p>
+        </div>
+      </div>
     },
   ];
   const paths = usePathname();
