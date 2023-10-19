@@ -1,15 +1,20 @@
 "use client"
 
-import { Chip } from '@nextui-org/react'
-import React from 'react'
-import EventItem from './EventItem'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar } from 'swiper/modules';
+//import { Chip } from '@nextui-org/react'
+//import React from 'react'
+// import EventItem from './EventItem'
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Scrollbar } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 
+import { Card, Chip, Image, Link, User } from '@nextui-org/react'
+import { BsCalendar2, BsClock } from 'react-icons/bs'
+import { SlLocationPin } from 'react-icons/sl'
 
-export default function TodayEventCard({timestamp, data}) {
+
+
+export default function EventItemCard({timestamp, data}) {
     const events = [
         {
             img: "https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
@@ -61,14 +66,51 @@ export default function TodayEventCard({timestamp, data}) {
  return (
     <div className=' font-poppinsf flex flex-col gap-5 relative items-start '>
       <div className="flex flex-col">
-        <Chip className='bg-darkOrange'>{timestamp}</Chip>
+        <Chip className='bg-darkOrange rounded-md cursor-pointer'>{timestamp}</Chip>
       </div>
-      <div className=" flex gap-4 flex-1">
+      <div className=" flex gap-4 flex-1 overflow-x-scroll">
         {
           events.map((event) => (
-            <SwiperSlide style={{width:300, maxWidth: 400}}>
-                <EventItem event={event} key={`${event?.authorName}-${Math.random()}`}/>
-            </SwiperSlide>
+            <Card className="dark:bg-darkSlate pb-4 w-[300px] rounded-sm" key={event.authorName}>
+                <Link href="#" className='flex flex-col gap-2 items-start text-inherit w-auto '>       
+                <Image 
+                    src={event?.img} 
+                    alt={event?.title}  
+                    style={{width: 300, height: 200, objectFit: "cover",}}
+                    className="object-contain rounded-sm "
+                    />
+                    <div className="flex flex-col gap-2 event?-center mt-2 pt-3 ml-4 mr-2">
+                        <User   
+                            name={event?.authorName}
+                            description={(
+                                <Link href='#' size="sm" isExternal>
+                                @{event?.authorName}
+                                </Link>
+                            )}
+                            avatarProps={{
+                                src: event?.authorLogo
+                            }} />
+                    </div>
+                    <Chip className=' ml-4 mt-2 bg-darkOrange p-1 rounded-md font-poppins w-max text-inherit'>{event?.tag}</Chip>
+                    <div className="pt-3 ml-4 mr-2 mb-3 flex flex-row gap-2 items-center justify-between">
+                        <div className='flex items-center gap-2'>
+                        <BsCalendar2 />
+                        <span>{event?.eventDate}</span>
+                        </div>
+                        <div className='flex items-center gap-2 '>
+                            <BsClock />
+                            <span>{event?.day}</span>
+                        </div>
+                    </div>
+                    <div className='flex items-center gap-2 ml-4'>
+                        <SlLocationPin />
+                        <span>{event?.location}</span>
+                    </div>
+                </Link>
+            </Card>
+            // <SwiperSlide style={{width:300, maxWidth: 400}}>
+                // <EventItem event={event} key={`${event?.authorName}-${Math.random()}`}/>
+            // </SwiperSlide>
             ))
         }
        </div>

@@ -1,7 +1,6 @@
 "use client"
 
 import { BsSearch } from "react-icons/bs";
-import SearchModal from "./SearchModal";
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 
@@ -15,7 +14,7 @@ export default function SearchEvents() {
 
   return (
      <>
-      <div className="flex w-full justify-center flex-wrap md:flex-nowrap gap-4">
+      <div className="flex  justify-center flex-wrap md:flex-nowrap w-full gap-4">
         <Input
             isClearable
             type="text"
@@ -24,7 +23,7 @@ export default function SearchEvents() {
             placeholder="Search for events with keywords **..."
             // defaultValue={"Football"}
             onClear={() => {}}
-            className="max-w-xl p-2"
+            className=" rounded-sm p-2  "
         />
         {/* {handleSearch && <SearchModal state={state} setState={setState} />} */}
        </div>

@@ -56,8 +56,8 @@ export default function UpcomingEventCard() {
     
 
     return(
-        <div className='flex flex-col gap-4 w-[400px] ml-4'>
-            <Chip className='text-lg font-bold p-4 text-inherit bg-darkOrange'>Upcoming Events</Chip>
+        <div className='flex flex-col gap-4 w-[90vw] md:w-[400px] ml-6'>
+            <Chip className='text-lg font-bold p-4 text-inherit rounded-small bg-darkOrange'>Upcoming Events</Chip>
             {events.map((item, index) => (
                 <Link href={item.link} key={index}>
                     <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row items-start gap-3'>
