@@ -59,7 +59,7 @@ function SettingsComp({ userDetail }) {
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate  hover:bg-[#d3d3d3]">
                         <div className="flex items-center text-gray-600">
                             <IoMdNotificationsOutline className="mx-2" size={24}/>
-                            Notification
+                            Notification 
                         </div>
                         <div><AiOutlineRight size={24}/></div>
                     </div>
