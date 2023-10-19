@@ -4,26 +4,26 @@ import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, Divider, Imag
 import { BsCalendar, BsClock, BsMap } from "react-icons/bs"
 import CommentFormModal from "./CommentFormModal"
 
+
 function EventCard() {
 
-  const IS_AUTHENTICATED = false
-
   const eventData = {
-    img: "https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
-    authorLogo: "https://img.freepik.com/free-photo/portrait-cool-man-with-sunglasses-dancing_23-2148851011.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
-    authorName: "Gaza",
-    date: "Just now",
-    link: "javascript:void(0)",
-    eventDate: "Nov 3 2023",
-    day: "Friday 4 - 6pm",
-    location: "National Stadium Abuja",
-    tag:"Football Match",
-    group: "Sports"
-}
+      img: "https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
+      authorLogo: "https://img.freepik.com/free-photo/portrait-cool-man-with-sunglasses-dancing_23-2148851011.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
+      authorName: "Gaza",
+      date: "Just now",
+      link: "javascript:void(0)",
+      eventDate: "Nov 3 2023",
+      day: "Friday 4 - 6pm",
+      location: "National Stadium Abuja",
+      tag:"Football Match",
+      group: "Sports"
+  }
 
   return (
+    <>
     <div className="overflow-auto sticky">
-      <Card className="p-0 rounded-[5px] border-0 dark:bg-inherit ">
+      <Card className="p-0 rounded-[5px] border-0 dark:bg-darkSlate ">
         <Image
           alt="Card background"
           className="object-cover w-[100%] rounded-[5px] rounded-br-none rounded-bl-none "
@@ -54,6 +54,7 @@ function EventCard() {
         </CardFooter>
         </Card>
     </div>
+    </>
   )
 }
 

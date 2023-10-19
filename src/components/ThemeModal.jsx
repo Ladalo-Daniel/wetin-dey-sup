@@ -12,7 +12,7 @@ const ThemeSwitcherModal = ({ selectTheme }) => {
 
   return (
     <>
-      <Button className="w-full flex justify-end p-0 m-0 h-auto bg-transparent min-w-unit-1" onPress={onOpen}><AiOutlineRight size={24}/></Button>
+      <button className="w-full flex justify-end p-0 m-0 h-auto bg-transparent min-w-unit-1" onClick={onOpen}><AiOutlineRight size={24}/></button>
       <Modal 
         backdrop="opaque" 
         isOpen={isOpen} 
@@ -33,9 +33,6 @@ const ThemeSwitcherModal = ({ selectTheme }) => {
               <ModalHeader className="flex flex-col gap-1">Appearance</ModalHeader>
               <ModalBody>
               <div className="flex flex-col gap-y-2">
-                <button onClick={() => selectTheme("system")} className="w-full flex justify-start">
-                 <MdOutlineDevices className="mx-2"/> System Default
-                </button>
                 <button onClick={() => selectTheme("light")} className="w-full flex justify-start items-center">
                 <IoIosSunny className="mx-2" /> Light Mode
                 </button>

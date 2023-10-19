@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import Mainlayout from "@/components/Mainlayout"
+import TagsWrapper from "@/components/tagsUI/TagsWrapper"
+
+function GroupsPage() {
+  return (
+    <Mainlayout>
+      <TagsWrapper />
+    </Mainlayout>
+  )
+}
+
+export default GroupsPage
+=======
 "use client"
 
 import Mainlayout from "@/components/Mainlayout";
@@ -54,7 +68,7 @@ export default function TagsPage() {
 
   return (
     <Mainlayout>
-        <div className="dark:bg-slate bg-gray-100  pb-4 h-full relative md:h-screen w-[90%] md:w-3/5 mx-auto mb-7">
+        <div className="dark:bg-slate bg-gray-100 pb-4 h-full relative md:h-screen w-[90%] md:w-[90%] mx-auto mb-7">
             <div className="flex justify-between pb-3">
                 <h1 className="font-bold">Tags</h1>
                 <AiOutlinePlus onClick={handlePlusIcon} className="h-5 w-5"/>
@@ -65,3 +79,4 @@ export default function TagsPage() {
     </Mainlayout>
   );
 }
+>>>>>>> feba10f34ae66be0307b45c709b364e196eca9fa
