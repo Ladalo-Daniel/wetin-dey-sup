@@ -29,7 +29,7 @@ export default function CalenderEventsAccordion({events}) {
                   <p className="flex items-center gap-x-2 text-gray-500" ><CiLocationOn className="text-gray-500" /> {event.location}</p>   
             </div>
         </div>
-      ))},
+      ))}
     </>
     
   );
