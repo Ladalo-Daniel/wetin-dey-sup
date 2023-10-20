@@ -9,10 +9,10 @@ import { FiClock } from 'react-icons/fi'
 
 function TagItem({tag}) {
   return (
-    <Card className='p-4 flex flex-col gap-4 dark:bg-darkSlate'>
-      <div className='flex items-center gap-2'>
+    <Card className='p-4 flex flex-col w-full gap-4 dark:bg-darkSlate'>
+      <div className='flex items-center gap-2 w-full'>
         <Image width={50} height={50} className='rounded-full object-cover' src='https://i.pravatar.cc/150?u=a04258114e29026708c' />
-        <div className='flex flex-col gap-2 p-2'>
+        <div className='flex flex-col gap-2 p-2 w-full'>
           <h2 className='font-bold'>Football</h2>
           <div className='flex items-center gap-3 text-sm'>
             <p className="flex gap-2 items-center">

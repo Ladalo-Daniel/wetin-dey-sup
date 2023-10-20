@@ -3,18 +3,29 @@ import TagItem from './TagItem'
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import range from '@/utils/range';
-import toast from 'react-hot-toast';
+import { SiFastapi } from 'react-icons/si';
 
 function TagsList() {
-  const rand = range(0, 10)
+  const rand = range(0, 25)
   return (
-    <div className='py-4 my-2 px-4 flex flex-col gap-4'>
+      <VerticalTimeline lineColor='orange'>
       {
         rand?.map(item => (
-          <TagItem key={item} />
+          <VerticalTimelineElement visible={true} key={item} 
+            className="vertical-timeline-element--work"
+            style={{backgroundColor: "inherit", border: "none"}}
+            contentStyle={{ background: 'inherit', color: 'inherit' }}
+            contentArrowStyle={{ borderRight: '7px solid  inherit' }}
+            date="May 20, 2023"
+            dateClassName='p-2 m-2'
+            iconStyle={{ background: 'inherit', color: 'inherit', borderColor: "orange" }}
+            icon={<SiFastapi className="animate-spin text-orange bg-orange" />}
+          >
+            <TagItem tag={{}} />
+          </VerticalTimelineElement>
         ))
       }
-    </div>
+      </VerticalTimeline>
   )
 }
 
