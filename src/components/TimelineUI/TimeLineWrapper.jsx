@@ -59,7 +59,7 @@ function TimeLineWrapper() {
             <SearchEvents events={events} />
             <TagsButton />
          </div>
-         <div className="flex gap-4 justify-center xl:gap-10 flex-col gap-y-6 lg:flex-row-reverse xl:flex-row-reverse">
+         <div className=" flex flex-col md:flex-row-reverse justify-start gap-4 lg:flex-row-reverse xl:flex-row-reverse">
             <EventTypeWrapper events={events} />
             <UpcomingEventCard events={events} />
          </div>
@@ -68,3 +68,5 @@ function TimeLineWrapper() {
 }
 
 export default TimeLineWrapper
+
+
