@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link";
+// import { Link } from "next/navigation"
 import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import {AiOutlineRight} from "react-icons/ai"
@@ -42,7 +43,16 @@ function SettingsComp({ userDetail }) {
                     <CardBody className="text-center">
                         <p className="text-tiny uppercase font-bold">{user.userName}</p>
                         <small className="text-default-500">{user.userEmail}</small>
+
                         <Link href={'/profile'} className="font-bold text-large">Edit Profile</Link>
+
+                        <Link 
+                            scroll={false}
+                            prefetch={false}
+                            href={'/editUserProfile/123'}
+                            className="font-bold text-large w-fit mx-auto"
+                        >Edit Profile</Link>
+
                     </CardBody>
                 </Card>
             </div>
