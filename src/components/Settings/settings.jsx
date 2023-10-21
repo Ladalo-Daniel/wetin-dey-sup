@@ -43,12 +43,16 @@ function SettingsComp({ userDetail }) {
                     <CardBody className="text-center">
                         <p className="text-tiny uppercase font-bold">{user.userName}</p>
                         <small className="text-default-500">{user.userEmail}</small>
+
+                        <Link href={'/profile'} className="font-bold text-large">Edit Profile</Link>
+
                         <Link 
                             scroll={false}
                             prefetch={false}
                             href={'/editUserProfile/123'}
                             className="font-bold text-large w-fit mx-auto"
                         >Edit Profile</Link>
+
                     </CardBody>
                 </Card>
             </div>
@@ -82,7 +86,7 @@ function SettingsComp({ userDetail }) {
                         <div><AiOutlineRight size={24}/></div>
                     </div>
                 </Link>
-                <di>
+                <div>
                     <div className="flex justify-between px-2 py-3 dark:hover:bg-lightSlate relative hover:bg-[#d3d3d3]">
                         <div className="flex items-center text-gray-600">
                             <RiApps2Line className="mx-2" size={24}/>
@@ -92,7 +96,7 @@ function SettingsComp({ userDetail }) {
                             <ThemeSwitcherModal selectTheme={selectTheme} />
                         </div>
                     </div>
-                </di>
+                </div>
                 <Link 
                     scroll={false}
                     prefetch={false} 

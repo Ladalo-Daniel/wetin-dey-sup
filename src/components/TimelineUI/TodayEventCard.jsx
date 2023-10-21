@@ -65,9 +65,9 @@ export default function TodayEventCard({timestamp, data}) {
       </div>
       <div className=" flex gap-4 flex-1">
         {
-          events.map((event) => (
-            <SwiperSlide style={{width:300, maxWidth: 400}}>
-                <EventItem event={event} key={`${event?.authorName}-${Math.random()}`}/>
+          events.map((event, index) => (
+            <SwiperSlide key={index} style={{width:300, maxWidth: 400}}>
+                <EventItem event={event} id={`${event?.authorName}-${Math.random()}`}/>
             </SwiperSlide>
             ))
         }
