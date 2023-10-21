@@ -59,12 +59,12 @@ export default function TopNavbar({el}) {
     },
     {
       // for testing purpose
-      Link: "/tags",
+      Link: "/tags/[tag]",
       navigateupName: <div className="flex gap-2 items-center">
         <Avatar src="https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais" />
         <div>
-          <h2 className="font-bold font-poppins light:text-slate">Techies</h2>
-          <p className="font-thin dark:text-lightSlate text-gray-300 text-tiny">12 members</p>
+          <h2 className="font-semibold font-poppins light:text-slate">Techies</h2>
+          <p className="font-thin dark:text-lightSlate text-gray-300 text-sm">12 members</p>
         </div>
       </div>
     },
