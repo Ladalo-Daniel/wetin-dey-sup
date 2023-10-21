@@ -20,3 +20,15 @@ html {
 body {
     background-color: #e2e8f0;
 }
+
+.react-calendar {
+    width: 100%!important;
+}
+  
+.abbr:where([title]) {
+    text-decoration: none!important;
+}
+
+.abbr {
+    text-decoration: none!important;
+}

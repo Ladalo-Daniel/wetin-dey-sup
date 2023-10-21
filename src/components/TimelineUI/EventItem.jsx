@@ -3,9 +3,9 @@ import { BsCalendar2, BsClock } from 'react-icons/bs'
 import { SlLocationPin } from 'react-icons/sl'
 
 
-function EventItem({event, key: _key}) {
+function EventItem({event, id: _key}) {
   return (
-            <Card className="dark:bg-darkSlate pb-4" key={_key}>
+            <Card className="dark:bg-darkSlate pb-4" id={_key}>
                 <Link href="#" className='flex flex-col gap-2 items-start text-inherit w-auto '>       
                 <Image 
                     src={event?.img} 

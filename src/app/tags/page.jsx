@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client"
 
 import Mainlayout from "@/components/Mainlayout";
@@ -65,3 +66,17 @@ export default function TagsPage() {
     </Mainlayout>
   );
 }
+=======
+import Mainlayout from "@/components/Mainlayout"
+import TagsWrapper from "@/components/tagsUI/TagsWrapper"
+
+function GroupsPage() {
+  return (
+    <Mainlayout>
+      <TagsWrapper />
+    </Mainlayout>
+  )
+}
+
+export default GroupsPage
+>>>>>>> f04ec6ef22ece86687b4c412d62af73a41198731
