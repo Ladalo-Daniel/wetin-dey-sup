@@ -1,6 +1,5 @@
 "use client"
 
-import formatTimeToAMPM from '@/utils/formatTimeToAMPM'
 import { Avatar, Card, Chip } from '@nextui-org/react'
 import Link from 'next/link'
 import React from 'react'
@@ -27,16 +26,16 @@ export default function UpcomingEventCard({ events }) {
                            <div>
                               <div className="pt-3 ml-4 mr-2 mb-3 flex flex-row gap-1 items-center justify-between text-xs">
                                     <div className='flex items-center gap-2'>
-                                    <BsCalendar2 />
+                                    <BsCalendar2  color='orange' />
                                     <span>{item?.eventDate}</span>
                                     </div>
                                     <div className='flex items-center gap-1 '>
-                                        <BsClock />
+                                        <BsClock  color='orange' />
                                         <span>{item?.day}</span>
                                     </div>
                               </div>
                               <div className='flex items-center gap-1 ml-4 text-sm'>
-                                <SlLocationPin />
+                                <SlLocationPin  color='orange' />
                                 <span>{item?.location}</span>
                               </div>
                            </div>

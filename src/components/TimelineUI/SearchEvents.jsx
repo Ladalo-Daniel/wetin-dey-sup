@@ -1,14 +1,37 @@
 "use client"
 
 import { BsSearch } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { Input } from "@nextui-org/react";
+import SearchEventModal from "./SearchModal";
 
 export default function SearchEvents({ events }) {
     const [state, setState] = useState(false)
     const [searchQuery, setSearchQuery] = useState('');
+    const searchModalRef = useRef()
     // console.log(events)
+
+
+
+    useEffect(() => {
+        const handleModalClose = (e) => {
+            if (searchModalRef.current && !searchModalRef.current.contains(e.target)) { 
+                setSearchQuery("")
+            }
+        }
+        document.addEventListener('click', handleModalClose)
+
+        return () => {
+            document.removeEventListener('click', handleModalClose);
+        };
+    }, [])
+     
+    const filteredEvents = events.filter((event) =>( 
+          event?.tag?.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+         // event.authorName.some((name) => name.toLowerCase().includes(searchQuery.toLowerCase()))
+    ))
+
 
     
 
@@ -35,6 +58,10 @@ export default function SearchEvents({ events }) {
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
             </div>
+           {searchQuery &&
+            <div ref={searchModalRef} className=" absolute w-[92vw]  md:w-[420px]  lg:w-[420px] pt-4 mt-1 bg-gray dark:bg-gray z-20  text-white dark:text-darkSlate rounded-md">
+              <SearchEventModal setSearchQuery={setSearchQuery} events={filteredEvents} /> 
+            </div>}
          </form>
     //  <>
     //   <div className="flex w-full  justify-center flex-wrap md:flex-nowrap gap-4">

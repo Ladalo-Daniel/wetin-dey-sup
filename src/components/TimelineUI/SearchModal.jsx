@@ -1,57 +1,50 @@
 "use client"
 
-import React from "react";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import { Avatar, Card, Chip } from '@nextui-org/react'
+import Link from 'next/link'
+import React from 'react'
+import { BsCalendar2, BsClock } from 'react-icons/bs'
+import { SlLocationPin } from 'react-icons/sl'
 
-export default function SearchModal({ searchQuery }) {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+export default function SearchEventModal({ events, setSearchQuery}) {
+    
+    return(
+      <>
+       <div onClick={(e) => setSearchQuery("")} className='flex flex-col gap-4 w-[80vw] md:w-[380px] lg:w-[380px] xl:w[380px] mx-4 mb-20 font-poppins'>
+            {events.map((item, index) => (
+                <Link href={item.link} key={index}>
+                    <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>
+                        <div className=' flex-[10%]'>
+                            <Avatar src={item.img} alt={item.title} size='lg' radius="rounded"/>
+                        </div>
+                        <div className=' flex-[90%]'>
+                           <div className=' flex justify-between mx-4'>
+                             <h3 className=' font-bold'>{item.tag}</h3>
+                             <h3 className=' text-lightRed
+                             '>{item.date}</h3>
+                           </div>
+                           <div>
+                              <div className="pt-3 ml-4 mr-2 mb-3 flex flex-row gap-1 items-center justify-between text-xs">
+                                    <div className='flex items-center gap-2'>
+                                    <BsCalendar2  color='orange' />
+                                    <span>{item?.eventDate}</span>
+                                    </div>
+                                    <div className='flex items-center gap-1 '>
+                                        <BsClock  color='orange' />
+                                        <span>{item?.day}</span>
+                                    </div>
+                              </div>
+                              <div className='flex items-center gap-1 ml-4 text-sm'>
+                                <SlLocationPin  color='orange' />
+                                <span>{item?.location}</span>
+                              </div>
+                           </div>
+                        </div>
+                    </Card>
+                </Link>
+            ))}
+        </div>
+      </>
+    )
 
-  return (
-    <>
-      <Button onPress={onOpen}>Open Modal</Button>
-      <Modal 
-        backdrop="opaque" 
-        isOpen={isOpen} 
-        onOpenChange={onOpenChange}
-        classNames={{
-          backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20"
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
-              <ModalBody>
-                <p> 
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam pulvinar risus non risus hendrerit venenatis.
-                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                </p>
-                <p>
-                  Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit
-                  dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. 
-                  Velit duis sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. 
-                  Et mollit incididunt nisi consectetur esse laborum eiusmod pariatur 
-                  proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
-                </p>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
-  );
 }
