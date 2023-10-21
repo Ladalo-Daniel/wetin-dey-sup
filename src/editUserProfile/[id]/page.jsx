@@ -1,4 +1,4 @@
-import EditProfileForm from "@/components/EditProfile/EditProfileForm"
+import EditProfileForm from "@/components/UserProfile/EditProfileForm"
 
 function EditProfile() {
   return (
