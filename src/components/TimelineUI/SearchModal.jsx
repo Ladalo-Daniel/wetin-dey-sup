@@ -1,13 +1,15 @@
 "use client"
 
-import { Avatar, Card, Chip } from '@nextui-org/react'
+import { Avatar, Card} from '@nextui-org/react'
 import Link from 'next/link'
 import React from 'react'
 import { BsCalendar2, BsClock } from 'react-icons/bs'
 import { SlLocationPin } from 'react-icons/sl'
 
-export default function SearchEventModal({ events, setSearchQuery}) {
+export default function SearchEventCard({ events, setSearchQuery, searchQuery}) {
     
+    if (events.length === 0) return <p className='text-white mb-4 text-center break-words mx-2'>Search results for <b className='text-orange'>{searchQuery}</b> not found.</p>
+
     return(
       <>
        <div onClick={(e) => setSearchQuery("")} className='flex flex-col gap-4 w-[80vw] md:w-[380px] lg:w-[380px] xl:w[380px] mx-4 mb-20 font-poppins'>

@@ -9,8 +9,8 @@ import { SlLocationPin } from 'react-icons/sl'
 export default function UpcomingEventCard({ events }) {
     
     return(
-        <div className='flex flex-col gap-4 w-[90vw] md:w-[900px] lg:w-[500px] xl:w[600px] mx-4 mb-20 font-poppins'>
-            <Chip className='text-md font-bold text-white rounded-small bg-darkOrange '>Upcoming</Chip>
+        <div className='flex flex-col gap-4 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-9 font-poppins'>
+            <Chip className='text-md font-bold text-white rounded-small bg-darkOrange  '>Upcoming</Chip>
             {events.map((item, index) => (
                 <Link href={item.link} key={index}>
                     <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>
@@ -20,7 +20,7 @@ export default function UpcomingEventCard({ events }) {
                         <div className=' flex-[90%]'>
                            <div className=' flex justify-between mx-4'>
                              <h3 className=' font-bold'>{item.tag}</h3>
-                             <h3 className=' text-lightRed
+                             <h3 className=' dark:text-orange text-lightRed
                              '>{item.date}</h3>
                            </div>
                            <div>

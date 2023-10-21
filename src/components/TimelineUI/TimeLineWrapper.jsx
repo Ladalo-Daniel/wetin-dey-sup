@@ -1,8 +1,10 @@
+"use client"
+
 import SearchEvents from "@/components/TimelineUI/SearchEvents";
 import TagsButton from "@/components/TimelineUI/TagsButton";
 import UpcomingEventCard from "./UpcomingEventCard";
 import EventTypeWrapper from "./EventTypeWrapper";
-
+import WhoToFollowCard from "./WhoToFollowCard";
 
 function TimeLineWrapper() {
  
@@ -60,8 +62,14 @@ function TimeLineWrapper() {
             <TagsButton />
          </div>
          <div className=" flex flex-col md:flex-row-reverse justify-start gap-4 lg:flex-row-reverse xl:flex-row-reverse">
-            <EventTypeWrapper events={events} />
+            <div className=" flex flex-col gap-5 md:overflow-x-scroll scrollbar-hide">
+            <EventTypeWrapper timestamp="Trending" events={events} />
+            <EventTypeWrapper timestamp="Today" events={events} />
+            </div>
+            <div className=" flex flex-col ">
             <UpcomingEventCard events={events} />
+            <WhoToFollowCard events={events} />
+            </div>
          </div>
     </div>
   )

@@ -1,43 +1,15 @@
 "use client"
 import { Card, Chip, Image, Link, User } from '@nextui-org/react'
-//import { useEffect, useState } from 'react';
 import { BsCalendar2, BsClock } from 'react-icons/bs'
 import { SlLocationPin } from 'react-icons/sl'
 
 
 
-export default function EventItemCard({timestamp, events, data}) {
-
-    // const [isScrolling, setIsScrolling] = useState(false);
-
-    // useEffect(() => {
-    //   const handleScroll = () => {
-    //     if (!isScrolling) {
-    //       setIsScrolling(true);
-    //     }
-    //   };
-  
-    //   window.addEventListener('scroll', handleScroll);
-  
-    //   return () => {
-    //     // Clean up the event listener when the component unmounts
-    //     window.removeEventListener('scroll', handleScroll);
-    //   };
-    // }, [isScrolling]);
-  
-    // const elementStyle = {
-    //   position: isScrolling ? 'bg-darkOrange rounded-md cursor-pointer text-white font-poppins fixed z-20' : 'bg-darkOrange rounded-md cursor-pointer text-white font-poppins', // Apply 'position: fixed' when scrolling starts
-    //   top: 0,
-    //   left: 0,
-    //   // Other styles here
-    // };
+export default function EventItemCard({ events}) {
 
  return (
     <div className=' font-poppinsf flex flex-col gap-5 relative items-start '>
-      <div className="flex flex-col">
-        <Chip className='bg-darkOrange rounded-md text-white font-poppins fixed z-10'>{timestamp}</Chip>
-      </div>
-      <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-6">
+      <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-2">
         {
           events.map((event) => (
             <Card className="dark:bg-darkSlate pb-4 w-[300px] rounded-md" key={event.authorName}>
