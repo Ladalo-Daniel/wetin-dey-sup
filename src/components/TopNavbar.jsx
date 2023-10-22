@@ -18,7 +18,7 @@ import { GrLogout } from "react-icons/gr";
 import Themeswitch from "./Themeswitcher";
 import Headroom from "react-headroom";
 
-export default function TopNavbar({el}) {
+export default function TopNavbar({ el }) {
   const Navigation = [
     {
       Link: "/timeline",
@@ -59,6 +59,7 @@ export default function TopNavbar({el}) {
     },
     {
       // for testing purpose
+
       Link: "/tags/[tag]",
       navigateupName: <div className="flex gap-2 items-center">
         <Avatar src="https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais" />
@@ -66,7 +67,11 @@ export default function TopNavbar({el}) {
           <h2 className="font-semibold font-poppins light:text-slate">Techies</h2>
           <p className="font-thin dark:text-lightSlate text-gray-300 text-sm">12 members</p>
         </div>
-      </div>
+      ),
+    },
+    {
+      Link: "/settings/edit-user",
+      navigateupName: "Edit profile",
     },
   ];
   const paths = usePathname();
@@ -140,6 +145,7 @@ export default function TopNavbar({el}) {
             className=" w-[180px] px-0 py-3 h-[140px] bg-white dark:bg-darkSlate rounded
           "
           >
+            <Themeswitch />
             <Button
               startContent={<SlSettings />}
               onClick={() =>
@@ -155,7 +161,6 @@ export default function TopNavbar({el}) {
             >
               Logout
             </Button>
-            <Themeswitch />
           </PopoverContent>
         </Popover>
       </nav>

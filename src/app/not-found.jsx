@@ -14,22 +14,24 @@ export default function Notfound() {
           You&apos;v entered a url that does not exist, check for typo errors, refresh or go back.
         </p>
 
-        <div className="flex justify-center rounded-none items-center gap-x-4">
-          <Button
-          className=" bg-orange hover:bg-darkOrange text-white rounded-md"
-            onClick={() => {
-              window.history.back();
-            }}
-          >
-          Go  Back
-          </Button>
-          <Button
-            onClick={(e) => router.refresh()}
-            className=" rounded-md px-2 py-3 bg-darkOrange hover:bg-lightOrange"
-          >
-            Reload
-          </Button>
-        </div>
+
+      <div className="flex justify-center  items-center gap-x-4">
+        <Button
+        
+        className=" bg-orange rounded-none text-white"
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+        Go  Back
+        </Button>
+        <Button
+          onClick={(e) => router.refresh()}
+          className=" rounded-none px-2 py-3 bg-orange  ring-2 "
+        >
+          Reload
+        </Button>
+
       </div>
       
     </section>
