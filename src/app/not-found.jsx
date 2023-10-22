@@ -33,7 +33,7 @@ export default function Notfound() {
         </Button>
 
       </div>
-      
+      </div>
     </section>
   );
 }
