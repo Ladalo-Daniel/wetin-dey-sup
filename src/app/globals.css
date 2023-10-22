@@ -19,6 +19,7 @@ html {
 /* default body  background color */
 body {
     background-color: #e2e8f0;
+    font-family: 'poppin', sans-serif;
 }
 
 .react-calendar {

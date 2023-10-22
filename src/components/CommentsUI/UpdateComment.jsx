@@ -60,7 +60,7 @@ function UpdateComment({...props}) {
                 
               </ModalFooter>
           </form>
-            </>
+          </>
           )}
         </ModalContent>
       </Modal>
