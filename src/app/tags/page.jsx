@@ -5,9 +5,6 @@ import TagsComp from "@/components/Tags/Tags"
 import TagsIcon from "@/components/Tags/TagsIcon"
 import { useState } from "react"
 import { AiOutlinePlus } from "react-icons/ai"
-// import Themeswitch from "./Themeswitch";
-
-
 
 export default function TagsPage() {
 
@@ -52,6 +49,7 @@ export default function TagsPage() {
   return (
     <Mainlayout id={tagsEvent.id} image={tagsEvent.imageName}>
         <div className="dark:bg-slate bg-gray-100  pb-4 h-full relative md:h-screen w-[90%] md:w-[90%] mx-auto mb-7 md:mb-0 xl:h-[95vh]">
+
             <div className="flex justify-between pb-3">
                 <h1 className="font-bold">Tags</h1>
                 <AiOutlinePlus onClick={handlePlusIcon} className="h-5 w-5"/>
@@ -62,18 +60,3 @@ export default function TagsPage() {
     </Mainlayout>
   );
 }
-
-
-
-// import Mainlayout from "@/components/Mainlayout"
-// import TagsWrapper from "@/components/tagsUI/TagsWrapper"
-
-// function GroupsPage() {
-//   return (
-//     <Mainlayout>
-//       <TagsWrapper />
-//     </Mainlayout>
-//   )
-// }
-
-// export default GroupsPage

@@ -42,13 +42,13 @@ function CommentItem({comment}) {
                 </span>
             </CardBody>
             {(comment?.images?.length === 1) && 
-            <CardBody className="text-tiny">
-            <Image
-                src={comment?.images[0] || comment?.images}
-                className="object-contain rounded-lg sm:w-[300px] w-full md:w-[400px] lg:w-[400px] xl:w-[400px]"
-                isZoomed
-            />
-            </CardBody>}
+                <CardBody className="text-tiny">
+                <Image
+                    src={comment?.images[0] || comment?.images}
+                    className="object-contain rounded-lg sm:w-[300px] w-full md:w-[400px] lg:w-[400px] xl:w-[400px]"
+                    isZoomed
+                />
+                </CardBody>}
             
             <CardFooter className="dark:bg-darkSlate flex items-center gap-6">
                 <CommentActionCard isAuthor={(user?.username === comment?.name)} copyText={copyText} isCopied={isCopied} />

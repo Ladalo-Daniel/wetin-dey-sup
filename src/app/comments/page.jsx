@@ -1,11 +1,11 @@
-import CommentSection from "@/components/CommentsUI/CommentSection";
-import EventCard from "@/components/CommentsUI/EventCard";
+
+import CommentsWrapper from "@/components/CommentsUI/CommentsWrapper";
 import Mainlayout from "@/components/Mainlayout";
 
 export default function CommentsPage() {
   return (
      <Mainlayout>
-        <CommentSection />
+        <CommentsWrapper />
      </Mainlayout>
   )
 }
