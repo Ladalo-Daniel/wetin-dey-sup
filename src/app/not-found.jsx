@@ -11,10 +11,10 @@ export default function Notfound() {
         You&apos;v entered a url that does not exist, check for typo errors, refresh or go back.
       </p>
 
-      <div className="flex justify-center rounded-none items-center gap-x-4">
+      <div className="flex justify-center  items-center gap-x-4">
         <Button
         
-        className=" bg-orange text-white"
+        className=" bg-orange rounded-none text-white"
           onClick={() => {
             window.history.back();
           }}
@@ -23,7 +23,7 @@ export default function Notfound() {
         </Button>
         <Button
           onClick={(e) => router.refresh()}
-          className=" rounded-none px-2 py-3 bg-orange ring-red ring-2 "
+          className=" rounded-none px-2 py-3 bg-orange  ring-2 "
         >
           Reload
         </Button>
