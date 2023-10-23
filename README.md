@@ -1,18 +1,18 @@
 # Wetin-dey-sup social app
+![Web view](https://github.com/Ladalo-Daniel/wetin-dey-sup/assets/126448876/5ece8b67-eb63-4c47-9a6d-9cacafa1c234)
 
-![wetin-dey-sup](public\IMG-20231011-WA0027.jpg)
 
 ### Mobile view
 
-![Timeline page on mobile](public\IMG-20231011-WA0028.jpg)
+![Mobile view](https://github.com/Ladalo-Daniel/wetin-dey-sup/assets/126448876/1d0bab78-c74c-4976-9159-32758d50fcb2)
 
 # Features
 
 A social app where you can follow up friends, comment, create your own event and view other events and many more.
 
-## Create event page on mobile
+### Create event page
 
-![Event page](public\IMG-20231011-WA0029.jpg)
+![IMG-20231011-WA0029](https://github.com/Ladalo-Daniel/wetin-dey-sup/assets/126448876/9dac4bd0-9530-4dbe-9835-8bee910dec96)
 
 ## Steps to create the project
 

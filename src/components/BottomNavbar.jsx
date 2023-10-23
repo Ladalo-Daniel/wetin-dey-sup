@@ -1,6 +1,7 @@
 "use client";
 import { Tooltip } from "@nextui-org/react";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BsFillCalendarFill, BsGrid, BsGridFill } from "react-icons/bs";
 import { IoMdSettings } from "react-icons/io";
 import { LuCalendarDays } from "react-icons/lu";
@@ -39,7 +40,6 @@ export default function BottomNavbar() {
     },
   ];
   const paths = usePathname();
-  const router = useRouter();
   return (
     <>
       <nav className="flex items-center bg-white dark:bg-darkSlate justify-around z-[999] md:hidden gap-x-4 w-full py-4 fixed bottom-0 shadow-xl">
@@ -50,10 +50,10 @@ export default function BottomNavbar() {
             placement="top"
             content={items.tooltip}
           >
-            <div
-              onClick={() =>
-                router.push(items.Link, { scroll: false, prefetch: false })
-              }
+            <Link
+              href={items.Link}
+              scroll={false}
+              prefetch={false}
               className="flex items-center flex-col gap-y-2"
             >
               <span
@@ -74,7 +74,7 @@ export default function BottomNavbar() {
               >
                 {items.name}
               </p>
-            </div>
+            </Link>
           </Tooltip>
         ))}
       </nav>

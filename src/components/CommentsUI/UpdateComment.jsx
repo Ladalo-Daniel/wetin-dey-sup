@@ -25,19 +25,19 @@ function UpdateComment({...props}) {
 
   return (
     <>
-    <Button className="bg-inherit" onPress={onOpen}>Edit comment</Button> 
+    <Button className="bg-inherit z-0" onPress={onOpen}>Edit comment</Button> 
       <Modal 
         isOpen={isOpen} 
         onOpenChange={onOpenChange}
-        placement="bottom"
-        className="z-[20000]"
+        placement="center"
+        className="z-[99999]"
         style={{zIndex: 999}}
       >
         <ModalContent className="dark:bg-darkSlate z-50">
           {(onClose) => (
             <>
               <form onSubmit={handleSubmit}>
-              <ModalHeader className="flex flex-col gap-1">Edit Comment</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1" onClick={() => onOpen(!isOpen)} >Edit Comment</ModalHeader>
               <ModalBody className="flex items-center">
                   <Textarea
                     isRequired
