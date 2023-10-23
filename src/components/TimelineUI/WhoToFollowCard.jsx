@@ -16,7 +16,7 @@ export default function WhoToFollowCard({ events }) {
                 <Avatar isBordered radius="full" size="md" src={event?.img} />
                 <div className="flex flex-col gap-1 items-start justify-center">
                     <h4 className="text-small font-semibold leading-none text-default-600">{event?.authorName}</h4>
-                    <h5 className="text-small tracking-tight text-default-400 dark:text-indigo">@{event?.authorName}</h5>
+                    <h5 className="text-small tracking-tight text-indigo">@{event?.authorName}</h5>
                 </div>
                 </div>
                 <Button
