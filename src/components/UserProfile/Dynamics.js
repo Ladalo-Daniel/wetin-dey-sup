@@ -1,8 +1,8 @@
 import EditProfile from "./EditProfile";
 
-export default function Edithuserprofile( profile ) {
+export default function Edithuserprofile(profile) {
   const NavigateTo = [
-    {
+    {  
       name: "edit-user",
       Element: <EditProfile />,
     },

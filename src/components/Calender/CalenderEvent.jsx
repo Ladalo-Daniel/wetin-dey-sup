@@ -81,7 +81,7 @@ function CalenderComp() {
     
 
   return (
-    <div className='bg-gray-100 dark:bg-slate mt-5 h-full'>
+    <div className='bg-gray-100 dark:bg-slate mt-5 '>
       <div className="flex content-center w-full py-3">
         <Calendar 
           value={selectedDate}

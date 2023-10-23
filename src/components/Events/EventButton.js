@@ -14,8 +14,14 @@ export default function EventButton() {
         window.navigator.vibrate([100, 30, 50]);
       }}
       className={` ${
-        pathname === "/create-an-event" ? "hidden" : "flex"
-      } rounded-full  drop-shadow-xl  h-[50px] w-[50px] fixed z-[99] cursor-default items-center hover:bg-lightOrange justify-center md:cursor-pointer text-2xl bottom-32 lg:bottom-28 right-10 bg-orange text-white`}
+        pathname === "/create-an-event"
+          ? "hidden"
+          : "flex" || pathname === "/settings/edit-user"
+          ? "hidden" || pathname === "/privacy" ? "hidden" : 'flex'
+          : "flex" || pathname === "/settings"
+          ? "hidden"
+          : "flex"
+      }  rounded-full  drop-shadow-xl  h-[50px] w-[50px] fixed z-[99] cursor-default items-center hover:bg-lightOrange justify-center md:cursor-pointer text-2xl bottom-32 lg:bottom-28 right-10 bg-orange text-white`}
     >
       <BsPlus />
     </Button>

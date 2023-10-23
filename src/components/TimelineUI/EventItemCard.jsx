@@ -18,7 +18,7 @@ export default function EventItemCard({ events}) {
                     src={event?.img} 
                     alt={event?.title}  
                     style={{width: 300, height: 200, objectFit: "cover",}}
-                    className="object-contain rounded-sm "
+                    className="object-contain relative z-0 rounded-sm "
                     />
                     <div className="flex flex-col gap-1 event?-center pt-3 ml-4 mr-2">
                         <User   
