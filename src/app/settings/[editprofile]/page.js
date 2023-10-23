@@ -7,12 +7,12 @@ export default function UserProfilePage({ params }) {
   return (
     <Mainlayout>
       <>
-        {user.map((p) => (
+        {user.map((post) => (
           <section
-            key={p.name}
+            key={post.name}
             className=" w-[97%] sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] h-auto my-10 mx-auto"
           >
-            {p.Element}
+            {post.Element}
           </section>
         ))}
       </>

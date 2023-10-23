@@ -50,6 +50,8 @@ export default function AuthModal({ isOpen, onOpenChange }) {
                     <input
                       required
                       type="text"
+                      maxLength={10}
+                      minLength={3}
                       placeholder="Your Name"
                       className=" border-[0.15rem] rounded focus:border-orange border-lightSlate  bg-white px-2 w-full py-2 outline-none text-black"
                     />
