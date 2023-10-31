@@ -3,12 +3,11 @@ import { Button, Avatar, Tooltip } from "@nextui-org/react";
 import { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { MdEmail, MdSave } from "react-icons/md";
-import {ImFilePicture} from "react-icons/im"
-
+import { ImFilePicture } from "react-icons/im";
 
 export default function EditProfile() {
-  const [username, setUsername] = useState("@Nehemiah");
-  const [email, setEmail] = useState("codehubby@gmail.com");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -20,12 +19,12 @@ export default function EditProfile() {
   };
 
   const handleUploadButtonClick = () => {
-    document.getElementById("file-input").click();
+    document.querySelector("#file-input").click();
   };
 
   return (
     <section className=" w-full  min-h-screen py-5">
-      <div className="flex flex-col  items-center  justify-center">
+      <div className="flex flex-col  items-center justify-center">
         <div className=" relative">
           <Avatar
             className=" rounded-full relative h-[140px] w-[140px]  object-cover ring-lightSlate ring-2"
@@ -58,7 +57,9 @@ export default function EditProfile() {
           />
         </div>
         <div>
-          <p className=" font-semibold text-xl text-center pt-2">{username}</p>
+          <p className=" font-semibold text-xl text-center pt-2">
+            {name}
+          </p>
           <p className=" text-sm">{email}</p>
         </div>
 
@@ -72,7 +73,7 @@ export default function EditProfile() {
                 minLength={3}
                 placeholder="username"
                 className={`rounded pl-7 pr-2 w-[100%] py-2 text-black border-slate focus:ring-2 border dark:text-white   focus:ring-orange outline-none dark:bg-slate bg-white `}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
               <span className=" absolute top-3 left-1">
                 <FaUserAlt />
