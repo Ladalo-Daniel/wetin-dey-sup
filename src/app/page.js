@@ -1,9 +1,9 @@
-import Authentication from "@/components/Authentication";
+import AuthenticationSignin from "@/components/Authentications/Authentication";
 
 export default function Home() {
   return (
     <>
-      <Authentication />
+      <AuthenticationSignin />
     </>
   );
 }
