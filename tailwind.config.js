@@ -20,11 +20,12 @@ module.exports = {
       white: "rgb(255, 255, 255)",
       black: "rgb(0,0,0)",
       gray: "#1f2937",
+      gray4: "rgb(75,85,99)",
       formbackground: "#e2e8f0",
       red: "#ff0000",
-      lightRed:"rgba(233,0,0,0.6)",
+      lightRed: "rgba(233,0,0,0.6)",
       transparent: "rgba(0,0,0,0)",
-      indigo:"#4f46e5",
+      indigo: "#4f46e5",
     },
     fontFamily: {
       poppins: ["poppins", "sans-serif"],
@@ -50,4 +51,3 @@ module.exports = {
   },
   plugins: [nextui()],
 };
-
