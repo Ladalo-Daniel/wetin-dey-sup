@@ -7,6 +7,7 @@ import { SlLocationPin } from 'react-icons/sl'
 
 export default function EventItemCard({ events}) {
 
+
  return (
     <div className=' font-poppinsf flex flex-col gap-5 relative items-start '>
       <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-2">

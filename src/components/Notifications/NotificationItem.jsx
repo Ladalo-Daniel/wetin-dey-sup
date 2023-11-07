@@ -7,7 +7,7 @@ import { SlLocationPin } from "react-icons/sl";
 export default function NotificationItem({event: item}) {
   return (
     <Link href={item?.link || '#'} as={NextLink} key={item}>
-        <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>
+        <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row w-full justify-between items-center gap-1'>
             <div className=' flex-[10%]'>
                 <Avatar src={item?.img} alt={item?.title} size='lg' radius="rounded"/>
             </div>
