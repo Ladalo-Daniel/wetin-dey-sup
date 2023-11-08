@@ -2,20 +2,23 @@
 import { Button, useDisclosure } from "@nextui-org/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import { RiTwitterXFill } from "react-icons/ri";
 import { SiFastapi } from "react-icons/si";
 import AuthModalSignIn from "./SigninModal";
 import AuthModalLogin from "./LoginModal";
+import { MdFacebook } from "react-icons/md";
+import { signIn } from "next-auth/react";
+
 
 
 export default function AuthenticationSignin() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  //   async function handleGoogleSignIn() {
-  //     signIn("google", { callbackUrl: "/" });
-  //   }
-  //   async function handleGithubSignIn() {
-  //     signIn("github", { callbackUrl: "/" });
-  //   }
+    async function handleGoogleSignIn() {
+      signIn("google", { callbackUrl: "/timeline" });
+    }
+
+    async function handleGithubSignIn() {
+      signIn("github", { callbackUrl: "/timeline" });
+    }
   return (
     <main className="w-full h-screen  bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
       <div className=" w-[95%] sm:max-w-md rounded-xl shadow-xl py-2  relative bg-white text-slate px-2 sm:px-3 space-y-8">
@@ -51,7 +54,7 @@ export default function AuthenticationSignin() {
         </div>
         <div className="space-y-4 text-sm  font-medium py-4">
           <Button
-                 //   onClick={handleGoogleSignIn}
+                   onClick={handleGoogleSignIn}
           className="w-full flex items-center cursor-default md:cursor-pointer justify-center gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
             <span className=" text-xl">
               {" "}
@@ -60,12 +63,12 @@ export default function AuthenticationSignin() {
             Continue with Google
           </Button>
           <Button
-            // onClick={handleGithubSignIn}
+            onClick={handleGithubSignIn}
           className="w-full flex items-center justify-center cursor-default md:cursor-pointer gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
             <span className="text-xl">
-              <RiTwitterXFill />
+              <MdFacebook />
             </span>
-            Continue with X
+            Continue with Facebook
           </Button>
           <div className="text-center flex gap-x-2 justify-center">
             <span> Already have an account?</span>
@@ -85,16 +88,16 @@ export default function AuthenticationSignin() {
 
 export  function AuthenticationLogin() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    //   async function handleGoogleSignIn() {
-  //     signIn("google", { callbackUrl: "/" });
-  //   }
-  //   async function handleGithubSignIn() {
-  //     signIn("github", { callbackUrl: "/" });
-  //   }
+      async function handleGoogleSignIn() {
+      signIn("google", { callbackUrl: "/timeline" });
+    }
+    async function handleGithubSignIn() {
+      signIn("github", { callbackUrl: "/timeline" });
+    }
 
   return (
     <main className="w-full h-screen  bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
-      <div className=" w-[95%] sm:max-w-md rounded-xl shadow-xl py-2  relative bg-white text-slate px-2 sm:px-3 space-y-8">
+      <div className=" w-[95%] sm:max-w-md rounded-xl shadow-xl py-2 relative bg-white text-slate px-2 sm:px-3 space-y-8">
         <div className="text-center mt-9">
           <div className="mt-5 space-y-2">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
@@ -128,7 +131,7 @@ export  function AuthenticationLogin() {
         <div className="space-y-4 text-sm  font-medium py-4">
           <Button 
           
-            // onClick={handleGithubSignIn}
+            onClick={handleGoogleSignIn}
           className="w-full flex items-center cursor-default md:cursor-pointer justify-center gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
             <span className=" text-xl">
               {" "}
@@ -137,12 +140,12 @@ export  function AuthenticationLogin() {
             Continue with Google
           </Button>
           <Button
-           //   onClick={handleGoogleSignIn}
+             onClick={handleGithubSignIn}
           className="w-full flex items-center justify-center cursor-default md:cursor-pointer gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
             <span className="text-xl">
-              <RiTwitterXFill />
+              <MdFacebook />
             </span>
-            Continue with X
+            Continue with Facebook
           </Button>
           <div className="text-center flex gap-x-2 justify-center">
             <span> Don&apos;t have an account?</span>

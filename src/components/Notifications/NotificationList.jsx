@@ -45,11 +45,44 @@ function NotificationList() {
             day: "Sunday 5 - 9pm",
             location: "Blablue Townhall Lagos",
             tag:["Music Concert"]
+        },
+        {
+            img: "https://img.freepik.com/free-psd/saturday-night-party-social-media-instagram-template_505751-3745.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=sph",
+            authorLogo: "https://img.freepik.com/free-photo/medium-shot-male-flight-attendant-posing_23-2150312703.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
+            authorName: ["Agape"],
+            date: "Oct 13 2023",
+            link: "javascript:void(0)",
+            eventDate: "Oct 27 2023",
+            day: "Sunday 5 - 9pm",
+            location: "Blablue Townhall Lagos",
+            tag:["Music Concert"]
+        },
+        {
+            img: "https://img.freepik.com/free-psd/saturday-night-party-social-media-instagram-template_505751-3745.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=sph",
+            authorLogo: "https://img.freepik.com/free-photo/medium-shot-male-flight-attendant-posing_23-2150312703.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
+            authorName: ["Agape"],
+            date: "Oct 13 2023",
+            link: "javascript:void(0)",
+            eventDate: "Oct 27 2023",
+            day: "Sunday 5 - 9pm",
+            location: "Blablue Townhall Lagos",
+            tag:["Music Concert"]
+        },
+        {
+            img: "https://img.freepik.com/free-psd/saturday-night-party-social-media-instagram-template_505751-3745.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=sph",
+            authorLogo: "https://img.freepik.com/free-photo/medium-shot-male-flight-attendant-posing_23-2150312703.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais",
+            authorName: ["Agape"],
+            date: "Oct 13 2023",
+            link: "javascript:void(0)",
+            eventDate: "Oct 27 2023",
+            day: "Sunday 5 - 9pm",
+            location: "Blablue Townhall Lagos",
+            tag:["Music Concert"]
         }
     ]
 
   return (
-    <div>
+    <div className=" overflow-y-scroll h-[500px] px-10">
         <div className="">
             <h2 className="text-lg font-bold text-orange">Notifications</h2>
         </div>

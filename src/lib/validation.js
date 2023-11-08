@@ -4,8 +4,6 @@ export function registerValidation(values) {
     errors.name = "Required";
   } else if (values.name.length < 3) {
     errors.name = "Must be greater than 2 and less than 17";
-  } else if (values.name.includes(" ")) {
-    errors.name = "Remove the space";
   }
   if (!values.email) {
     errors.email = "Required";

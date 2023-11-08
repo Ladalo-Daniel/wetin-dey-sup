@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-// import { Link } from "next/navigation"
 import ThemeSwitcherModal from "@/components/ThemeModal";
-import { Button, Card, CardBody, CardHeader, Image } from "@nextui-org/react";
+import { Avatar, Button, Card, CardBody, CardHeader } from "@nextui-org/react";
 import { useTheme } from "next-themes";
-import { BiLogOutCircle } from "react-icons/bi";
+import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
 import { FiHelpCircle } from "react-icons/fi";
@@ -16,8 +15,10 @@ import {
   MdOutlineNavigateNext,
   MdOutlinePrivacyTip,
 } from "react-icons/md";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function SettingsComp({ userDetail }) {
+  const { data: session } = useSession();
   const { theme, setTheme } = useTheme();
   const selectTheme = (newTheme) => {
     setTheme(newTheme);
@@ -29,10 +30,10 @@ function SettingsComp({ userDetail }) {
         <div key={id} className="my-6 relative z-0">
           <Card className="py-4 flex max-w-lg mx-auto   flex-col items-center dark:bg-darkSlate bg-white shadow-lg dark:border dark:border-lightSlate rounded-lg">
             <CardHeader className="w-full pb-0 pt-2 px-4 text-center flex justify-center">
-              <Image
+              <Avatar
                 alt="User profile image"
                 className="object-cover h-40 w-40 rounded-full"
-                src={user.profileImage}
+                src={user?.profileImage}
                 width={150}
                 height={50}
               />
@@ -53,7 +54,7 @@ function SettingsComp({ userDetail }) {
           </Card>
         </div>
       ))}
-      
+
       <div className=" grid grid-cols-1 gap-x-5 md:grid-cols-2">
         <div className="py-4 my-3 flex flex-col items-center dark:border rounded-lg shadow-lg dark:bg-darkSlate   dark:border-lightSlate bg-white">
           <div className="w-full gap-y-8">
@@ -164,12 +165,23 @@ function SettingsComp({ userDetail }) {
                 </div>
               </div>
             </Link>
-            <Button
-              startContent={<BiLogOutCircle />}
-              className=" bg-red text-white px-3 py-2 rounded-none  sm:w-auto sm:mx-3 w-full my-2"
-            >
-              SIGN OUT
-            </Button>
+            {!session ? (
+              <Button
+                onClick={() => signIn({ callbackUrl: "/" })}
+                startContent={<BiLogInCircle />}
+                className=" bg-[rgb(35,97,35)] text-white px-3 py-2 rounded-none  sm:w-auto sm:mx-3 w-full my-2"
+              >
+                SIGN IN
+              </Button>
+            ) : (
+              <Button
+                onClick={() => signOut({ callbackUrl: "/login" })}
+                startContent={<BiLogOutCircle />}
+                className=" bg-red text-white px-3 py-2 rounded-none  sm:w-auto sm:mx-3 w-full my-2"
+              >
+                SIGN OUT
+              </Button>
+            )}
           </div>
         </div>
       </div>

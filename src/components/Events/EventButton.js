@@ -1,29 +1,97 @@
 "use client";
-import { Button } from "@nextui-org/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { BsPlus } from "react-icons/bs";
+import {  useSession, signIn } from "next-auth/react";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  useDisclosure,
+} from "@nextui-org/react";
+import Link from "next/link";
+import { FaRegFaceSadCry } from "react-icons/fa6";
+
 
 export default function EventButton() {
-  const router = useRouter();
+  const { data: session } = useSession();
+
+  return <>{session ? <EventButton1 /> : <EventButton2 />}</>;
+}
+
+export function EventButton1() {
   const pathname = usePathname();
   return (
     <Button
       isIconOnly
-      onClick={() => {
-        router.push("/create-an-event", { scroll: false, prefetch: false });
-        window.navigator.vibrate([100, 30, 50]);
-      }}
+      as={Link}
+      href={"/create-an-event"}
       className={` ${
-        pathname === "/create-an-event"
-          ? "hidden"
-          : "flex" || pathname === "/settings/edit-user"
-          ? "hidden" || pathname === "/privacy" ? "hidden" : 'flex'
-          : "flex" || pathname === "/settings"
-          ? "hidden"
-          : "flex"
-      }  rounded-full  drop-shadow-xl  h-[50px] w-[50px] fixed z-[99] cursor-default items-center hover:bg-lightOrange justify-center md:cursor-pointer text-2xl bottom-32 lg:bottom-28 right-10 bg-orange text-white`}
+        (pathname === "/create-an-event" && "hidden") ||
+        (pathname === "/notifications" && "hidden") ||
+        (pathname === "/settings" && "hidden")
+      }
+
+      rounded-full shadow-xl  h-[50px] w-[50px] fixed z-[99] cursor-default items-center hover:bg-lightOrange justify-center md:cursor-pointer text-2xl bottom-32 lg:bottom-28 right-10 bg-orange text-white`}
     >
       <BsPlus />
     </Button>
+  );
+}
+
+export function EventButton2() {
+  const pathname = usePathname();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  return (
+    <>
+      <Button
+        isIconOnly
+        onPress={onOpen}
+        onClick={() => {
+          window.navigator.vibrate([100, 30, 50]);
+        }}
+        className={` ${
+          (pathname === "/create-an-event" && "hidden") ||
+          (pathname === "/notifications" && "hidden") ||
+          (pathname === "/settings" && "hidden")
+        }       
+        rounded-full shadow-xl h-[50px] w-[50px] fixed z-[99] cursor-default items-center hover:bg-lightOrange justify-center md:cursor-pointer text-2xl bottom-32 lg:bottom-28 right-10 bg-orange text-white`}
+      >
+        <BsPlus />
+      </Button>
+      <NotUserModal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        textToDisplay={"You must be signed in before creating an event"}
+      />
+    </>
+  );
+}
+
+export function NotUserModal({ isOpen, onOpenChange, textToDisplay }) {
+  return (
+    <Modal
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
+      placement="center"
+      className=" rounded bg-white mr-5 dark:bg-darkSlate py-3 "
+      isDismissable={true}
+    >
+      <ModalContent>
+      <ModalBody className=" flex flex-col justify-center items-center">
+          <span className="text-6xl py-2">
+            <FaRegFaceSadCry />
+          </span>
+          <h1>{textToDisplay}</h1>
+          <Button
+             onClick={() => signIn({ callbackUrl: "/register" })}
+            className=" bg-darkOrange text-white  rounded-none hover:bg-orange"
+          >
+            Sign in now
+          </Button>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
 }
