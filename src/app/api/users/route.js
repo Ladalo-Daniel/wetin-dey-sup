@@ -8,3 +8,4 @@ export async function POST(req) {
   await Users.create({ name, email, password });
   return NextResponse.json({ message: "User registered..." }, { status: 201 });
 }
+

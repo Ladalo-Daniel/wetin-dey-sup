@@ -25,12 +25,7 @@ export default function CreateEvent() {
     onSubmit,
   });
 
-  async function onSubmit(values) {
-    console.log(values);
-    try {
-    } catch (error) {}
-  }
-
+  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -38,10 +33,18 @@ export default function CreateEvent() {
       setSelectedImage(imageUrl);
     }
   };
-
+  
   const handleUploadButtonClick = () => {
     document.getElementById("file-input").click();
   };
+
+  
+  
+  async function onSubmit(values) {
+    console.log(values);
+    try {
+    } catch (error) {}
+  }
 
   const Data = States;
   return (
