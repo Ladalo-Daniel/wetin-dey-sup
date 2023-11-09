@@ -1,12 +1,19 @@
 import Mainlayout from "@/components/Mainlayout";
 import SettingsComp from "@/components/Settings/settings";
+import { getServerSession } from "next-auth";
+import { Options } from "../api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
-export default function Settings() {
+export default async function Settings() {
+  const session = await getServerSession(Options);
+  if (!session) {
+    redirect("/timeline");
+  }
   const userProfile = [
     {
-      userName: "Salome Adams",
-      userEmail: "salome357@gmail.com",
-      profileImage: "images/stefan-unsplash.jpg",
+      userName: session.user?.name,
+      userEmail: session.user?.email,
+      profileImage: session.user?.image,
     },
   ];
 

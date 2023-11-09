@@ -14,10 +14,10 @@ const ComingSoon = () =>
 
 function NotificationWrapper() {
   return (
-    <div className="min-h-screen p-4 flex items-start flex-col gap-4">
+    <div className=" min-h-screen p-4  flex items-center w-[95%] sm:max-w-md mx-auto  flex-col gap-4">
       <Tabs variant={'underlined'} aria-label="Tabs variants" color="danger">
         <Tab key="all" title="All">       
-            <div className="">
+            <div className=" w-full">
                 <NotificationList />
             </div>
           </Tab>

@@ -30,7 +30,7 @@ export default function Themeswitch() {
       isIconOnly
       startContent={theme === "dark" ? <PiMoonLight /> : <IoIosSunny />}
       onClick={toggleTheme}
-      className="flex justify-start px-3 bg-transparent  cursor-default md:cursor-pointer w-[100%] rounded-none items-center text-xl"
+      className="flex justify-start px-3 py-3 bg-transparent  cursor-default md:cursor-pointer w-[100%] rounded-none items-center text-xl"
     >
       <span className=" pl-3 text-sm">
         {theme === "dark" ? "Dark theme" : "Light theme"}

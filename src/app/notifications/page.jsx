@@ -1,12 +1,12 @@
-import Mainlayout from "@/components/Mainlayout"
-import NotificationWrapper from "@/components/Notifications/NotificationWrapper"
+import Mainlayout from "@/components/Mainlayout";
+import NotificationWrapper from "@/components/Notifications/NotificationWrapper";
 
-function page() {
+function Notification() {
   return (
     <Mainlayout>
       <NotificationWrapper />
     </Mainlayout>
-  )
+  );
 }
 
-export default page
+export default Notification;

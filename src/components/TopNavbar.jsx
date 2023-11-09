@@ -14,12 +14,14 @@ import { LuCalendarDays } from "react-icons/lu";
 import { PiUsersThree, PiUsersThreeFill } from "react-icons/pi";
 import { RiArrowLeftLine } from "react-icons/ri";
 import { SlSettings } from "react-icons/sl";
-import { GrLogout } from "react-icons/gr";
+import { GrLogin, GrLogout } from "react-icons/gr";
 import Themeswitch from "./Themeswitcher";
 import Headroom from "react-headroom";
 import Link from "next/link";
+import { signOut, signIn, useSession } from "next-auth/react";
 
 export default function TopNavbar({ el, id, image }) {
+  const { data: session } = useSession();
   const Navigation = [
     {
       Link: "/timeline",
@@ -127,9 +129,10 @@ export default function TopNavbar({ el, id, image }) {
               placement="top"
               content={items.tooltip}
             >
-              <Link href={items.Link}
-               scroll={false}
-               prefetch={false}
+              <Link
+                href={items.Link}
+                scroll={false}
+                prefetch={false}
                 className={` cursor-pointer `}
               >
                 <span
@@ -171,12 +174,23 @@ export default function TopNavbar({ el, id, image }) {
               </span>
               Settings
             </Link>
-            <Button
-              startContent={<GrLogout />}
-              className=" flex w-[100%] bg-red  rounded-none items-center justify-start py-4 dark:text-white text-white"
-            >
-              Sign out
-            </Button>
+            {!session ? (
+              <Button
+                onClick={(e) => signIn({ callbackUrl: "/" })}
+                startContent={<GrLogin />}
+                className=" flex w-[100%] bg-[rgb(35,97,35)]  rounded-none items-center justify-start py-4 dark:text-white text-white"
+              >
+                Sign in
+              </Button>
+            ) : (
+              <Button
+                onClick={(e) => signOut({ callbackUrl: "/login" })}
+                startContent={<GrLogout />}
+                className=" flex w-[100%] bg-red  rounded-none items-center justify-start py-4 dark:text-white text-white"
+              >
+                Sign out
+              </Button>
+            )}
           </PopoverContent>
         </Popover>
       </nav>

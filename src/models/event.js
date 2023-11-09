@@ -2,7 +2,9 @@ import mongoose, { Schema } from "mongoose";
 
 
 const eventSchema = new Schema(
-    {
+    {   userId: {
+        type: String,
+        },
         event_title: {
             type: String,
         },
@@ -44,12 +46,3 @@ const Event = mongoose.models.Event || mongoose.model("Event", eventSchema);
 
 export default Event;
 
-
-
-// event_title: String,
-// start_time: String,
-// end_time: String,
-// start_date: Date,
-// end_date: Date,
-// group: String,
-// event_photo: String,
