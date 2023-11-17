@@ -5,28 +5,28 @@ const eventSchema = new Schema(
     {   userId: {
         type: String,
         },
-        event_title: {
+        eventTitle: {
             type: String,
         },
-        location: {
+        eventLocation: {
             type: String,
         },
-        start_time: {
+        eventMonth: {
             type: String,
         },
-        end_time: {
+        eventDay: {
             type: String,
         },
-        start_date: {
+        eventTime: {
             type: String,
         },
-        end_date: {
+        eventDate: {
             type: String,
         },
-        group: {
+        eventTag: {
             type: String,
         },
-        event_photo: {
+        eventImage: {
             type: String,
         },
         isAdmin: {

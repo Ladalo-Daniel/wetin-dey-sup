@@ -48,16 +48,16 @@ export function eventsValidation(values) {
 
   errors.eventTitle = !values.eventTitle
     ? "add a title"
-    : values.eventTitle.length < 3 || values.eventTitle.length > 11
-      ? "title must be more than 3 and less than 11 characters"
+    : values.eventTitle.length > 10 && values.eventTitle.length < 50
+      ? "title must be more than 3 and less than 70 characters"
       : null;
 
   errors.eventLocation = !values.eventLocation ? "select a location" : null;
-  errors.eventStartTime = !values.eventStartTime ? "add a startime" : null;
-  errors.eventEndTime = !values.eventEndTime ? "add end time" : null;
-  errors.eventStartDate = !values.eventStartDate ? "add a startdate" : null;
-  errors.eventEndDate = !values.eventEndDate ? "add end date" : null;
-  errors.eventGroup = !values.eventGroup ? " select a group" : null;
+  errors.eventDate = !values.eventDate ? "add a date" : null;
+  errors.eventTime = !values.eventTime ? "add event time" : null;
+  errors.eventMonth = !values.eventMonth ? "add event month" : null;
+  errors.eventDay = !values.eventDay ? "add event day" : null;
+  errors.eventTag = !values.eventTag ? " select a tag" : null;
   errors.eventImage = !values.eventImage ? "add an image" : null;
 
   return errors;

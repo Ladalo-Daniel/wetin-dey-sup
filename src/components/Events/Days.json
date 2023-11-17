@@ -1,0 +1,9 @@
+[
+    {"id":1, "days":"Sunday" },
+    {"id":2, "days":"Monday" },
+    {"id":3, "days":"Tuesday" },
+    {"id":4, "days":"Wednesday" },
+    {"id":5, "days":"Thursday" },
+    {"id":6, "days":"Friday" },
+    {"id":7, "days":"Saturday" }
+]

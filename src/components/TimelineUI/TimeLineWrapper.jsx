@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 import SearchEvents from "@/components/TimelineUI/SearchEvents";
 import TagsButton from "@/components/TimelineUI/TagsButton";
@@ -6,7 +6,7 @@ import UpcomingEventCard from "./UpcomingEventCard";
 import EventTypeWrapper from "./EventTypeWrapper";
 import WhoToFollowCard from "./WhoToFollowCard";
 
-function TimeLineWrapper() {
+async function TimeLineWrapper() {
  
   const events = [
     {
@@ -54,6 +54,8 @@ function TimeLineWrapper() {
         tag:["Music Concert"]
     }
 ]
+
+  
 
   return (
     <div className=" min-h-screen">
