@@ -1,5 +1,6 @@
 "use client"
-import getEvents from '@/services/apiEvents'
+import getEvents from '@/lib/api/apiEvents'
+import { useGetEvents } from '@/lib/react-query/queriesMutations'
 import { Card, Chip, Image, Link, User } from '@nextui-org/react'
 import { useSession } from 'next-auth/react'
 import { BsCalendar2, BsClock } from 'react-icons/bs'
@@ -7,13 +8,16 @@ import { SlLocationPin } from 'react-icons/sl'
 
 
 
-export default async function EventItemCard({ user , events}) {
-    const result = await getEvents()
-    const data = result.data
-    // const { data: user } = useSession()
-    // console.log(user)
+export default function EventItemCard({events}) {
+    // const result = await getEvents()
+    // const data = result.data
+   
+    const {data:event} = useGetEvents()
+    console.log(event);
+    const { data: user } = useSession()
+    console.log(user)
 
-    console.log(user.user)
+    // console.log(user.user)
     // console.log(events)
     // const { 
     //     eventTitle:title,
@@ -37,7 +41,7 @@ export default async function EventItemCard({ user , events}) {
     <div className=' font-poppinsf flex flex-col gap-5 relative items-start '>
       <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-2">
         {
-          data.map((event) => (
+          events.map((event) => (
             <Card className="dark:bg-darkSlate pb-4 w-[300px] rounded-md" key={event?.authorName || event.userId}>
                 <Link href={`/timeline/${event._id}`} className='flex flex-col gap-1 items-start text-inherit w-auto '>       
                 <Image 
