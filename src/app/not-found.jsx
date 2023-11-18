@@ -39,7 +39,7 @@ export default function Notfound() {
             onClick={(e) => router.refresh()}
             className=" rounded-none px-3 py-3 rounded-tl-xl rounded-br-xl  bg-orange "
           >
-            Reload
+            Refresh
           </Button>
         </div>
       </div>

@@ -2,37 +2,33 @@
 import { Button, useDisclosure } from "@nextui-org/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import { SiFastapi } from "react-icons/si";
 import AuthModalSignIn from "./SigninModal";
 import AuthModalLogin from "./LoginModal";
-import { MdFacebook } from "react-icons/md";
 import { signIn } from "next-auth/react";
-
-
 
 export default function AuthenticationSignin() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    async function handleGoogleSignIn() {
-      signIn("google", { callbackUrl: "/timeline" });
-    }
+  async function handleGoogleSignIn() {
+    signIn("google", { callbackUrl: "/timeline" });
+  }
 
-    async function handleGithubSignIn() {
-      signIn("github", { callbackUrl: "/timeline" });
-    }
+  async function handleGithubSignIn() {
+    signIn("github", { callbackUrl: "/timeline" });
+  }
   return (
-    <main className="w-full h-screen  bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
+    <main className="w-full h-screen bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
       <div className=" w-[95%] sm:max-w-md rounded-xl shadow-xl py-2  relative bg-white text-slate px-2 sm:px-3 space-y-8">
         <div className="text-center mt-9">
           <div className="mt-5 space-y-2">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
               Welcome on board!
             </h3>
-            <p className=" font-medium px-2">
-              Sign up to get started.
-            </p>
+            <p className=" font-medium px-2">Sign up to get started.</p>
           </div>
         </div>
-        <div className="absolute p-4 flex ite justify-center -top-[3.2rem] rounded-full bg-orange text-white left-[44%]">
+        <div className="absolute p-4 flex  justify-center -top-[3.2rem] rounded-full bg-orange text-white left-[44%]">
           <span className=" text-3xl">
             <SiFastapi />
           </span>
@@ -54,8 +50,9 @@ export default function AuthenticationSignin() {
         </div>
         <div className="space-y-4 text-sm  font-medium py-4">
           <Button
-                   onClick={handleGoogleSignIn}
-          className="w-full flex items-center cursor-default md:cursor-pointer justify-center gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
+            onClick={handleGoogleSignIn}
+            className="w-full flex items-center cursor-default md:cursor-pointer justify-center gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black "
+          >
             <span className=" text-xl">
               {" "}
               <FcGoogle />
@@ -64,11 +61,12 @@ export default function AuthenticationSignin() {
           </Button>
           <Button
             onClick={handleGithubSignIn}
-          className="w-full flex items-center justify-center cursor-default md:cursor-pointer gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
+            className="w-full flex items-center justify-center cursor-default md:cursor-pointer gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black "
+          >
             <span className="text-xl">
-              <MdFacebook />
+              <FaGithub />
             </span>
-            Continue with Facebook
+            Continue with Github
           </Button>
           <div className="text-center flex gap-x-2 justify-center">
             <span> Already have an account?</span>
@@ -85,15 +83,14 @@ export default function AuthenticationSignin() {
   );
 }
 
-
-export  function AuthenticationLogin() {
+export function AuthenticationLogin() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-      async function handleGoogleSignIn() {
-      signIn("google", { callbackUrl: "/timeline" });
-    }
-    async function handleGithubSignIn() {
-      signIn("github", { callbackUrl: "/timeline" });
-    }
+  async function handleGoogleSignIn() {
+    signIn("google", { callbackUrl: "/timeline" });
+  }
+  async function handleGithubSignIn() {
+    signIn("github", { callbackUrl: "/timeline" });
+  }
 
   return (
     <main className="w-full h-screen  bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
@@ -103,9 +100,7 @@ export  function AuthenticationLogin() {
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
               Welcome on board!
             </h3>
-            <p className=" font-medium px-2">
-             Login to explore all potentials
-            </p>
+            <p className=" font-medium px-2">Login to explore all potentials</p>
           </div>
         </div>
         <div className="absolute p-4 flex ite justify-center -top-[3.2rem] rounded-full bg-orange text-white left-[44%]">
@@ -118,7 +113,7 @@ export  function AuthenticationLogin() {
           onPress={onOpen}
           className="w-full mt-4 px-4 py-6 cursor-default md:cursor-pointer text-white font-medium bg-darkOrange hover:bg-orange rounded-lg duration-150"
         >
-       Login and continue
+          Login and continue
         </Button>
         <AuthModalLogin isOpen={isOpen} onOpenChange={onOpenChange} />
 
@@ -129,10 +124,10 @@ export  function AuthenticationLogin() {
           </p>
         </div>
         <div className="space-y-4 text-sm  font-medium py-4">
-          <Button 
-          
+          <Button
             onClick={handleGoogleSignIn}
-          className="w-full flex items-center cursor-default md:cursor-pointer justify-center gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
+            className="w-full flex items-center cursor-default md:cursor-pointer justify-center gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black "
+          >
             <span className=" text-xl">
               {" "}
               <FcGoogle />
@@ -140,12 +135,13 @@ export  function AuthenticationLogin() {
             Continue with Google
           </Button>
           <Button
-             onClick={handleGithubSignIn}
-          className="w-full flex items-center justify-center cursor-default md:cursor-pointer gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black ">
+            onClick={handleGithubSignIn}
+            className="w-full flex items-center justify-center cursor-default md:cursor-pointer gap-x-3 py-5 border-[0.16rem] border-lightSlate rounded-lg bg-white text-black "
+          >
             <span className="text-xl">
-              <MdFacebook />
+              <FaGithub />
             </span>
-            Continue with Facebook
+            Continue with Github
           </Button>
           <div className="text-center flex gap-x-2 justify-center">
             <span> Don&apos;t have an account?</span>

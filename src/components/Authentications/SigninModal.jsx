@@ -6,23 +6,28 @@ import {
   ModalBody,
   ModalContent,
   ModalHeader,
+  Avatar,
 } from "@nextui-org/react";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { UploadButton, UploadDropzone, Uploader } from "@/lib/uploadthing";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { CiMail, CiUser } from "react-icons/ci";
+import NextImage from "next/image";
 
 export default function AuthModalSignIn({ isOpen, onOpenChange }) {
   const [showpassword, setShowPassword] = useState(false);
   const [disable, setDisable] = useState(false);
   const router = useRouter();
+  const [imageUrl, setImageUrl] = useState("");
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
       password: "",
+      profilePicture: "",
     },
     validate: registerValidation,
     onSubmit,
@@ -85,7 +90,7 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
       const { user } = await resUserExists.json();
       if (user) {
         toast.error("User already exist!!");
-        navigator.vibrate([100, 30, 50])
+        navigator.vibrate([100, 30, 50]);
         return;
       }
 
@@ -99,23 +104,27 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
           name: values.name,
           email: values.email,
           password: values.password,
+          profilePicture: values.profilePicture,
         }),
       });
       if (res.ok) {
-        toast.success("Account Created sucessfully");
+        toast.success("Account Created sucessfully", { duration: 2000 });
         setDisable(true);
         setTimeout(() => {
-          router.push("/login");
+          toast.loading("Redirecting to login...", {
+            className: "border border-orange",
+            duration: 3000,
+          });
+          router.replace("/login");
         }, 5000);
       } else {
         toast.error("User registration failed.");
-        navigator.vibrate([100, 30, 50])
+        navigator.vibrate([100, 30, 50]);
       }
     } catch (error) {
       alert("Error durig registration:", error);
     }
   }
-
 
   return (
     <div>
@@ -125,6 +134,7 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
             style: {
               background: "green",
               color: "white",
+              duration: 2000,
             },
           },
           error: {
@@ -150,6 +160,52 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
             </ModalHeader>
             <ModalBody>
               <form onSubmit={formik.handleSubmit}>
+                <div className="text-black my-2  bg-white">
+                  {formik.values.profilePicture ? (
+                    <div className="flex items-center flex-col justify-center w-full">
+                      <span className=" py-2">
+                        This picture will be used on your profile
+                      </span>
+                      <Avatar
+                        src={formik.values.profilePicture}
+                        size="xl"
+                        isBordered
+                        alt="Profile picture"
+                        width={100}
+                        height={100}
+                        className="w-64 rounded-full h-64 border object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <UploadDropzone
+                      endpoint="ProfileImage"
+                      appearance={{
+                        button: {
+                          background: "#f97316",
+                          color: "white",
+                          padding: "4px",
+                        },
+                        // borderRadi
+                      }}
+                      onClientUploadComplete={(res) => {
+                        console.log("Upload Response:", res);
+                        if (res[0] && res[0].url) {
+                          setImageUrl(res[0].url);
+                          formik.setFieldValue("profilePicture", res[0].url);
+                          formik.getFieldProps("profilePicture");
+                        }
+
+                        // Do something with the response
+                        console.log("Files:", res);
+                        // toast.success("Uploaded");
+                      }}
+                      onUploadError={(error) => {
+                        // Do something with the error.
+                        toast.error("something went wrong!!");
+                      }}
+                    />
+                  )}
+                </div>
                 <div className=" flex mb-3 flex-col">
                   <label
                     className=" font-medium text-gray text-sm"
@@ -182,7 +238,7 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
                   </label>
                   <div className="relative">
                     <input
-                       type="email"
+                      type="email"
                       {...formik.getFieldProps("email")}
                       disabled={disable}
                       className={` ${
@@ -209,7 +265,6 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
                       type={`${showpassword ? "password" : "text"}`}
                       {...formik.getFieldProps("password")}
                       disabled={disable}
-                
                       className={` ${
                         formik.errors.password && formik.touched.password
                           ? "border-orange"
@@ -228,14 +283,23 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
                     </span>
                   </div>
                 </div>
-
-                <Button
-                  isLoading={disable}
-                  type="submit"
-                  className=" bg-orange rounded hover:bg-lightOrange cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3"
-                >
-                  Sign up
-                </Button>
+                {formik.values.profilePicture ? (
+                  <Button
+                    isLoading={disable}
+                    type="submit"
+                    className=" bg-orange rounded hover:bg-lightOrange cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3"
+                  >
+                    Sign up
+                  </Button>
+                ) : (
+                  <Button
+                    type="button"
+                    disabled
+                    className=" bg-slate rounded hover:bg-darkSlate cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3"
+                  >
+                    Get ready
+                  </Button>
+                )}
               </form>
             </ModalBody>
           </>

@@ -28,7 +28,6 @@ export default function AuthModalLogin({ isOpen, onOpenChange }) {
     onSubmit,
   });
 
-
   async function onSubmit(values) {
     try {
       const res = await signIn("credentials", {
@@ -42,9 +41,13 @@ export default function AuthModalLogin({ isOpen, onOpenChange }) {
         return;
       }
       if (res.ok) {
-        toast.success("Logged in succesfully");
+        toast.success("Logged in succesfully", { duration: 2000 });
         setDisable(true);
         setTimeout(() => {
+          toast.loading("Analyzing user...", {
+            className: "border border-orange",
+            duration: 3000,
+          });
           router.replace("/timeline");
         }, 5000);
       }
@@ -145,7 +148,7 @@ export default function AuthModalLogin({ isOpen, onOpenChange }) {
                 <Button
                   isLoading={disable}
                   type="submit"
-                  className=" bg-orange rounded hover:bg-lightOrange cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3"
+                  className=" bg-slate rounded hover:bg-darkSlate cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3"
                 >
                   Log in
                 </Button>

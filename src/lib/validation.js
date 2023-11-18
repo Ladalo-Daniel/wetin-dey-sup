@@ -17,6 +17,8 @@ export function registerValidation(values) {
     errors.password = "Must be greater than 8 and less than 20";
   } else if (values.password.includes(" ")) {
     errors.password = "Remove the space";
+  } else if (!values.profilePicture) {
+    errors.profilePicture = "";
   }
 
   return errors;
@@ -49,8 +51,8 @@ export function eventsValidation(values) {
   errors.eventTitle = !values.eventTitle
     ? "add a title"
     : values.eventTitle.length < 3 || values.eventTitle.length > 11
-      ? "title must be more than 3 and less than 11 characters"
-      : null;
+    ? "title must be more than 3 and less than 11 characters"
+    : null;
 
   errors.eventLocation = !values.eventLocation ? "select a location" : null;
   errors.eventStartTime = !values.eventStartTime ? "add a startime" : null;

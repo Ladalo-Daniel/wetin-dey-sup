@@ -70,7 +70,7 @@ export default function BottomNavbar() {
                   paths === items.Link
                     ? "text-orange dark:text-orange"
                     : "text-black dark:text-white"
-                }   font-poppins text-sm`}
+                }   font-poppins text-xs`}
               >
                 {items.name}
               </p>
