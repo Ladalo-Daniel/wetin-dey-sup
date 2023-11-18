@@ -8,7 +8,7 @@ import { SlLocationPin } from 'react-icons/sl'
 
 export default function SearchEventCard({ events, setSearchQuery, searchQuery}) {
     
-    if (events.length === 0) return <p className='text-white mb-4 text-center break-words mx-2'>Search results for <b className='text-orange'>{searchQuery}</b> not found.</p>
+    if (events.length === 0) return <p className=' text-darkSlate dark:text-white mb-4 text-center break-words mx-2'>Search results for <b className='text-orange'>{searchQuery}</b> not found.</p>
 
     return(
       <>

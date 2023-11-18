@@ -56,6 +56,7 @@ export default function WhoToFollowCard({ authName, profileImage }) {
           <p className=" text-small">Followers</p>
         </div>
       </CardFooter>
+
     </Card>
   );
 }
