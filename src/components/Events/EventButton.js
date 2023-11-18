@@ -1,7 +1,4 @@
 "use client";
-import { usePathname } from "next/navigation";
-import { BsPlus } from "react-icons/bs";
-import {  useSession, signIn } from "next-auth/react";
 import {
   Button,
   Modal,
@@ -9,9 +6,11 @@ import {
   ModalContent,
   useDisclosure,
 } from "@nextui-org/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { BsPlus } from "react-icons/bs";
 import { FaRegFaceSadCry } from "react-icons/fa6";
-
 
 export default function EventButton() {
   const { data: session } = useSession();
@@ -63,7 +62,7 @@ export function EventButton2() {
       <NotUserModal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        textToDisplay={"You must be signed in before creating an event"}
+        textToDisplay={"You must be signed in before creating an event!"}
       />
     </>
   );
@@ -75,18 +74,18 @@ export function NotUserModal({ isOpen, onOpenChange, textToDisplay }) {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       placement="center"
-      className=" rounded bg-white mr-5 dark:bg-darkSlate py-3 "
+      className="rounded bg-white z-[999]  dark:bg-darkSlate py-3 "
       isDismissable={true}
     >
       <ModalContent>
-      <ModalBody className=" flex flex-col justify-center items-center">
+        <ModalBody className="flex flex-col justify-center  items-center">
           <span className="text-6xl py-2">
             <FaRegFaceSadCry />
           </span>
-          <h1>{textToDisplay}</h1>
+          <h1 className="text-center ">{textToDisplay}</h1>
           <Button
-             onClick={() => signIn({ callbackUrl: "/register" })}
-            className=" bg-darkOrange text-white  rounded-none hover:bg-orange"
+            onClick={() => signIn({ callbackUrl: "/register" })}
+            className="bg-darkOrange text-white w-[100%]  rounded-none hover:bg-orange"
           >
             Sign in now
           </Button>

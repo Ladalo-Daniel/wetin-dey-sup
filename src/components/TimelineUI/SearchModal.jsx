@@ -12,7 +12,7 @@ export default function SearchEventCard({ events, setSearchQuery, searchQuery}) 
 
     return(
       <>
-       <div onClick={(e) => setSearchQuery("")} className='flex flex-col gap-4 w-[80vw] md:w-[380px] lg:w-[380px] xl:w[380px] mx-4 mb-20 font-poppins'>
+       <div onClick={(e) => setSearchQuery("")} className='flex flex-col gap-4 w-[80vw] md:w-[380px] lg:w-[380px] xl:w[380px] mx-3 mb-20 font-poppins'>
             {events.map((item, index) => (
                 <Link href={item.link} key={index}>
                     <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>

@@ -77,7 +77,7 @@ export default function TopNavbar({ el, id, image }) {
       ),
     },
     {
-      Link: "/settings/edit-user",
+      Link: "/settings/edit-profile",
       navigateupName: "Edit profile",
     },
     {
@@ -88,6 +88,7 @@ export default function TopNavbar({ el, id, image }) {
       Link: "/notifications",
       navigateupName: "Notifications",
     },
+    
   ];
   const paths = usePathname();
   return (
