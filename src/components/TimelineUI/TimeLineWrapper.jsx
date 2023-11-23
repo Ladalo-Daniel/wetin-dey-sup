@@ -1,10 +1,11 @@
-// "use client"
+"use client"
 
 import SearchEvents from "@/components/TimelineUI/SearchEvents";
 import TagsButton from "@/components/TimelineUI/TagsButton";
 import UpcomingEventCard from "./UpcomingEventCard";
 import EventTypeWrapper from "./EventTypeWrapper";
 import WhoToFollowCard from "./WhoToFollowCard";
+import { Card, Chip } from "@nextui-org/react";
 
 async function TimeLineWrapper() {
  
@@ -59,24 +60,30 @@ async function TimeLineWrapper() {
 
   return (
     <div className=" min-h-screen">
-         <div className="py-2">
-            <SearchEvents events={events} />
-            <TagsButton />
-         </div>
-         <div className=" flex flex-col md:flex-row-reverse justify-start gap-4 lg:flex-row-reverse xl:flex-row-reverse">
-            <div className=" flex flex-col gap-5 md:overflow-x-scroll scrollbar-hide">
-            <EventTypeWrapper timestamp="Trending" events={events} />
-            <EventTypeWrapper timestamp="Today" events={events} />
-            </div>
-            <div className=" flex flex-col ">
-            <UpcomingEventCard events={events} />
-            <WhoToFollowCard events={events} />
-            </div>
-         </div>
+      <div className="py-2">
+        <SearchEvents events={events} />
+        <TagsButton />
+      </div>
+      <div className=" flex flex-col md:flex-row-reverse justify-start gap-4 lg:flex-row-reverse xl:flex-row-reverse">
+        <div className=" flex flex-col gap-5 md:overflow-x-scroll scrollbar-hide">
+          <EventTypeWrapper timestamp="Trending" events={events} />
+          <EventTypeWrapper timestamp="Today" events={events} />
+        </div>
+        <div className=" flex flex-col ">
+          <UpcomingEventCard events={events} />
+
+          <Card className=" flex flex-col gap-1 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-36 bg-white dark:bg-darkSlate font-poppins ">
+            <Chip className="text-md font-bold text-white rounded-small bg-darkOrange mt-2 ml-6 mb-2  ">
+              Who to follow
+            </Chip>
+            {events.map((e, i) => (
+              <WhoToFollowCard key={i} authName={e.authorName} profileImage={e.img} />
+            ))}
+          </Card>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default TimeLineWrapper
-
-
+export default TimeLineWrapper;

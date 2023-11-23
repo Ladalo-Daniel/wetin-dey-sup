@@ -1,48 +1,36 @@
 "use client"
-import getEvents from '@/lib/api/apiEvents'
 import { useGetEvents } from '@/lib/react-query/queriesMutations'
-import { Card, Chip, Image, Link, User } from '@nextui-org/react'
+import { Card, Chip, Image, Link, Spinner, User } from '@nextui-org/react'
 import { useSession } from 'next-auth/react'
 import { BsCalendar2, BsClock } from 'react-icons/bs'
 import { SlLocationPin } from 'react-icons/sl'
+import SkeletonApp from './Skeleton'
+import Reveal from './Reveal'
 
 
 
-export default function EventItemCard({events}) {
-    // const result = await getEvents()
-    // const data = result.data
-   
-    const {data:event} = useGetEvents()
-    console.log(event);
+export default function EventItemCard({event}) {
     const { data: user } = useSession()
-    console.log(user)
+    // console.log(user)
+   
+    const {data:events, isLoading, error} = useGetEvents()
+    console.log(events);
 
-    // console.log(user.user)
-    // console.log(events)
-    // const { 
-    //     eventTitle:title,
-    //     eventLocation:location,
-    //     eventMonth:,
-    //     eventDay,
-    //     eventDate,
-    //     eventTime,
-    //     eventTag,
-    //     eventImage,
-    //  } = data
+    if(isLoading){
+        return (<Spinner color='warning' />)
+    }
 
-    // if(data){
-    //     return data.map(d => (
-    //     <p className=' text-red'>{d.eventTitle}</p>
-    //     ))
-    // }
+    if(error){
+        console.log(error)
+    }
 
 
  return (
     <div className=' font-poppinsf flex flex-col gap-5 relative items-start '>
       <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-2">
         {
-          events.map((event) => (
-            <Card className="dark:bg-darkSlate pb-4 w-[300px] rounded-md" key={event?.authorName || event.userId}>
+          events?.data?.map((event) => (
+            <Card className="dark:bg-darkSlate pb-4 w-[300px] rounded-md" key={event?.authorName || event?.userId}>
                 <Link href={`/timeline/${event._id}`} className='flex flex-col gap-1 items-start text-inherit w-auto '>       
                 <Image 
                     src={event?.eventImage} 
@@ -52,10 +40,10 @@ export default function EventItemCard({events}) {
                     />
                     <div className="flex flex-col gap-1 event?-center pt-3 ml-4 mr-2">
                         <User   
-                            name={event?.authorName}
+                            name={event?.authorName || event?.userId}
                             description={(
                                 <Link href='#' size="sm" isExternal>
-                                @{user?.user?.name}
+                                @{user?.user?.name || event?.userId}
                                 </Link>
                             )}
                             avatarProps={{
@@ -66,7 +54,7 @@ export default function EventItemCard({events}) {
                     <div className="pt-3 ml-4 mr-2 mb-3 flex flex-row gap-1 items-center justify-between">
                         <div className='flex items-center gap-2 text-xs'>
                         <BsCalendar2 color='orange' />
-                        <span>{event?.eventMonth + "," + " " + event?.eventDate}</span>
+                        <span>{event?.eventMonth + ", " + event?.eventDate}</span>
                         </div>
                         <div className='flex items-center gap-1 ml-5 '>
                             <BsClock  color='orange' />

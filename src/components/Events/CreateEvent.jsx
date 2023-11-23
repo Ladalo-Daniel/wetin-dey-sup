@@ -12,15 +12,17 @@ import { useFormik } from "formik";
 import { eventsValidation } from "@/lib/validation";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { UploadButton } from "@uploadthing/react";
 
 export default function CreateEvent() {
   const [selectedImage, setSelectedImage] = useState(null);
-   const { data } = useSession()
+  //  const { data } = useSession()
    const router = useRouter();
   //  console.log(data)
   const formik = useFormik({
     initialValues: {
-      userId: data.user.email + Math.random(),
+      // userId: data?.user?.email + Math.random(),
+      userId: Math.random(),
       eventTitle: "",
       eventLocation: "",
       eventMonth: "",
@@ -35,23 +37,23 @@ export default function CreateEvent() {
   });
 
   
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
-    }
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const imageUrl = URL.createObjectURL(file);
+  //     setSelectedImage(imageUrl);
+  //   }
+  // };
   
-  const handleUploadButtonClick = () => {
-    document.getElementById("file-input").click();
-  };
+  // const handleUploadButtonClick = () => {
+  //   document.getElementById("file-input").click();
+  // };
   
 
   
   
   async function onSubmit(values) {
-    console.log(values);
+    // console.log(values);
      try {
       const res = await fetch("api/events/create", {
         method: "POST",
@@ -60,14 +62,15 @@ export default function CreateEvent() {
         },
         body: JSON.stringify(values),
       });
-      if(res.status === 201){
+      if(res ){
         toast.success("Event has been created successfully");
         setTimeout(() => {
-          router.push("/");
+          router.push("/timeline");
         }, 2000);
       } else {
         toast.error("Event creation Faild!")
       }
+      console.log(res)
     } catch (error) {
       // alert(error)
       toast.error("Failed to create event, Try again!")
@@ -234,24 +237,58 @@ export default function CreateEvent() {
         </div>
 
         <div className=" flex items-center my-3 gap-x-3 ">
-          <input
+          {/* <input
             type="file"
             accept="image/*"
             id="file-input"
             onChange={handleImageChange}
             className="hidden"
             //  {...formik.getFieldProps("eventImage")}
-          />
+          /> */}
 
-          <Button
+          <UploadButton
+                endpoint="eventImage"
+                appearance={{
+                  button: {
+                    background: "#e5660b",
+                    color: "white",
+                    padding: "4px",
+                  },
+                  allowedContent:"Add a display image"
+                }}
+                onClientUploadComplete={(res) => {
+                    // if (res) {
+                    //     setSelectedImage(res)
+                    //     const json = JSON.stringify(res)
+                    //     // Do something with the response
+                    //     console.log(json);
+                    // }
+                    //alert("Upload Completed");
+                    // console.log("Upload Response:", res);
+                        if (res[0] && res[0].url) {
+                          setSelectedImage(res[0].url);
+                          formik.setFieldValue("eventImage", res[0].url);
+                          formik.getFieldProps("eventImage");
+                        }
+                         // Do something with the response
+                         console.log("Files:", res);
+                         // toast.success("Uploaded");
+                }}
+                onUploadError={(error) => {
+                    // Do something with the error.
+                    alert(`ERROR! ${error.message}`);
+                }}
+            />
+
+          {/* <Button
             startContent={<FiUploadCloud />}
             className=" rounded text-white text-xl bg-darkOrange   hover:bg-orange "
             onClick={handleUploadButtonClick}
           >
             <p className=" text-sm font-medium">Add a display photo</p>
-          </Button>
+          </Button> */}
           <div className=" flex items-center gap-x-2">
-            <Avatar size="md" src={selectedImage} />
+            <Avatar size="lg" src={selectedImage} />
             {formik.errors.eventImage && formik.touched.eventImage ? (
               <span className="text-red text-sm">
                 {formik.errors.eventImage}
