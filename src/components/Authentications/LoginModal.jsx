@@ -148,9 +148,11 @@ export default function AuthModalLogin({ isOpen, onOpenChange }) {
                 <Button
                   isLoading={disable}
                   type="submit"
-                  className=" bg-slate rounded hover:bg-darkSlate cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3"
+                  className={` ${
+                    disable ? "bg-slate " : "bg-orange"
+                  } rounded  cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3`}
                 >
-                  Log in
+                  {disable ? "please hold on.." : "Log in"}
                 </Button>
               </form>
             </ModalBody>

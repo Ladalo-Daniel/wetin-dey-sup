@@ -289,7 +289,7 @@ export default function AuthModalSignIn({ isOpen, onOpenChange }) {
                     type="submit"
                     className=" bg-orange rounded hover:bg-lightOrange cursor-default md:cursor-pointer text-white font-medium py-6 w-full my-3"
                   >
-                    Sign up
+                 {disable ? "redirecting..." : "Sign up"}
                   </Button>
                 ) : (
                   <Button

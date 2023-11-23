@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import Users from "@/models/user";
 import { connectMongoDb } from "@/lib/mongodb";
 import bcrypt from "bcryptjs";
-import ProviderUser from "@/models/ProviderUsers";
+// import ProviderUser from "@/models/ProviderUsers";
 
 export const Options = {
   providers: [
@@ -41,36 +41,36 @@ export const Options = {
     }),
   ],
 
-  callbacks: {
-    async session({ session }) {
-      const sessionUser = await Users.findOne({
-        email: session.user.email,
-      });
-      session.user.id = sessionUser._id;
-      return session;
-    },
+  // callbacks: {
+  //   async session({ session }) {
+  //     const sessionUser = await Users.findOne({
+  //       email: session.user.email,
+  //     });
+  //     session.user.id = sessionUser._id;
+  //     return session;
+  //   },
 
-    async signIn({ profile }) {
-      console.log(profile);
-      try {
-        await connectMongoDb();
+  //   async signIn({ profile }) {
+  //     console.log(profile);
+  //     try {
+  //       await connectMongoDb();
         
-        const userExist = await ProviderUser.findOne({
-          email: profile.email,
-        });
-        if (!userExist) {
-        await ProviderUser.create({
-          email: profile.email,
-          name: profile.name,
-          image: profile.picture,
-        });
-        }
-        return true;
-      } catch (error) {
-        console.log("Error", error);
-      }
-    },
-  },
+  //       const userExist = await ProviderUser.findOne({
+  //         email: profile.email,
+  //       });
+  //       if (!userExist) {
+  //       await ProviderUser.create({
+  //         email: profile.email,
+  //         name: profile.name,
+  //         image: profile.picture,
+  //       });
+  //       }
+  //       return true;
+  //     } catch (error) {
+  //       console.log("Error", error);
+  //     }
+  //   },
+  // },
   secret: "XH6bp/TkLvnUkQiPDEZNyHc0CV+VV5RL/n+HdVHoHN0=",
   session: {
     strategy: "jwt",
