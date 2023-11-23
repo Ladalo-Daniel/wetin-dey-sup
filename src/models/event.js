@@ -2,31 +2,36 @@ import mongoose, { Schema } from "mongoose";
 
 
 const eventSchema = new Schema(
-    {   userId: {
-        type: String,
-        },
-        event_title: {
+    {
+        userId: {
             type: String,
         },
-        location: {
+        creator: {
+            type: Schema.Types.ObjectId,
+            ref: 'Users'
+        },
+        eventTitle: {
             type: String,
         },
-        start_time: {
+        eventLocation: {
             type: String,
         },
-        end_time: {
+        eventMonth: {
             type: String,
         },
-        start_date: {
+        eventDay: {
             type: String,
         },
-        end_date: {
+        eventTime: {
             type: String,
         },
-        group: {
+        eventDate: {
             type: String,
         },
-        event_photo: {
+        eventTag: {
+            type: String,
+        },
+        eventImage: {
             type: String,
         },
         isAdmin: {

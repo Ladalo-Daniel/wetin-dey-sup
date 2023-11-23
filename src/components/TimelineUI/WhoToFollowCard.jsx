@@ -9,12 +9,14 @@ import {
   Button,
   Chip,
 } from "@nextui-org/react";
+import Reveal from "./Reveal";
 
 export default function WhoToFollowCard({ authName, profileImage }) {
   const [isFollowed, setIsFollowed] = useState(false);
   const [follwers, setFollowers] = useState(0);
 
   return (
+    <Reveal>
     <Card className=" w-[80vw] md:max-w-[340px] justify-self-center ml-6 mb-6 bg-white dark:bg-slate">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
@@ -33,8 +35,8 @@ export default function WhoToFollowCard({ authName, profileImage }) {
             isFollowed
               ? " bg-orange text-white border-default-200"
               : " bg-darkOrange"
-          }
-          color="primary"
+            }
+            color="primary"
           radius="full"
           size="sm"
           variant={isFollowed ? "bordered" : "solid"}
@@ -58,5 +60,6 @@ export default function WhoToFollowCard({ authName, profileImage }) {
       </CardFooter>
 
     </Card>
+    </Reveal>
   );
 }

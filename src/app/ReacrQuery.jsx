@@ -1,6 +1,7 @@
 'use client'
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 
 import React from 'react'
@@ -10,6 +11,7 @@ function ReactQuery({ children }) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
+      {/* <ReactQueryDevtools initialIsOpen={true} /> */}
     </QueryClientProvider>
   )
 }

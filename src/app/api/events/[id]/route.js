@@ -3,7 +3,7 @@ import Event from "@/models/event";
 import { NextResponse } from "next/server";
 
 
-//GETTING A SINGLE EVENT BY ID
+//GETTING A SINGLE EVENT BY ID  for dynamic routing
 export async function GET(req, { params: { id } }) {
   try {
     // Connect to the DB
