@@ -9,7 +9,12 @@ export async function POST(req) {
     const { name, email, password, profilePicture } = await req.json();
     const hashedPassword = await bcrypt.hash(password, 10);
     await connectMongoDb();
-    await Users.create({ name, email, password: hashedPassword, profilePicture });
+    await Users.create({
+      name,
+      email,
+      password: hashedPassword,
+      profilePicture,
+    });
     return NextResponse.json({ message: "user registered" }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
@@ -18,5 +23,3 @@ export async function POST(req) {
     );
   }
 }
-
-

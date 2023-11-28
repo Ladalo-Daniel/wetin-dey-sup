@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { BsFillCalendarFill, BsGrid, BsGridFill } from "react-icons/bs";
 import { IoMdSettings } from "react-icons/io";
 import { LuCalendarDays } from "react-icons/lu";
-import { PiUsersThree, PiUsersThreeFill } from "react-icons/pi";
+import { PiUser, PiUserFill, PiUsersThree, PiUsersThreeFill } from "react-icons/pi";
 import { SlSettings } from "react-icons/sl";
 
 export default function BottomNavbar() {
@@ -23,6 +23,13 @@ export default function BottomNavbar() {
       icon: <PiUsersThree />,
       activeIcon: <PiUsersThreeFill />,
       tooltip: "My Tags",
+    },
+    {
+      name: "Profile",
+      Link: "/profile",
+      icon: <PiUser />,
+      activeIcon: <PiUserFill />,
+      tooltip: "Profile",
     },
     {
       name: "Calender",

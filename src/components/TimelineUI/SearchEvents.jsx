@@ -4,11 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import SearchEventCard from "./SearchModal";
 import { Card } from "@nextui-org/react";
+import { useGetEvents } from "@/lib/react-query/queriesMutations";
 
-export default function SearchEvents({ events }) {
+export default function SearchEvents({ event }) {
     const [state, setState] = useState(false)
     const [searchQuery, setSearchQuery] = useState('');
     const searchModalRef = useRef()
+
+
+    //react query fn
+    const {data:events, isLoading, error} = useGetEvents()
 
 
 
@@ -25,10 +30,16 @@ export default function SearchEvents({ events }) {
         };
     }, [])
      
-    const filteredEvents = events.filter((event) =>( 
-          event?.tag?.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-         // event.authorName.some((name) => name.toLowerCase().includes(searchQuery.toLowerCase()))
-    ))
+    // const filteredEvents = events?.data?.filter((event) =>( 
+    //       event?.eventTitle?.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    //      // event.authorName.some((name) => name.toLowerCase().includes(searchQuery.toLowerCase()))
+    // ))
+
+    const filteredEvents = events?.data?.filter((event) => {
+        const eventTitles = Array.isArray(event?.eventTitle) ? event?.eventTitle : [event?.eventTitle];
+      
+        return eventTitles.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      });
 
 
     
@@ -58,7 +69,7 @@ export default function SearchEvents({ events }) {
 
             <Card ref={searchModalRef} className=" absolute w-[92vw]  md:w-[420px] flex flex-col justify-center items-center lg:w-[420px] pt-4 mt-1 bg-gray dark:bg-gray z-20  text-white dark:text-darkSlate rounded-md">
 
-              <SearchEventCard setSearchQuery={setSearchQuery} events={filteredEvents} searchQuery={searchQuery} /> 
+              <SearchEventCard setSearchQuery={setSearchQuery} events={filteredEvents} searchQuery={searchQuery} isLoading={isLoading} error={error} /> 
             </Card>}
          </form>
         )

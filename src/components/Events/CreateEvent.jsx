@@ -4,49 +4,72 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { BsSendCheck } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
-import States from "./States";
+//import States from "./States";
+import Months from "./Months";
+import Days from "./Days";
+import Tags from "./Tags";
 import { useFormik } from "formik";
 import { eventsValidation } from "@/lib/validation";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { UploadButton } from "@uploadthing/react";
 
 export default function CreateEvent() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [disable, setDisable] = useState(false);
+
+  //  const { data } = useSession()
+  const router = useRouter();
+  //  console.log(data)
   const formik = useFormik({
     initialValues: {
+      // userId: data?.user?.email + Math.random(),
+      userId: Math.random(),
       eventTitle: "",
       eventLocation: "",
-      eventStartTime: "",
-      eventStartDate: "",
-      eventEndTime: "",
-      eventEndDate: "",
-      eventGroup: "",
-      eventImage: {},
+      eventMonth: "",
+      eventDay: "",
+      eventDate: "",
+      eventTime: "",
+      eventTag: "",
+      eventImage: "",
     },
     validate: eventsValidation,
     onSubmit,
   });
 
-  
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
-    }
-  };
-  
-  const handleUploadButtonClick = () => {
-    document.getElementById("file-input").click();
-  };
-
-  
-  
   async function onSubmit(values) {
-    console.log(values);
+    // console.log(values);
     try {
-    } catch (error) {}
+      const res = await fetch("api/events/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      if (res) {
+        toast.success("Event has been created successfully");
+        setDisable(true);
+        setTimeout(() => {
+          router.push("/timeline");
+        }, 2000);
+      } else {
+        toast.error("Event creation Failed!");
+      }
+      console.log(res);
+    } catch (error) {
+      // alert(error)
+      toast.error("Failed to create event, Try again!");
+      console.log("Error creating event:", error);
+    }
   }
 
-  const Data = States;
+  // const Data = States;
+  const MonthsData = Months;
+  const DaysData = Days;
+  const TagsData = Tags;
+
   return (
     <section className="font-poppins mt-4  pb-28 flex items-center justify-center">
       <form
@@ -80,21 +103,16 @@ export default function CreateEvent() {
             )}
           </span>
 
-          <div className="flex flex-col">
-            <label className="text-sm font-medium" htmlFor="Location">
+          <span className=" flex flex-col">
+            <label className=" text-sm font-medium" htmlFor="Location">
               Location
             </label>
-            <select
-              name="states"
+            <input
+              type="text"
               {...formik.getFieldProps("eventLocation")}
-              className="w-full mt-2  px-3 text-sm placeholder:text-sm  border-orange py-[0.6rem] text-gray dark:text-white bg-transparent outline-none border-[0.12rem]  shadow-sm rounded-sm"
-            >
-              {Data.map((state, index) => (
-                <option className=" text-gray" key={index} value={state.states}>
-                  {state.states}
-                </option>
-              ))}
-            </select>
+              placeholder="Enter event Location"
+              className="w-full mt-2 px-3 py-2 placeholder:text-sm dark:placeholder:text-white placeholder:text-gray dark:text-white  text-gray bg-transparent outline-none border-[0.12rem] border-orange  shadow-sm rounded-sm"
+            />
             {formik.errors.eventLocation && formik.touched.eventLocation ? (
               <span className="text-red text-sm">
                 {formik.errors.eventLocation}
@@ -102,35 +120,46 @@ export default function CreateEvent() {
             ) : (
               ""
             )}
-          </div>
+          </span>
         </div>
 
         <div className=" flex flex-col">
-          <label className=" text-sm font-medium">Start</label>
+          <label className=" text-sm font-medium">Month/Date</label>
           <div className=" grid grid-cols-2 w-full gap-2 my-2">
             <div className=" flex flex-col">
-              <input
-                type="time"
-                {...formik.getFieldProps("eventStartTime")}
-                className=" py-2 px-3 border text-sm outline-none rounded  bg-transparent  text-gray dark:text-white border-orange   "
-              />
-              {formik.errors.eventStartTime && formik.touched.eventStartTime ? (
+              <select
+                name="months"
+                {...formik.getFieldProps("eventMonth")}
+                className=" py-2 px-3 border text-sm outline-none rounded  bg-transparent  text-gray dark:text-white border-orange    "
+              >
+                {MonthsData.map((month, index) => (
+                  <option
+                    className=" text-gray"
+                    key={index}
+                    value={month.months}
+                  >
+                    {month.months}
+                  </option>
+                ))}
+              </select>
+              {formik.errors.eventMonth && formik.touched.eventMonth ? (
                 <span className=" text-red text-sm">
-                  {formik.errors.eventStartTime}
+                  {formik.errors.eventMonth}
                 </span>
               ) : (
                 ""
               )}
             </div>
+
             <div className=" flex flex-col">
               <input
                 type="date"
-                {...formik.getFieldProps("eventStartDate")}
+                {...formik.getFieldProps("eventDate")}
                 className=" py-2 px-3 text-sm outline-none border rounded  bg-transparent text-gray dark:text-white border-orange   "
               />
-              {formik.errors.eventStartDate && formik.touched.eventStartDate ? (
+              {formik.errors.eventDate && formik.touched.eventDate ? (
                 <span className=" text-red text-sm">
-                  {formik.errors.eventStartDate}
+                  {formik.errors.eventDate}
                 </span>
               ) : (
                 ""
@@ -139,17 +168,23 @@ export default function CreateEvent() {
           </div>
         </div>
         <div className=" flex flex-col">
-          <p className=" text-sm font-medium">End</p>
+          <p className=" text-sm font-medium">Day/Time</p>
           <div className=" grid grid-cols-2 w-full gap-2 my-2">
             <div className=" flex flex-col">
-              <input
-                type="time"
-                {...formik.getFieldProps("eventEndTime")}
-                className=" py-2 px-3 border text-sm outline-none rounded  bg-transparent text-gray dark:text-white  border-orange  "
-              />
-              {formik.errors.eventEndTime && formik.touched.eventEndTime ? (
+              <select
+                name="days"
+                {...formik.getFieldProps("eventDay")}
+                className=" py-2 px-3 border text-sm outline-none rounded  bg-transparent  text-gray dark:text-white border-orange    "
+              >
+                {DaysData.map((day, index) => (
+                  <option className=" text-gray" key={index} value={day.days}>
+                    {day.days}
+                  </option>
+                ))}
+              </select>
+              {formik.errors.eventDay && formik.touched.eventDay ? (
                 <span className=" text-red text-sm">
-                  {formik.errors.eventEndTime}
+                  {formik.errors.eventDay}
                 </span>
               ) : (
                 ""
@@ -157,13 +192,13 @@ export default function CreateEvent() {
             </div>
             <div className=" flex flex-col">
               <input
-                {...formik.getFieldProps("eventEndDate")}
-                type="date"
+                {...formik.getFieldProps("eventTime")}
+                type="time"
                 className=" py-2 px-3 outline-none text-sm rounded border  bg-transparent  text-gray dark:text-white border-orange   "
               />
-              {formik.errors.eventEndDate && formik.touched.eventEndDate ? (
+              {formik.errors.eventTime && formik.touched.eventTime ? (
                 <span className=" text-red text-sm">
-                  {formik.errors.eventEndDate}
+                  {formik.errors.eventTime}
                 </span>
               ) : (
                 ""
@@ -173,54 +208,54 @@ export default function CreateEvent() {
         </div>
 
         <div className=" flex flex-col my-2">
-          <p className="text-sm pb-[0.1rem]">Groups</p>
+          <p className="text-sm pb-[0.1rem]">Tags</p>
           <select
             name="groups"
-            {...formik.getFieldProps("eventGroup")}
+            {...formik.getFieldProps("eventTag")}
             className=" w-full rounded outline-none text-sm border border-orange bg-transparent  text-gray dark:text-white  py-2 px-2"
           >
-            <option className=" text-gray" value={"values"}>
-              Group1
-            </option>
-            <option className=" text-gray" value={"values"}>
-              Group2
-            </option>
-            <option className=" text-gray" value={"values"}>
-              Group3
-            </option>
-            <option className=" text-gray" value={"values"}>
-              Group4
-            </option>
-            <option className=" text-gray" value={"values"}>
-              Group5
-            </option>
+            {TagsData.map((tag, index) => (
+              <option className=" text-gray" key={index} value={tag.tags}>
+                {tag.tags}
+              </option>
+            ))}
           </select>
-          {formik.errors.eventGroup && formik.touched.eventGroup ? (
-            <span className="text-red text-sm">{formik.errors.eventGroup}</span>
+          {formik.errors.eventTag && formik.touched.eventTag ? (
+            <span className="text-red text-sm">{formik.errors.eventTag}</span>
           ) : (
             ""
           )}
         </div>
 
         <div className=" flex items-center my-3 gap-x-3 ">
-          <input
-            type="file"
-            accept="image/*"
-            id="file-input"
-            onChange={handleImageChange}
-            className="hidden"
-            // {...formik.getFieldProps("eventImage")}
+          <UploadButton
+            endpoint="eventImage"
+            appearance={{
+              button: {
+                background: "#e5660b",
+                color: "white",
+                padding: "4px",
+              },
+              allowedContent: "Add a display image",
+            }}
+            onClientUploadComplete={(res) => {
+              if (res[0] && res[0].url) {
+                setSelectedImage(res[0].url);
+                formik.setFieldValue("eventImage", res[0].url);
+                formik.getFieldProps("eventImage");
+              }
+              // Do something with the response
+              console.log("Files:", res);
+              // toast.success("Uploaded");
+            }}
+            onUploadError={(error) => {
+              // Do something with the error.
+              // alert(`ERROR! ${error.message}`);
+              toast.error("something went wrong!");
+            }}
           />
-
-          <Button
-            startContent={<FiUploadCloud />}
-            className=" rounded text-white text-xl bg-darkOrange   hover:bg-orange "
-            onClick={handleUploadButtonClick}
-          >
-            <p className=" text-sm font-medium">Add a display photo</p>
-          </Button>
           <div className=" flex items-center gap-x-2">
-            <Avatar size="md" src={selectedImage} />
+            <Avatar size="lg" src={selectedImage} />
             {formik.errors.eventImage && formik.touched.eventImage ? (
               <span className="text-red text-sm">
                 {formik.errors.eventImage}
@@ -230,17 +265,34 @@ export default function CreateEvent() {
             )}
           </div>
         </div>
+
         <Toaster
           toastOptions={{
             className: " text-sm",
+            success: {
+              style: {
+                background: "green",
+                color: "white",
+                duration: 2000,
+              },
+            },
+            error: {
+              style: {
+                background: "red",
+                color: "white",
+              },
+            },
           }}
         />
 
         <Button
+          isLoading={disable}
           type="submit"
-          className=" my-3 w-full py-3  bg-darkOrange  hover:bg-orange  text-white rounded"
+          className={` my-3 w-full py-3 ${
+            disable ? "bg-slate" : "bg-darkOrange hover:bg-orange"
+          }     text-white rounded`}
         >
-          Create your event
+          {disable ? "please wait..." : " Create your event"}
         </Button>
       </form>
     </section>
