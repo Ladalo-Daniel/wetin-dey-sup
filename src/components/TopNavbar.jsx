@@ -60,10 +60,6 @@ export default function TopNavbar({ el, id, image }) {
       navigateupName: "Comments",
     },
     {
-      Link: "/profile",
-      navigateupName: "Profile",
-    },
-    {
       Link: `/tags/events/${id}`,
       navigateupName: (
         <div className="flex gap-2 items-center">
