@@ -34,7 +34,7 @@ export default function CreateEvent() {
       eventTag: "",
       eventImage: "",
     },
-    validate: eventsValidation,
+    // validate: eventsValidation,
     onSubmit,
   });
 
