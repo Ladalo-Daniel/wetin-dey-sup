@@ -9,14 +9,14 @@ import {
   Button,
   Chip,
 } from "@nextui-org/react";
-import Reveal from "./Reveal";
+import { InViewAnimation } from "./Reveal";
 
 export default function WhoToFollowCard({ authName, profileImage }) {
   const [isFollowed, setIsFollowed] = useState(false);
   const [follwers, setFollowers] = useState(0);
 
   return (
-    <Reveal>
+    <InViewAnimation>
     <Card className=" w-[80vw] md:max-w-[340px] justify-self-center ml-6 mb-6 bg-white dark:bg-slate">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
@@ -60,6 +60,6 @@ export default function WhoToFollowCard({ authName, profileImage }) {
       </CardFooter>
 
     </Card>
-    </Reveal>
+    </InViewAnimation>
   );
 }

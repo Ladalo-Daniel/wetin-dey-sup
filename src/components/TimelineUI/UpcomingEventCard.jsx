@@ -16,12 +16,11 @@ export default function UpcomingEventCard({ events:eventSkeleton }) {
     if(isLoading){
         return (
             <div className='flex relative z-0 flex-col gap-4 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-9 font-poppins'>
-            <Reveal>
             <Chip className='text-md font-bold text-white rounded-small bg-darkOrange  '>Upcoming</Chip>
-            </Reveal>
             {eventSkeleton?.map((item, index) => (
+              <Reveal>
                 <Link  href={`/timeline/${item?._id}`} key={index} className='relative z-0'>
-                    <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>
+                    <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1 w-[90vw] md:max-w-[400px]'>
                         <div className=' flex-[10%]'>
                             <Avatar src={item?.eventImage} alt={item?.eventTitle} size='lg' radius="rounded"/>
                         </div>
@@ -50,6 +49,7 @@ export default function UpcomingEventCard({ events:eventSkeleton }) {
                         </div>
                     </Card>
                 </Link>
+             </Reveal>
             ))}
         </div>
         )
@@ -58,9 +58,7 @@ export default function UpcomingEventCard({ events:eventSkeleton }) {
     
     return(
         <div className='flex relative z-0 flex-col gap-4 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-9 font-poppins'>
-            <Reveal>
             <Chip className='text-md font-bold text-white rounded-small bg-darkOrange  '>Upcoming</Chip>
-            </Reveal>
             {events?.data?.map((item, index) => (
                 <Link  href={`/timeline/${item?._id}`} key={index} className='relative z-0'>
                     <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>

@@ -11,7 +11,7 @@ import Reveal from './Reveal'
 
 export default function EventItemCard({events:skeletonEvent}) {
     const { data: user } = useSession()
-    // console.log(user)
+    console.log(user)
    
     const {data:events, isLoading, error} = useGetEvents()
     console.log(events);
@@ -30,6 +30,7 @@ export default function EventItemCard({events:skeletonEvent}) {
             <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-2">
               {
                 skeletonEvent?.map((event) => (
+                <Reveal>
                   <Card className="dark:bg-darkSlate pb-4 w-[300px] rounded-md" key={event?.name || event?.userId}>
                       <Link href={`/timeline/${event._id}`} className='flex flex-col gap-1 items-start text-inherit w-auto '>       
                       <Image 
@@ -67,6 +68,7 @@ export default function EventItemCard({events:skeletonEvent}) {
                           </div>
                       </Link>
                   </Card>
+                 </Reveal>
                   ))
               }
              </div>
