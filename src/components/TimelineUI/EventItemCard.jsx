@@ -12,10 +12,10 @@ import EventCardSkeleton from './SkeletonUIs'
 
 export default function EventItemCard({events:skeletonEvent}) {
     const { data: user } = useSession()
-    console.log(user)
+    // console.log(user)
    
     const {data:events, isLoading, error} = useGetEvents()
-    console.log(events);
+    // console.log(events);
 
 
  return (

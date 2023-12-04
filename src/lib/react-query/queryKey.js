@@ -4,6 +4,8 @@ const QUERY_KEYS = {
 
     GET_ALL_TIMELINE_EVENTS_DATA: 'getAllTimelineEventsData',
 
+    GET_ALL_USERS_DATA: 'getAllUsersData',
+
     // Other Keys...
 }
 
