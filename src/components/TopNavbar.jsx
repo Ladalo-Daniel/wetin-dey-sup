@@ -7,20 +7,21 @@ import {
   PopoverTrigger,
   Tooltip,
 } from "@nextui-org/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { BsFillCalendarFill, BsGrid, BsGridFill } from "react-icons/bs";
 import { IoMdMore, IoMdSettings } from "react-icons/io";
 import { LuCalendarDays } from "react-icons/lu";
 import { PiUsersThree, PiUsersThreeFill } from "react-icons/pi";
 import { RiArrowLeftLine } from "react-icons/ri";
 import { SlSettings } from "react-icons/sl";
-import { GrLogout } from "react-icons/gr";
+import { GrLogin, GrLogout } from "react-icons/gr";
 import Themeswitch from "./Themeswitcher";
 import Headroom from "react-headroom";
+import Link from "next/link";
+import { signOut, signIn, useSession } from "next-auth/react";
 
-
-export default function TopNavbar({el, id, image}) {
-
+export default function TopNavbar({ el, id, image }) {
+  const { data: session } = useSession();
   const Navigation = [
     {
       Link: "/timeline",
@@ -55,35 +56,44 @@ export default function TopNavbar({el, id, image}) {
       navigateupName: "Create event",
     },
     {
-      // for testing purpose
       Link: "/comments",
       navigateupName: "Comments",
     },
     {
-      // for testing purpose
       Link: `/tags/events/${id}`,
-
-      navigateupName: 
-      <div className="flex gap-2 items-center">
-        {/* <Avatar src="https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais" /> */}
-        <Avatar src={`image`} />
-        <div>
-          <h2 className="font-semibold font-poppins light:text-slate">Techies</h2>
-          <p className="font-thin dark:text-lightSlate text-gray-300 text-sm">12 members</p>
+      navigateupName: (
+        <div className="flex gap-2 items-center">
+          {/* <Avatar src="https://img.freepik.com/free-photo/soccer-players-action-professional-stadium_654080-1130.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=ais" /> */}
+          <Avatar src={`image`} />
+          <div>
+            <h2 className="font-semibold font-poppins light:text-slate">
+              Techies
+            </h2>
+            <p className="font-thin dark:text-lightSlate text-gray-300 text-sm">
+              12 members
+            </p>
+          </div>
         </div>
-        </div>
+      )
     },
     {
       Link: "/settings/edit-user",
       navigateupName: "Edit profile",
     },
+    {
+      Link: "/privacy",
+      navigateupName: "Privacy policy",
+    },
+    {
+      Link: "/notifications",
+      navigateupName: "Notifications",
+    },
   ];
   const paths = usePathname();
-  const router = useRouter();
   return (
     <Headroom>
-      <nav className=" flex justify-between static  w-full items-center dark:bg-darkSlate  bg-white">
-        <div className=" flex justify-normal gap-x-[0.20rem] py-3 items-center">
+      <nav className="flex justify-between static  w-full items-center dark:bg-darkSlate  bg-white">
+        <div className=" flex justify-normal gap-x-[0.10rem] py-3 items-center">
           <Tooltip
             placement="bottom"
             className=" dark:bg-white bg-slate text-white dark:text-black  rounded"
@@ -101,6 +111,9 @@ export default function TopNavbar({el, id, image}) {
           </Tooltip>
           {Navigation.map((items, index) => (
             <span
+              onClick={() => {
+                window.history.back();
+              }}
               className="font-medium dark:text-white capitalize"
               key={index}
             >
@@ -108,7 +121,7 @@ export default function TopNavbar({el, id, image}) {
             </span>
           ))}
         </div>
-        <nav className=" items-center  justify-between z-[99] hidden  w-[50%] lg:w-[40%] md:flex gap-x-4 py-3  ">
+        <div className="items-center  justify-between  hidden   w-[50%] translate-x-[20%]  md:flex gap-x-4 py-3  ">
           {Navigation.map((items, index) => (
             <Tooltip
               key={index}
@@ -116,11 +129,11 @@ export default function TopNavbar({el, id, image}) {
               placement="top"
               content={items.tooltip}
             >
-              <div
-                onClick={() =>
-                  router.push(items.Link, { scroll: false, prefetch: false })
-                }
-                className="cursor-pointer"
+              <Link
+                href={items.Link}
+                scroll={false}
+                prefetch={false}
+                className={` cursor-pointer `}
               >
                 <span
                   className={`${
@@ -131,10 +144,10 @@ export default function TopNavbar({el, id, image}) {
                 >
                   {paths === items.Link ? items.activeIcon : items.icon}
                 </span>
-              </div>
+              </Link>
             </Tooltip>
           ))}
-        </nav>
+        </div>
 
         <Popover placement="bottom" className=" dark:border-white border">
           <PopoverTrigger>
@@ -150,21 +163,34 @@ export default function TopNavbar({el, id, image}) {
           "
           >
             <Themeswitch />
-            <Button
-              startContent={<SlSettings />}
-              onClick={() =>
-                router.push("/settings", { scroll: false, prefetch: false })
-              }
-              className=" flex w-[100%]  rounded-none items-center justify-start bg-transparent py-4 dark:text-white text-black"
+            <Link
+              href={"/settings"}
+              scroll={false}
+              prefetch={false}
+              className=" flex w-[100%]  rounded-none items-center px-4 gap-x-3 justify-start bg-transparent py-4 dark:text-white text-black"
             >
+              <span>
+                <SlSettings />
+              </span>
               Settings
-            </Button>
-            <Button
-              startContent={<GrLogout />}
-              className=" flex w-[100%] bg-lightRed  rounded-none items-center justify-start py-4 dark:text-white text-white"
-            >
-              Logout
-            </Button>
+            </Link>
+            {!session ? (
+              <Button
+                onClick={(e) => signIn({ callbackUrl: "/" })}
+                startContent={<GrLogin />}
+                className=" flex w-[100%] bg-[rgb(35,97,35)]  rounded-none items-center justify-start py-4 dark:text-white text-white"
+              >
+                Sign in
+              </Button>
+            ) : (
+              <Button
+                onClick={(e) => signOut({ callbackUrl: "/login" })}
+                startContent={<GrLogout />}
+                className=" flex w-[100%] bg-red  rounded-none items-center justify-start py-4 dark:text-white text-white"
+              >
+                Sign out
+              </Button>
+            )}
           </PopoverContent>
         </Popover>
       </nav>

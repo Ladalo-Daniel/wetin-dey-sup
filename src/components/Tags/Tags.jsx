@@ -10,10 +10,10 @@ export default function TagsComp({ tags }) {
         <div className="flex overflow-x-auto h-[70vh] scrollbar-hide">
             {tags.map(({id, tagName, events, imageName}) => (
                 <>
-                    <div className="flex justify-center w-[80%] flex-grow-1 flex-shrink-0">
+                    <div className="flex justify-center w-[80%] lg:w-[50%] flex-grow-1 flex-shrink-0">
                         {/* <Link href={`/tags/events/${id}`}> */}
-                            <div key={id} className="dark:shadow-xl shadow-gray border flex-shrink-0 mx-2 dark:border-lightSlate rounded-md text-black h-[90%] w-[90%] flex flex-col bg-transparent">
-                                <div key={id} className="w-full h-[-webkit-fill-available] md:h-4/5">
+                            <div key={id} className="dark:shadow-xl shadow-gray border  flex-shrink-0 mx-2 dark:border-lightSlate rounded-md text-black h-[90%] w-[90%] flex flex-col ">
+                                <div key={id} className="w-full  h-[-webkit-fill-available] md:h-4/5">
                                     <Image 
                                         src={imageName}
                                         width={50}
@@ -22,7 +22,7 @@ export default function TagsComp({ tags }) {
                                         className="w-full h-full rounded-t-md"
                                     />            
                                 </div>
-                                <div key={id} className=" md:h-1/5 py-1 h-[20%] dark:bg-slate dark:text-white flex justify-between px-2 items-center bg-white rounded-b-md">
+                                <div key={id} className=" md:h-1/5 py-1 h-[20%] dark:bg-darkSlate dark:text-white flex justify-between px-2 items-center bg-white rounded-b-md">
                                     <h1 className="font-bold">{tagName}</h1>
                                     <Link href={`/tags/events/${id}`}>
                                         <Button className=" p-3 md:p-5 bg-darkOrange border-r-0"  variant="light">

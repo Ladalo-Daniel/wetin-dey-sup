@@ -7,7 +7,7 @@ body,
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    user-select: none;
+    /* user-select: none; */
     user-zoom: fixed;
 }
 
@@ -19,7 +19,7 @@ html {
 /* default body  background color */
 body {
     background-color: #e2e8f0;
-    font-family: 'poppin', sans-serif;
+    font-family: 'poppins', sans-serif;
 }
 
 .react-calendar {
@@ -33,3 +33,7 @@ body {
 .abbr {
     text-decoration: none!important;
 }
+.loading {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(237,3,32,0.87) 20.8%, rgba(242,121,1,0.84) 74.4% );
+  }
+  

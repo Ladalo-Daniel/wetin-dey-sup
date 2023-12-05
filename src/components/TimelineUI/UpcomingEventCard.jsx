@@ -9,10 +9,10 @@ import { SlLocationPin } from 'react-icons/sl'
 export default function UpcomingEventCard({ events }) {
     
     return(
-        <div className='flex flex-col gap-4 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-9 font-poppins'>
+        <div className='flex relative z-0 flex-col gap-4 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-9 font-poppins'>
             <Chip className='text-md font-bold text-white rounded-small bg-darkOrange  '>Upcoming</Chip>
             {events.map((item, index) => (
-                <Link className='relative z-0' href={item.link} key={index}>
+                <Link href={item.link} key={index} className='relative z-0'>
                     <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>
                         <div className=' flex-[10%]'>
                             <Avatar src={item.img} alt={item.title} size='lg' radius="rounded"/>

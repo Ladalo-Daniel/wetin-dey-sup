@@ -1,29 +1,26 @@
-'use client'
-
-import {BiDotsVerticalRounded} from 'react-icons/bi'
-import {Button} from "@nextui-org/react";
 import Mainlayout from "@/components/Mainlayout";
-import SettingsComp from '@/components/Settings/settings';
+import SettingsComp from "@/components/Settings/settings";
+import { getServerSession } from "next-auth";
+import { Options } from "../api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
-export default function Settings() {
-
+export default async function Settings() {
+  const session = await getServerSession(Options);
+  if (!session) {
+    redirect("/timeline");
+  }
   const userProfile = [
     {
-      userName: "Salome Adams",
-      userEmail: "salome357@gmail.com",
-      profileImage: "images/stefan-unsplash.jpg",
-    }
-  ]
-  
+      userName: session.user?.name,
+      userEmail: session.user?.email,
+      profileImage: session.user?.image,
+    },
+  ];
+
   return (
     <Mainlayout>
-      <div className="p-4 bg-gray-100 h-full dark:bg-slate">
+      <div className="p-4 bg-gray-100 h-full  dark:bg-slate">
         <SettingsComp userDetail={userProfile} />
-        <div className="my-2 flex flex-wrap gap-4 justify-center w-full items-center">
-          <Button color="primary" className="p-4 rounded-md hover:text-white" variant="light">
-            <span className='text-[#f56d6df2]'>SIGN OUT</span>
-          </Button>
-        </div>
       </div>
     </Mainlayout>
   );
