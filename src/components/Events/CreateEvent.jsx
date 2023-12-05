@@ -256,11 +256,9 @@ export default function CreateEvent() {
               allowedContent: "Add a display image",
             }}
             onClientUploadComplete={(res) => {
-              if (res[0] && res[0].url) {
-                setSelectedImage(res[0].url);
-                formik.setFieldValue("eventImage", res[0].url);
-                formik.getFieldProps("eventImage");
-              }
+                formik.setFieldValue("eventImage", res.fileUrl);
+                
+              
               // Do something with the response
               console.log("Files:", res);
               // toast.success("Uploaded");

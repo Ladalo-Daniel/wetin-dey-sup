@@ -148,7 +148,7 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
                 console.log("Upload Response:", res);
                
                   // setImageUrl(res[0].url);
-                  formik.setFieldValue("profilePicture", res.url);
+                  formik.setFieldValue("profilePicture", res.fileUrl);
                   // formik.getFieldProps("profilePicture");
               
 
