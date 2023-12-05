@@ -19,21 +19,20 @@ export default function CreateEvent() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [disable, setDisable] = useState(false);
 
-   const { data } = useSession()
+  const { data } = useSession();
   //  console.log(data)
   const router = useRouter();
 
+  const { data: usersData, isLoading, error } = useGetUsers();
+  // console.log(usersData);
 
-  const {data:usersData, isLoading, error} = useGetUsers()
-    // console.log(usersData);
-
-  
   // Filter user details based on the given name and email
-   const [creatorData] = usersData?.data?.filter(user => user?.name === data?.user?.name && user?.email === data?.user?.email ) || [{}];
-    // const {_id, name, email, profilePicture } = creatorData;
-   console.log(creatorData);
-
-
+  const [creatorData] = usersData?.data?.filter(
+    (user) =>
+      user?.name === data?.user?.name && user?.email === data?.user?.email
+  ) || [{}];
+  // const {_id, name, email, profilePicture } = creatorData;
+  console.log(creatorData);
 
   const formik = useFormik({
     initialValues: {
@@ -52,16 +51,14 @@ export default function CreateEvent() {
       eventTag: "",
       eventImage: "",
     },
-    // validate: eventsValidation,
+    validate: eventsValidation,
     onSubmit,
   });
-
-  
 
   async function onSubmit(values) {
     console.log(values);
     try {
-      const res = await fetch("api/events/creat", {
+      const res = await fetch("/api/events/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,15 +74,13 @@ export default function CreateEvent() {
       } else {
         toast.error("Event creation Failed!");
       }
-       console.log(res);
+      console.log(res);
     } catch (error) {
       // alert(error)
       toast.error("Failed to create event, Try again!");
       console.log("Error creating event:", error);
     }
   }
-
-  
 
   // const Data = States;
   const MonthsData = Months;
