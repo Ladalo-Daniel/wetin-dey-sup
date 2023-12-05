@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardHeader,
@@ -9,14 +9,37 @@ import {
   Button,
   Chip,
 } from "@nextui-org/react";
-import Reveal from "./Reveal";
+import { InViewAnimation } from "./Reveal";
+import { WhoToFollowSkeleton } from "./SkeletonUIs";
 
 export default function WhoToFollowCard({ authName, profileImage }) {
   const [isFollowed, setIsFollowed] = useState(false);
   const [follwers, setFollowers] = useState(0);
 
+  //Note, the isLoading and useEffect is just for test, It's gonna be modified with the loading property from reactquery
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulating a delay of 1000ms (1 second)
+    const delay = 5000;
+
+    const timeoutId = setTimeout(() => {
+      // After the delay, update the isLoading state to false
+      setIsLoading(false);
+    }, delay);
+
+    // Cleanup the timeout to avoid memory leaks
+    return () => clearTimeout(timeoutId);
+  }, []); // Empty dependency array ensures this effect runs only once during component mount
+
+  if (isLoading) {
+    return <WhoToFollowSkeleton />;
+  }
+  
+
   return (
-    <Reveal>
+    <InViewAnimation>
     <Card className=" w-[80vw] md:max-w-[340px] justify-self-center ml-6 mb-6 bg-white dark:bg-slate">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
@@ -60,6 +83,6 @@ export default function WhoToFollowCard({ authName, profileImage }) {
       </CardFooter>
 
     </Card>
-    </Reveal>
+    </InViewAnimation>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import {
   Avatar,
+  User,
   Button,
   Popover,
   PopoverContent,
@@ -88,7 +89,6 @@ export default function TopNavbar({ el, id, image }) {
       Link: "/notifications",
       navigateupName: "Notifications",
     },
-    
   ];
   const paths = usePathname();
   return (
@@ -150,50 +150,60 @@ export default function TopNavbar({ el, id, image }) {
           ))}
         </div>
 
-        <Popover placement="bottom" className=" dark:border-white border">
-          <PopoverTrigger>
-            <Button
-              isIconOnly
-              className=" text-2xl rounded-full mr-2 bg-transparent"
-            >
-              <IoMdMore />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent
-            className=" w-[180px] px-0 py-3 h-[140px] bg-white dark:bg-darkSlate rounded
+        <div className=" flex items-center gap-x-3">
+          <User
+            size="lg"
+            name={session.user?.name}
+            // description={session.user.email}
+            avatarProps={{
+              src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+            }}
+          />
+          <Popover placement="bottom" className=" dark:border-white border">
+            <PopoverTrigger>
+              <Button
+                isIconOnly
+                className=" text-2xl rounded-full mr-2 bg-transparent"
+              >
+                <IoMdMore />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent
+              className=" w-[180px] px-0 py-3 h-[140px] bg-white dark:bg-darkSlate rounded
           "
-          >
-            <Themeswitch />
-            <Link
-              href={"/settings"}
-              scroll={false}
-              prefetch={false}
-              className=" flex w-[100%]  rounded-none items-center px-4 gap-x-3 justify-start bg-transparent py-4 dark:text-white text-black"
             >
-              <span>
-                <SlSettings />
-              </span>
-              Settings
-            </Link>
-            {!session ? (
-              <Button
-                onClick={(e) => signIn({ callbackUrl: "/" })}
-                startContent={<GrLogin />}
-                className=" flex w-[100%] bg-[rgb(35,97,35)]  rounded-none items-center justify-start py-4 dark:text-white text-white"
+              <Themeswitch />
+              <Link
+                href={"/settings"}
+                scroll={false}
+                prefetch={false}
+                className=" flex w-[100%]  rounded-none items-center px-4 gap-x-3 justify-start bg-transparent py-4 dark:text-white text-black"
               >
-                Sign in
-              </Button>
-            ) : (
-              <Button
-                onClick={(e) => signOut({ callbackUrl: "/login" })}
-                startContent={<GrLogout />}
-                className=" flex w-[100%] bg-red  rounded-none items-center justify-start py-4 dark:text-white text-white"
-              >
-                Sign out
-              </Button>
-            )}
-          </PopoverContent>
-        </Popover>
+                <span>
+                  <SlSettings />
+                </span>
+                Settings
+              </Link>
+              {!session ? (
+                <Button
+                  onClick={(e) => signIn({ callbackUrl: "/" })}
+                  startContent={<GrLogin />}
+                  className=" flex w-[100%] bg-[rgb(35,97,35)]  rounded-none items-center justify-start py-4 dark:text-white text-white"
+                >
+                  Sign in
+                </Button>
+              ) : (
+                <Button
+                  onClick={(e) => signOut({ callbackUrl: "/login" })}
+                  startContent={<GrLogout />}
+                  className=" flex w-[100%] bg-red  rounded-none items-center justify-start py-4 dark:text-white text-white"
+                >
+                  Sign out
+                </Button>
+              )}
+            </PopoverContent>
+          </Popover>
+        </div>
       </nav>
     </Headroom>
   );

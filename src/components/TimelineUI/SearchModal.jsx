@@ -26,7 +26,7 @@ export default function SearchEventCard({ events, setSearchQuery, searchQuery, i
                 <Link href={`/timeline/${item._id}`} key={index}>
                     <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>
                         <div className=' flex-[10%]'>
-                            <Avatar src={item?.evenImage} alt={item?.eventTitle} size='lg' radius="rounded"/>
+                            <Avatar src={item?.eventImage} alt={item?.eventTitle} size='lg' radius="rounded"/>
                         </div>
                         <div className=' flex-[90%]'>
                            <div className=' flex justify-between mx-4'>

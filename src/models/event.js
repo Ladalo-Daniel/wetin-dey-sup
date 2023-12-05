@@ -3,12 +3,8 @@ import mongoose, { Schema } from "mongoose";
 
 const eventSchema = new Schema(
     {
-        userId: {
-            type: String,
-        },
         creator: {
-            type: Schema.Types.ObjectId,
-            ref: 'Users'
+            type: Object,
         },
         eventTitle: {
             type: String,

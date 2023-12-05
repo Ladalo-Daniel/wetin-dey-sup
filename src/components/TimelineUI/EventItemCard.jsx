@@ -1,35 +1,30 @@
 "use client"
 import { useGetEvents } from '@/lib/react-query/queriesMutations'
-import { Card, Chip, Image, Link, Spinner, User } from '@nextui-org/react'
+import { Card, Chip, Image, Link, Skeleton, Spinner, User } from '@nextui-org/react'
 import { useSession } from 'next-auth/react'
 import { BsCalendar2, BsClock } from 'react-icons/bs'
 import { SlLocationPin } from 'react-icons/sl'
-import SkeletonApp from './Skeleton'
-import Reveal from './Reveal'
+// import SkeletonApp from './Skeleton'
+// import Reveal from './Reveal'
+import EventCardSkeleton from './SkeletonUIs'
 
 
 
-export default function EventItemCard({event}) {
+export default function EventItemCard({events:skeletonEvent}) {
     const { data: user } = useSession()
     // console.log(user)
    
     const {data:events, isLoading, error} = useGetEvents()
-    console.log(events);
-
-    if(isLoading){
-        return (<Spinner color='warning' />)
-    }
-
-    if(error){
-        console.log(error)
-    }
+    // console.log(events);
 
 
  return (
     <div className=' font-poppinsf flex flex-col gap-5 relative items-start '>
       <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-2">
-        {
-          events?.data?.map((event) => (
+        {isLoading || events?.data?.length === 0 ? (
+            <EventCardSkeleton />
+        ) :
+          (events?.data?.map((event) => (
             <Card className="dark:bg-darkSlate pb-4 w-[300px] rounded-md" key={event?.authorName || event?.userId}>
                 <Link href={`/timeline/${event._id}`} className='flex flex-col gap-1 items-start text-inherit w-auto '>       
                 <Image 
@@ -67,7 +62,7 @@ export default function EventItemCard({event}) {
                     </div>
                 </Link>
             </Card>
-            ))
+            )))
         }
        </div>
     </div>

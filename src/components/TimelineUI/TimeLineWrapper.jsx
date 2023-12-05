@@ -6,6 +6,7 @@ import UpcomingEventCard from "./UpcomingEventCard";
 import EventTypeWrapper from "./EventTypeWrapper";
 import WhoToFollowCard from "./WhoToFollowCard";
 import { Card, Chip } from "@nextui-org/react";
+import EventCard from "../CommentsUI/EventCard";
 
 async function TimeLineWrapper() {
  

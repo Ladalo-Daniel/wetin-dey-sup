@@ -1,6 +1,6 @@
 "use client";
 import { Avatar, Button } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { BsSendCheck } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
@@ -11,20 +11,37 @@ import Tags from "./Tags";
 import { useFormik } from "formik";
 import { eventsValidation } from "@/lib/validation";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { UploadButton } from "@uploadthing/react";
+import { useRouter } from "next/navigation";
+import { useGetUsers } from "@/lib/react-query/queriesMutations";
 
 export default function CreateEvent() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [disable, setDisable] = useState(false);
 
-  //  const { data } = useSession()
-  const router = useRouter();
+  const { data } = useSession();
   //  console.log(data)
+  const router = useRouter();
+
+  const { data: usersData, isLoading, error } = useGetUsers();
+  // console.log(usersData);
+
+  // Filter user details based on the given name and email
+  const [creatorData] = usersData?.data?.filter(
+    (user) =>
+      user?.name === data?.user?.name && user?.email === data?.user?.email
+  ) || [{}];
+  // const {_id, name, email, profilePicture } = creatorData;
+  console.log(creatorData);
+
   const formik = useFormik({
     initialValues: {
-      // userId: data?.user?.email + Math.random(),
-      userId: Math.random(),
+      creator: {
+        _id: creatorData?._id,
+        name: creatorData?.name,
+        email: creatorData?.email,
+        profilePicture: creatorData?.profilePicture,
+      },
       eventTitle: "",
       eventLocation: "",
       eventMonth: "",
@@ -39,9 +56,9 @@ export default function CreateEvent() {
   });
 
   async function onSubmit(values) {
-    // console.log(values);
+    console.log(values);
     try {
-      const res = await fetch("api/events/create", {
+      const res = await fetch("/api/events/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -67,7 +67,7 @@ export default function SearchEvents({ event }) {
             </div>
            {searchQuery &&
 
-            <Card ref={searchModalRef} className=" absolute w-[92vw]  md:w-[420px] flex flex-col justify-center items-center lg:w-[420px] pt-4 mt-1 bg-gray dark:bg-gray z-20  text-white dark:text-darkSlate rounded-md">
+            <Card ref={searchModalRef} className=" absolute w-[92vw]  md:w-[420px] flex flex-col justify-center items-center lg:w-[420px] pt-4 mt-1 bg-white dark:bg-gray z-20  text-white dark:text-darkSlate rounded-md">
 
               <SearchEventCard setSearchQuery={setSearchQuery} events={filteredEvents} searchQuery={searchQuery} isLoading={isLoading} error={error} /> 
             </Card>}

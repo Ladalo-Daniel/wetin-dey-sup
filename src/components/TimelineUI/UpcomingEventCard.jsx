@@ -7,26 +7,20 @@ import { BsCalendar2, BsClock } from 'react-icons/bs'
 import { SlLocationPin } from 'react-icons/sl'
 import Reveal from './Reveal'
 import { useGetEvents } from '@/lib/react-query/queriesMutations'
+import { UpcomingEventSkeleton } from './SkeletonUIs'
 
-export default function UpcomingEventCard({ event }) {
+export default function UpcomingEventCard({ events:eventSkeleton }) {
 
     const {data:events, isLoading, error} = useGetEvents()
     console.log(events);
 
-    if(isLoading){
-        return (<Spinner color='warning' />)
-    }
-
-    if(error){
-        console.log(error)
-    }
-    
     return(
         <div className='flex relative z-0 flex-col gap-4 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-9 font-poppins'>
-            <Reveal>
             <Chip className='text-md font-bold text-white rounded-small bg-darkOrange  '>Upcoming</Chip>
-            </Reveal>
-            {events?.data?.map((item, index) => (
+          {isLoading || events?.data?.length === 0 ? (
+            <UpcomingEventSkeleton />
+          ) :
+            (events?.data?.map((item, index) => (
                 <Link  href={`/timeline/${item?._id}`} key={index} className='relative z-0'>
                     <Card className='dark:bg-darkSlate py-4 px-2 flex flex-row justify-between items-center gap-1'>
                         <div className=' flex-[10%]'>
@@ -57,7 +51,8 @@ export default function UpcomingEventCard({ event }) {
                         </div>
                     </Card>
                 </Link>
-            ))}
+             )))
+            }
         </div>
     )
 
