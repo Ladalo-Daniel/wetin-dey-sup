@@ -151,13 +151,13 @@ export default function TopNavbar({ el, id, image }) {
         </div>
 
         <div className=" flex items-center gap-x-3">
-          <User
+          <Avatar
             size="lg"
-            name={session.user?.name}
+            //name={session.user?.name}
             // description={session.user.email}
-            avatarProps={{
-              src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-            }}
+           
+              src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+            
           />
           <Popover placement="bottom" className=" dark:border-white border">
             <PopoverTrigger>
