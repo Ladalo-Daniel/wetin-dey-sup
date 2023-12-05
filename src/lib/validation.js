@@ -47,20 +47,25 @@ export default function loginValidation(values) {
 
 export function eventsValidation(values) {
   const errors = {};
-
-  errors.eventTitle = !values.eventTitle
-    ? "add a title"
-    : values.eventTitle.length < 9 || values.eventTitle.length > 25
-    ? "title must be more than 9 and less than 25 characters"
-    : null;
-
-  errors.eventLocation = !values.eventLocation ? "select a location" : null;
-  errors.eventDate = !values.eventDate ? "add a date" : null;
-  errors.eventTime = !values.eventTime ? "add event time" : null;
-  errors.eventMonth = !values.eventMonth ? "add event month" : null;
-  errors.eventDay = !values.eventDay ? "add event day" : null;
-  errors.eventTag = !values.eventTag ? " select a tag" : null;
-  errors.eventImage = !values.eventImage ? "add an image" : null;
+  if (!values.eventTitle) {
+    errors.eventTitle = "add a title";
+  } else if (values.eventTitle.length < 9 || values.eventTitle.length > 10) {
+    errors.eventTitle = "title must be more than 9 and less than 25 characters";
+  } else if (!values.eventLocation) {
+    errors.eventLocation = "select a location";
+  } else if (!values.eventDate) {
+    errors.eventDate = "add a date";
+  } else if (!values.eventTime) {
+    errors.eventTime = "add event time";
+  } else if (!values.eventMonth) {
+    errors.eventMonth = "add event month";
+  } else if (!values.eventDay) {
+    errors.eventDay = "add event day";
+  } else if (!values.eventTag) {
+    errors.eventTag = " select a tag";
+  } else if (!values.eventImage) {
+    errors.eventImage = "add an image";
+  }
 
   return errors;
 }

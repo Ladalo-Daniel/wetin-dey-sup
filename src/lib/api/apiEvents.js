@@ -1,7 +1,7 @@
 //Function to get all the events
 export default async function getEvents(){
     try{
-        const res = await fetch("http://localhost:3000/api/events/all", {
+        const res = await fetch("/api/events/all", {
           cache : "no-store",
         });
         const events = res.json();
@@ -15,7 +15,7 @@ export default async function getEvents(){
 //Function to get a single Event
 export async function getSingleEvent(id) {
     try {
-      const res = await fetch(`http://localhost:3000/api/events/${id}`, {
+      const res = await fetch(`/api/events/${id}`, {
         cache: "no-store",
       });
       const event = await res.json();
