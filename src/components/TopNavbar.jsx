@@ -152,7 +152,7 @@ export default function TopNavbar({ el, id, image }) {
 
         <div className=" flex items-center gap-x-3">
           <Avatar
-            size="lg"
+            size="sm"
             //name={session.user?.name}
             // description={session.user.email}
            
