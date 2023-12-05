@@ -91,7 +91,7 @@ export default function CreateEvent() {
     <section className="font-poppins mt-4  pb-28 flex items-center justify-center">
       <form
         onSubmit={formik.handleSubmit}
-        className="  w-[95%] bg-white  dark:bg-darkSlate  py-5 rounded-md  px-5 sm:max-w-lg md:max-w-xl "
+        className="  w-[95%] bg-white  dark:bg-darkSlate  py-5 rounded-md  px-1 sm:max-w-lg md:max-w-xl "
       >
         <span className=" text-3xl flex mx-auto  justify-center text-orange border-orange border-2 rounded-full h-[50px] w-[50px] items-center">
           <BsSendCheck />
@@ -256,9 +256,11 @@ export default function CreateEvent() {
               allowedContent: "Add a display image",
             }}
             onClientUploadComplete={(res) => {
-                formik.setFieldValue("eventImage", res.fileUrl);
-                
-              
+              if (res[0] && res[0].url) {
+                setSelectedImage(res[0].url);
+                formik.setFieldValue("eventImage", res[0].url);
+                formik.getFieldProps("eventImage");
+              }
               // Do something with the response
               console.log("Files:", res);
               // toast.success("Uploaded");

@@ -20,8 +20,7 @@ export default function AuthenticationSignin() {
   // }
   return (
     <main className="w-full   min-h-screen bottom-0 py-14  bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
-     
-      <div className=" w-[99%] sm:max-w-md rounded-xl shadow-xl py-2  relative bg-white text-slate px-2 sm:px-3 space-y-8">
+      <div className=" w-[98%] sm:max-w-md rounded-xl shadow-xl py-2  relative bg-white text-slate px-2 sm:px-3 space-y-8">
         <div className="text-center mt-9">
           <div className="mt-5 ">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
@@ -30,7 +29,7 @@ export default function AuthenticationSignin() {
             <p className=" font-medium px-2">Sign up to get started.</p>
           </div>
         </div>
-        <div className="absolute p-4 flex  justify-center -top-[3.2rem] rounded-full bg-orange text-white left-[44%]">
+        <div className="absolute p-4 flex  justify-center -top-[3.2rem] rounded-full bg-orange text-white left-[45%]">
           <span className=" text-3xl">
             <SiFastapi />
           </span>
@@ -71,7 +70,7 @@ export default function AuthenticationSignin() {
             </span>
             Continue with Github
           </Button> */}
-          <div className="text-center flex gap-x-2 justify-center">
+          <div className="text-center  font-medium flex gap-x-2 justify-center">
             <span> Already have an account?</span>
             <Link
               href="/login"
@@ -97,7 +96,7 @@ export function AuthenticationLogin() {
 
   return (
     <main className="w-full h-screen  bg-formbackground flex flex-col font-poppins items-center justify-center px-3">
-      <div className=" w-[95%] sm:max-w-md rounded-xl shadow-xl py-2 relative bg-white text-slate px-2 sm:px-3 space-y-8">
+      <div className=" w-[98%] sm:max-w-md rounded-xl shadow-xl py-2 relative bg-white text-slate px-2 sm:px-3 space-y-8">
         <div className="text-center mt-9">
           <div className="mt-5 ">
             <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl">
@@ -106,7 +105,7 @@ export function AuthenticationLogin() {
             <p className=" font-medium px-2">Login to explore all potentials</p>
           </div>
         </div>
-        <div className="absolute p-4 flex ite justify-center -top-[3.2rem] rounded-full bg-orange text-white left-[44%]">
+        <div className="absolute p-4 flex ite justify-center -top-[3.2rem] rounded-full bg-orange text-white left-[45%]">
           <span className=" text-3xl">
             <SiFastapi />
           </span>
@@ -146,7 +145,7 @@ export function AuthenticationLogin() {
             </span>
             Continue with Github
           </Button> */}
-          <div className="text-center flex gap-x-2 justify-center">
+          <div className="text-center font-medium flex gap-x-2 justify-center">
             <span> Don&apos;t have an account?</span>
             <Link
               href="/"
@@ -160,5 +159,3 @@ export function AuthenticationLogin() {
     </main>
   );
 }
-
-

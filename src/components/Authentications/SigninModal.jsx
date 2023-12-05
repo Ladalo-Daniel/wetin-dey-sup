@@ -20,7 +20,7 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
   const [showpassword, setShowPassword] = useState(false);
   const [disable, setDisable] = useState(false);
   const router = useRouter();
-  // const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -146,15 +146,15 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
               }}
               onClientUploadComplete={(res) => {
                 console.log("Upload Response:", res);
-               
-                  // setImageUrl(res[0].url);
-                  formik.setFieldValue("profilePicture", res.fileUrl);
-                  // formik.getFieldProps("profilePicture");
-              
+                if (res[0] && res[0].url) {
+                  setImageUrl(res[0].url);
+                  formik.setFieldValue("profilePicture", res[0].url);
+                  formik.getFieldProps("profilePicture");
+                }
 
                 // Do something with the response
                 console.log("Files:", res);
-                toast.success("Uploaded");
+                // toast.success("Uploaded");
               }}
               onUploadError={(error) => {
                 // Do something with the error.
@@ -162,6 +162,7 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
               }}
             />
           )}
+          
         </div>
         <div className=" flex mb-3 flex-col">
           <label className=" font-medium text-gray text-sm" htmlFor="Name">
