@@ -258,7 +258,7 @@ export default function CreateEvent() {
             onClientUploadComplete={(res) => {
               
 
-                formik.setFieldValue("eventImage", res.url);
+                formik.setFieldValue("eventImage", res[0].fileUrl);
                 formik.getFieldProps("eventImage");
               
               // Do something with the response

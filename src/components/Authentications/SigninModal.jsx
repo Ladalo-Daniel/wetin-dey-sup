@@ -147,7 +147,7 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
               onClientUploadComplete={(res) => {
                 console.log("Upload Response:", res);
               
-                  formik.setFieldValue("profilePicture", res[0].fileUrl);
+                  formik.setFieldValue("profilePicture", res.fileUrl);
                   //formik.getFieldProps("profilePicture");
               
 
