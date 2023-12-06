@@ -12,7 +12,7 @@ import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { UploadDropzone, } from "@/lib/uploadthing";
+import { UploadDropzone } from "@/lib/uploadthing";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { CiMail, CiUser } from "react-icons/ci";
 
@@ -146,10 +146,9 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
               }}
               onClientUploadComplete={(res) => {
                 console.log("Upload Response:", res);
-              
-                  formik.setFieldValue("profilePicture", res.fileUrl);
-                  //formik.getFieldProps("profilePicture");
-              
+
+                formik.setFieldValue("profilePicture", res.url);
+                //formik.getFieldProps("profilePicture");
 
                 // Do something with the response
                 console.log("Files:", res);
@@ -161,7 +160,6 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
               }}
             />
           )}
-
         </div>
         <div className=" flex mb-3 flex-col">
           <label className=" font-medium text-gray text-sm" htmlFor="Name">
