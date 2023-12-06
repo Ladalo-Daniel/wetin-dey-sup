@@ -146,11 +146,10 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
               }}
               onClientUploadComplete={(res) => {
                 console.log("Upload Response:", res);
-                if (res[0] && res[0].url) {
-                  setImageUrl(res[0].url);
-                  formik.setFieldValue("profilePicture", res[0].url);
-                  formik.getFieldProps("profilePicture");
-                }
+              
+                  formik.setFieldValue("profilePicture", res[0].fileUrl);
+                  //formik.getFieldProps("profilePicture");
+              
 
                 // Do something with the response
                 console.log("Files:", res);
@@ -162,7 +161,7 @@ export default function AuthSignIn({ isOpen, onOpenChange }) {
               }}
             />
           )}
-          
+
         </div>
         <div className=" flex mb-3 flex-col">
           <label className=" font-medium text-gray text-sm" htmlFor="Name">

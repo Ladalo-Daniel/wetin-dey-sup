@@ -143,11 +143,11 @@ export default function CreateEvent() {
         <div className=" flex flex-col">
           <label className=" text-sm font-medium">Month/Date</label>
           <div className=" grid grid-cols-2 w-full gap-2 my-2">
-            <div className=" flex flex-col">
+            <div className=" flex flex-col w-full">
               <select
                 name="months"
                 {...formik.getFieldProps("eventMonth")}
-                className=" py-2 px-3 border text-sm outline-none rounded  bg-transparent  text-gray dark:text-white border-orange    "
+                className=" py-2 px-3 border w-full text-sm outline-none rounded  bg-transparent  text-gray dark:text-white border-orange    "
               >
                 {MonthsData.map((month, index) => (
                   <option
@@ -168,11 +168,11 @@ export default function CreateEvent() {
               )}
             </div>
 
-            <div className=" flex flex-col">
+            <div className=" flex flex-col w-full">
               <input
                 type="date"
                 {...formik.getFieldProps("eventDate")}
-                className=" py-2 px-3 text-sm outline-none border rounded  bg-transparent text-gray dark:text-white border-orange   "
+                className=" py-2 px-3 text-sm w-full outline-none border rounded  bg-transparent text-gray dark:text-white border-orange   "
               />
               {formik.errors.eventDate && formik.touched.eventDate ? (
                 <span className=" text-red text-sm">
@@ -187,11 +187,11 @@ export default function CreateEvent() {
         <div className=" flex flex-col">
           <p className=" text-sm font-medium">Day/Time</p>
           <div className=" grid grid-cols-2 w-full gap-2 my-2">
-            <div className=" flex flex-col">
+            <div className=" flex flex-col w-full">
               <select
                 name="days"
                 {...formik.getFieldProps("eventDay")}
-                className=" py-2 px-3 border text-sm outline-none rounded  bg-transparent  text-gray dark:text-white border-orange    "
+                className=" py-2 px-3 border text-sm w-full outline-none rounded  bg-transparent  text-gray dark:text-white border-orange    "
               >
                 {DaysData.map((day, index) => (
                   <option className=" text-gray" key={index} value={day.days}>
@@ -207,11 +207,11 @@ export default function CreateEvent() {
                 ""
               )}
             </div>
-            <div className=" flex flex-col">
+            <div className=" flex flex-col w-full">
               <input
                 {...formik.getFieldProps("eventTime")}
                 type="time"
-                className=" py-2 px-3 outline-none text-sm rounded border  bg-transparent  text-gray dark:text-white border-orange   "
+                className=" py-2 px-3 outline-non w-full text-sm rounded border  bg-transparent  text-gray dark:text-white border-orange   "
               />
               {formik.errors.eventTime && formik.touched.eventTime ? (
                 <span className=" text-red text-sm">
@@ -256,11 +256,11 @@ export default function CreateEvent() {
               allowedContent: "Add a display image",
             }}
             onClientUploadComplete={(res) => {
-              if (res[0] && res[0].url) {
-                setSelectedImage(res[0].url);
-                formik.setFieldValue("eventImage", res[0].url);
+              
+
+                formik.setFieldValue("eventImage", res.url);
                 formik.getFieldProps("eventImage");
-              }
+              
               // Do something with the response
               console.log("Files:", res);
               // toast.success("Uploaded");
@@ -272,7 +272,7 @@ export default function CreateEvent() {
             }}
           />
           <div className=" flex items-center gap-x-2">
-            <Avatar size="lg" src={selectedImage} />
+            <Avatar size="lg" src={formik.values.eventImage} />
             {formik.errors.eventImage && formik.touched.eventImage ? (
               <span className="text-red text-sm">
                 {formik.errors.eventImage}
