@@ -9,7 +9,9 @@ export async function GET(req, { params: { id } }) {
     // Connect to the DB
     await connectMongoDb();
     // using the model to find and retrieve
-    const event = await Event.findOne({ _id: id });
+    const event = await Event.findOne({ _id: id })
+    .populate("creatorData")
+    ;
 
     if (!event) {
       return NextResponse.json(

@@ -20,9 +20,12 @@ import Themeswitch from "./Themeswitcher";
 import Headroom from "react-headroom";
 import Link from "next/link";
 import { signOut, signIn, useSession } from "next-auth/react";
+import { useContext } from "react";
+import { UserContext } from "@/context/Context";
 
 export default function TopNavbar({ el, id, image }) {
   const { data: session } = useSession();
+  const {storedCreatorData:[creatorData], isLoading, error} = useContext(UserContext)
   const Navigation = [
     {
       Link: "/timeline",
@@ -153,10 +156,10 @@ export default function TopNavbar({ el, id, image }) {
         <div className=" flex items-center gap-x-3">
           <User
             size="lg"
-            name={session.user?.name}
+            name={session?.user?.name.split(" ").at(0)}
             // description={session.user.email}
             avatarProps={{
-              src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+              src: creatorData?.profilePicture || "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=626&ext=jpg&ga=GA1.1.1035386768.1682762339&semt=sph",
             }}
           />
           <Popover placement="bottom" className=" dark:border-white border">

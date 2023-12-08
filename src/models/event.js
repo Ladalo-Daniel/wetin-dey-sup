@@ -6,6 +6,10 @@ const eventSchema = new Schema(
         creator: {
             type: Object,
         },
+        creatorData: {
+            type: Schema.Types.ObjectId,
+            ref: 'Users'
+        },
         eventTitle: {
             type: String,
         },
