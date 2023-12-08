@@ -17,7 +17,7 @@ export default function UpcomingEventCard({ events:eventSkeleton }) {
     return(
         <div className='flex relative z-0 flex-col gap-4 w-[90vw] md:w-[400px] lg:w-[400px] xl:w[500px] mx-4 mb-9 font-poppins'>
             <Chip className='text-md font-bold text-white rounded-small bg-darkOrange  '>Upcoming</Chip>
-          {isLoading || events?.data?.length === 0 ? (
+          {isLoading || events?.data?.length === 0 || error ? (
             <UpcomingEventSkeleton />
           ) :
             (events?.data?.map((item, index) => (

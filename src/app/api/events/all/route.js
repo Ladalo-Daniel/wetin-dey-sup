@@ -9,7 +9,6 @@ export async function GET(req) {
       await connectMongoDb();
       //get the data using the model
       const events = await Event.find()
-      .populate("creator")
       .sort({ createdAt: -1 })
       .limit(100);
       return NextResponse.json(
