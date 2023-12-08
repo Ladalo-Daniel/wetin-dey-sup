@@ -11,7 +11,7 @@ import EventCardSkeleton from './SkeletonUIs'
 
 
 export default function EventItemCard({events:skeletonEvent}) {
-    const { data: user } = useSession()
+    // const { data: user } = useSession()
     // console.log(user)
    
     const {data:events, isLoading, error} = useGetEvents()
@@ -21,7 +21,7 @@ export default function EventItemCard({events:skeletonEvent}) {
  return (
     <div className=' font-poppinsf flex flex-col gap-5 relative items-start '>
       <div className=" flex gap-3 flex-1 overflow-x-scroll scrollbar-hide mt-2">
-        {isLoading || events?.data?.length === 0 ? (
+        {isLoading || events?.data?.length === 0 || error ? (
             <EventCardSkeleton />
         ) :
           (events?.data?.map((event) => (
@@ -35,14 +35,14 @@ export default function EventItemCard({events:skeletonEvent}) {
                     />
                     <div className="flex flex-col gap-1 event?-center pt-3 ml-4 mr-2">
                         <User   
-                            name={event?.authorName || event?.userId}
+                            name={event?.creator?.name || event?.userId}
                             description={(
                                 <Link href='#' size="sm" isExternal>
-                                @{user?.user?.name || event?.userId}
+                                @{event?.creator?.name?.split(" ").at(0) || event?.userId}
                                 </Link>
                             )}
                             avatarProps={{
-                                src: event?.authorLogo
+                                src: event?.creator?.profilePicture
                             }} />
                     </div>
                     <Chip className=' ml-4 mt-1 bg-darkOrange p-1 rounded-md font-poppins w-max text-white'>{event?.eventTitle}</Chip>

@@ -1,6 +1,6 @@
 "use client";
 import { Avatar, Button } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { BsSendCheck } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
@@ -14,6 +14,7 @@ import { useSession } from "next-auth/react";
 import { UploadButton } from "@uploadthing/react";
 import { useRouter } from "next/navigation";
 import { useGetUsers } from "@/lib/react-query/queriesMutations";
+import { UserContext } from "@/context/Context";
 
 export default function CreateEvent() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -23,18 +24,18 @@ export default function CreateEvent() {
   //  console.log(data)
   const router = useRouter();
 
-
-  const {data:usersData, isLoading, error} = useGetUsers()
-    // console.log(usersData);
-
-  
-  // Filter user details based on the given name and email
-   const [creatorData] = usersData?.data?.filter(user => user?.name === data?.user?.name && user?.email === data?.user?.email ) || [{}];
-    // const {_id, name, email, profilePicture } = creatorData;
-   console.log(creatorData);
+   const {storedCreatorData:[creatorData], isLoading, error} = useContext(UserContext)
+    console.log(creatorData);
 
 
+    // // Retrieve usersDataJSON from localStorage using the key 'creatorData'
+    // const storedCreatorDataJSON = localStorage.getItem('creatorData');
 
+    // // Parse the JSON string back to an object
+    // const [creatorData] = JSON.parse(storedCreatorDataJSON);
+    // console.log(creatorData)
+
+ 
   const formik = useFormik({
     initialValues: {
       creator: {
@@ -58,10 +59,10 @@ export default function CreateEvent() {
 
   
 
-  async function onSubmit(values) {
-    console.log(values);
+  async function onSubmit( values) {
+    console.log(values)
     try {
-      const res = await fetch("api/events/creat", {
+      const res = await fetch("api/events/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

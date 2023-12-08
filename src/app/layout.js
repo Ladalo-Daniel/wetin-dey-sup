@@ -1,8 +1,10 @@
+
 import Themeprovider from "@/components/Themeprovider";
 import "./globals.css";
 import AuthProvider from "@/components/AuthProvider";
 // import { getServerSession } from "next-auth"
 import ReactQuery from "./ReacrQuery";
+import { ContextProvider } from "@/context/Context";
 
 export const metadata = {
   title: "Wetin-dey-sup",
@@ -16,9 +18,11 @@ export default  function RootLayout({ children }) {
       <body>
         <Themeprovider>
             <AuthProvider>
-              <ReactQuery>
-                {children}
-              </ReactQuery>
+                <ReactQuery>
+                 <ContextProvider>
+                  {children}
+                 </ContextProvider>
+                </ReactQuery>
             </AuthProvider>
         </Themeprovider>
       </body>
